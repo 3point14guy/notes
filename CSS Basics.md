@@ -66,7 +66,7 @@ This is really a compromise between inline styles and a separate style sheet. Yo
   </head>
 ```
 
-### External Styles using the `<link>` tag
+### External Styling **using the `<link>` tag**
 The `<link>` tag facilitates making your external style sheet available to your html file. The `<link>` tag should be placed in the `<head>` tag of your site. You should include your style sheets in order from generic to specific.
 
 **Basic anatomy of the link tag `<link>`**  
@@ -78,6 +78,7 @@ There sevaral attributes for a `<link>` tag. Lets go over a few of the common on
 
 *[Further Reading on the `<link>` tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link)*
 
+### External Styling
 **`<link>` Example**
 ```html
   <head>
@@ -86,7 +87,7 @@ There sevaral attributes for a `<link>` tag. Lets go over a few of the common on
   </head>
 ```
 
-### Why a separate file?
+### External Styling Why a separate file?
 Although we can write CSS in our HTML pages directly via the `<style>` tag and using inline styles, it is best practices to keep you CSS in its own file with the extension **.css**.
 
 ***Benefits of a separate CSS file***  
@@ -94,6 +95,9 @@ Although we can write CSS in our HTML pages directly via the `<style>` tag and u
 * We can apply the same styling to multiple HTML pages
 * Keeps our site more organized. We know where to find our CSS quickly.
 * Keeps you from writing the same code over and over again.
+
+show bookmark for:
+[CSS demo: 1 page- multiple styles](https://www.w3schools.com/css/css_intro.asp)
 
 ***Discussion Topics***  
 *Re-enforce Separation of Concerns and DRY (Don't Repeat Yourself) concepts.*
@@ -227,7 +231,7 @@ This can get complicated pretty fast. Let's touch on the basics for now. combina
 ```
 
 
-##CSS Properties
+### CSS Properties 1
 There a ton of CSS properties. Please refer to links below for a deep dive into some of the properties and what they control.
 
 ***Common Properties***
@@ -235,19 +239,32 @@ There a ton of CSS properties. Please refer to links below for a deep dive into 
 
 * **background** - Control all things related to the background including but not limited to color and image
 * **color** - Controls the color of the text within an element. [CSS Color Reference](http://www.w3schools.com/cssref/css_colors.asp)
+
+### CSS Properties 2
 * **font-weight** - controls the boldness of the font. Common values are normal and bold
 * **font-size** - specifies the size of the font. Usually in pixes or em units. [CSS Font Size Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/font-size)
 * **font-family** - specifies the font to use. [CSS Web Safe Font Reference](http://www.w3schools.com/cssref/css_websafe_fonts.asp)
-* **height** - controls the height of the content area of an element
+
+### CSS Properties 3
+* **height** - controls the height of the content area of an element 
 * **width** - controls the width of the content area of an element
-* **padding** - sets the padding space on all sides of an element. [CSS Padding Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/padding)
-* **margin** - sets the margin on all sides of an element. [CSS margin Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/margin)
-* **border** - sets the border on all sides of an element. [CSS border Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/border)
+
+### CSS Properties 4
+* **padding** - sets the padding space on all sides of an element. 
+* **margin** - sets the margin on all sides of an element. 
+* **border** - sets the border on all sides of an element. 
+
+### End of Slides
 
 
 ***PRO TIP***  
-*https://developer.mozilla.org/en-US/docs/Web/CSS/YOUR_PROPERTY_HERE - Replacing YOUR_PROPERTY_HERE with something like 'color', 'background', or any other property you can think of should bring you to documentation on that specific property*  
-*Discuss [Custom Fonts with Google Fonts](https://fonts.google.com/)*
+*https://developer.mozilla.org/en-US/docs/Web/CSS/YOUR_PROPERTY_HERE - Replacing YOUR_PROPERTY_HERE with something like 'color', 'background', or any other property you can think of should bring you to documentation on that specific property*
+
+### *Discuss [Custom Fonts with Google Fonts](https://fonts.google.com/)*
+
+### Class activity 1
+
+### Class activity 2
 
 ##Homework
 

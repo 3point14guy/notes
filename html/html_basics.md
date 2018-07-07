@@ -29,7 +29,9 @@ Let's take a dive into HTML (Hyper Text Markup Language). HTML is the markup lan
 
 ---
 
-## Hyper Text Markup Language HTML5  *### slide 2*
+## Hyper Text Markup Language HTML5  
+***slide 2***
+
 HTML is a markup language interpreted by the browser. It is different from a programming language. It uses specific tags or elements to tell the browser how things should look when presented visually to the user. Lets take a look at some concepts behind how these tags work before we dive into actual tags.
 
 ## HTML and Its' Tags 1  
@@ -102,18 +104,18 @@ From this point on we will be speaking in context of HTML5.
 ***PRO TIP***  
 *https://developer.mozilla.org/en-US/docs/Web/HTML/Element/YOUR_TAG_HERE - Replacing YOUR_TAG_HERE with something like 'head', 'title', or any other tag/element you can think of should bring you to documentation on that specific tag/element*
 
-## Doctype  
-***slide 8 ***
+## Doctype
+***slide 8***
 
 `<!DOCTYPE html>` informs the browser which version of HTML will be used in this document. In this case we are delacring that we will be using HTML5 Doctype is speacial in that its not really considered a tag but a declaration. What you really need to understand about this tag/declaration is that it should be present and the first line in your HTML file.
 
 ## HTML  
-***slide 9  ***
+***slide 9***
 
 `<html>` is the tag that represents the root (top-level element) of an HTML document, so it is also referred to as the root element. All other elements must be descendants of this element. That being said, notice the mathing closing `</html>` tag on the last line.
 
 ## Head  
-***slide 10 ***
+***slide 10***
 
 `<head>` is that tag that contains descriptive information about your page like the pages title `<title>`. This is also where would include things like `<meta>` and style sheets. We will get into more of that stuff later in the curriculum. Notice the `<title>` tag has a closing tag, `</title>`, just like the `<html>` tag. I hope you are noticing the pattern.  
 [Recomended Reading](https://developer.mozilla.org/en-US/docs/Learn/HTML/Introduction_to_HTML/The_head_metadata_in_HTML)
@@ -319,7 +321,7 @@ There sevaral attributes for an `<a>` tag. Lets go over a few of the common ones
 </ul>
 ```
 ## Images  
-***slides 25 ***
+***slides 25***
 
 Images are placed in our HTML document using the `<img>` tag. The image tag is a self closing tag and **Does'nt** require a matching closing tag.
 
@@ -494,7 +496,7 @@ We are going to look at two excellent resources for you to use in this course; M
 [Mozilla Developers Network](https://developer.mozilla.org/en-US/docs)
 [W3Schools](https://www.w3schools.com/)
 
-###Activity###
+## Activity
 
 * split the students in two groups
 * each person in the first group will research an HTML element at Mozilla, the second group will use W3Schools

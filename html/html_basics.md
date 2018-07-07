@@ -1,4 +1,4 @@
-# HTML: The Basics    *slide 1
+# HTML: The Basics    *### slide 1*
 Let's take a dive into HTML (Hyper Text Markup Language). HTML is the markup language that provides us a structured way to create web pages. When we use the tags available to us through HTML we can control how almost everything is presented to the user via their web browser. Your web browswer it what interprets the tags to present what the end user sees.
 
 ## Useful Resources
@@ -27,7 +27,7 @@ Let's take a dive into HTML (Hyper Text Markup Language). HTML is the markup lan
 
 ---
 
-## Hyper Text Markup Language HTML5  *slide 2
+## Hyper Text Markup Language HTML5  *### slide 2*
 HTML is a markup language interpreted by the browser. It is different from a programming language. It uses specific tags or elements to tell the browser how things should look when presented visually to the user. Lets take a look at some concepts behind how these tags work before we dive into actual tags.
 
 ## HTML and Its' Tags 1  *slide 3

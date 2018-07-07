@@ -1,0 +1,93 @@
+/* targeting an element by it's name */
+
+
+
+ /* targeting an element by a given class (class="myClass") */
+ 
+
+
+  /* targeting an element by a given id (id="myId") */
+
+
+
+  /* The Universal Selector. Select all the things */
+
+
+
+  /* All elements with the attribute "href"
+   are bolded */
+
+
+
+  /* All elements with the attribute "href"
+  with the exact value "#" are 2x as big */
+
+
+
+  /* Change what a link should look like when hovered over with the mouse */
+
+
+
+  /* Change what a link should look like when its been visited */
+
+
+
+  /* target all <p> tags within a <div> and make the text red */
+
+
+
+  /* target all <div> and <p> tags on the page and make their text blue */
+
+
+
+  /*The Box Model example*/
+
+/*  <div id="one">Look Close</div>
+  <div id="two">Look Close</div>*/
+
+#one {
+	width: 200px;
+	padding: 20px;
+	border: 5px solid black;
+	margin: 30px;
+}
+
+#two {
+	box-sizing: border-box;
+	width: 200px;
+	padding: 20px;
+	border: 5px solid black;
+	margin: 30px;
+}
+
+  /*cascading challenge:
+    <div id = "the-id" class = "class-one class-two"> </div>*/
+
+/*    #the-id {
+        color: pink;
+    }
+    /* complex simple selector : ( */
+    div.class-two {
+        border: 1px solid;
+    }
+
+    .class-one {
+        width: 100px;
+        height: 100px;
+        color: blue;
+        border: 5px dotted red;
+    }
+
+    .class-two {
+        height: 50px;
+    }*/
+
+
+
+
+
+
+
+
+
+

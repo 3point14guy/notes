@@ -1,7 +1,8 @@
 # Bootstrap
 ## Pre-Built CSS & JS Framework
+***slide 1***
 
-Let's take a look at using Bootstrap's library of CSS and JavaScript classes and id's. Though it's good to have thorough Front End skills under your belt, if you need to get an app out of production quick, Bootstrap can help cut down the time you may spend on UI/UX.
+Let's take a look at using Bootstrap's library of CSS and JavaScript classes and id's. Though it's good to have thorough Front End skills under your belt, if you need to get an app out to production quick, Bootstrap can help cut down the time you may spend on UI/UX.
 
 ## Useful Resources
 [Bootstrap's Website](http://getbootstrap.com/)
@@ -34,6 +35,7 @@ Let's take a look at using Bootstrap's library of CSS and JavaScript classes and
 ---
 
 ## Concept Review
+***slide 2***
 
 Basic layout of an HTML page:
 
@@ -52,6 +54,8 @@ Basic layout of an HTML page:
 ```
 
 ### Review: Divs and Spans
+***slide 3***
+
 Divs and spans are HTML tags that are commonly used with CSS. 
 * Divs are called "block" elements (for large chunks of code) and
 * Spans are "inline" (for small bits of code).
@@ -74,15 +78,16 @@ Divs and spans are HTML tags that are commonly used with CSS.
 }
 ```
 
-### Review: Box Model
+## Review: Box Model
+***slide 4***
 
 Each HTML element can be considered a box. The box model is essentially a box that wraps around HTML elements. It consists of: margins, borders, padding, and the actual content.
 
 ---
 
-## Bootstrap
+## What is Bootstrap?
+***slide 5***
 
-### What is Bootstrap?
 Bootstrap is an HTML, CSS & JS framework. It was built by developers at Twitter. It is mobile-ready and built with responsive design in mind.
 
 Basically, it saves you lots of time! You can use their pre-built classes and ids to give your site a sleek look without having to write a whole lot of your own CSS and JavaScript.
@@ -94,32 +99,53 @@ Basically, it saves you lots of time! You can use their pre-built classes and id
 If you think your class can handle some strong language and joking about the thing we're using:
 [Every F'ing Bootstrap Site Ever](http://adventurega.me/bootstrap/)
 
-### Create a New Workspace
+## Create a New Folder
+***slide 6***
 
-1. Create a new folder in where you are collecting your Front End projects. Title it **"Bootstrap"**.
+Create a new folder in where you are collecting your Front End projects. Title it **"Bootstrap"**.
 
-2. Open the folder in Sublime.
+## Let's Get Started
+***slide 7***
 
-3. Inside create, a new file called **"index.html"**.
+1. Inside create, a new file called **"index.html"**.
+2. In the browser, go to [Bootstrap's Basic Template](http://getbootstrap.com/). 
+3. Select v3.3.7
+4. Click "Getting Started" at the top.
+5. Copy-and-paste the template (use the **Copy** button on the top-right!) into **index.html**, and get rid of any extra stuff (comments, etc.)
+6. Test it out.
 
-4. In the browser, go to [Bootstrap's Basic Template](http://getbootstrap.com/getting-started/#template). Copy-and-paste (use the **Copy** button on the top-right!) into **index.html**, and get rid of any extra stuff (comments, etc.)
+## Here's What We Got
+***slide 8***
 
-5. Test it out.
+*Just shows what file should look like*
+
+## Let's Keep Going
+***slide 9***
 
 Bootstrap isn't coming through yet, but we want to see the difference between normal and Bootstrap. Next, let's bring in the Bootstrap library through CDN (**Content Delivery Network**) links:
 
 1. Find CDN links at the top of Bootstrap's "Getting Started" page.
-
 2. Copy the CSS link and paste over the dummy <link> tag in **index.html**
-
 3. Copy the JS link and paste over the dummy <script> tag in **index.html**. Be careful not to delete or paste-over the <script> tag bringing in jQuery! Bootstrap is written in jQuery and needs that link!
-
 4. Test again!
 
-5. Use Chrome's "Inspect" tool to see all that's being brought in. Choose the "Sources" tab and look for the cloud icons.
+## Simple Test
+***slide 10***
 
+*Shows index.html with CDN link instead of local links*
 
-### A Quick Look at Bootstrap Components
+## Use the Inspector
+***slide 11***
+
+* Hover over the "Hello, world!"
+* Right-click to "Inspect"
+* Notice the styles being applied
+* Click the "Sources" tab
+* Notice the Bootstrap folder (cloud)
+
+## Bootstrap-ify
+***slide 12***
+
 Let's add to our **index.html** page a couple of common Bootstrap components, then we will look at them in more detail.
 
 We're going to wrap everything in a <div> with the class of "jumbotron". Inside the <div> we'll keep the <h1>, add a <p>, and add an <a> tag that takes the classes of "btn" and "btn-primary" and "btn-lg".
@@ -134,14 +160,19 @@ We're going to wrap everything in a <div> with the class of "jumbotron". Inside 
 
 Test out its responsiveness: change the size of the browser from big to small to big again.
 
+## Grid Talk 1
+***slide 13***
 
 ### Bootstrap Grid System
 These are building blocks of a Bootstrap website. They provide us with responsive page layouts using rows & columns. This lets us not have to worry about floating in CSS! 
 
 With Bootstrap, pages can be laid out in columns. Column size must add up to twelve (12). See the examples in Bootstrap's [documentation](http://getbootstrap.com/css/#grid).
 
+## Grid Talk 2
+***slide 14***
+
 Columns work within a row, and rows work within a container.
-So we'll start with a <div> with "container" class, then a <div> with "row" class, than our <div>'s with "col-" classes.
+So we'll start with a <div> with "container" class, then a <div> with "row" class, then our <div>'s with "col-" classes.
 
 Let's add a full-width column with Lorem Ipsum filler text.
 
@@ -166,11 +197,15 @@ You can either use Sublime's lorem-autofill (type in "lorem" and then press *tab
 </div>
 ```
 
-#### Grid Challenge
+## Grid Challenge
+***slide 15*** **SHOW**
 *Give students 5 minutes to complete. Ask to raise hands or Slack you when complete and check their work.*
 
 * Add a new row with 3 columns
 * Hint: use class="col-md-4"
+
+## Grid Solution
+***slide 16*** **SHOW**
 
 Possible Solution:
 ```html
@@ -191,8 +226,10 @@ Possible Solution:
 ### Bootstrap Containers
 The grid system only provide this x- and y- layout system for your page. It does not have any border or background properties (unless you write your own). We'll look now at two Bootstrap containers that do have these properties built-in (and can be used easily within the grid system).
 
-#### Panels
-[Bootstrap Panels](http://getbootstrap.com/components/#panels)
+## Panels!
+***slide 17***
+
+[Panels](https://getbootstrap.com/docs/3.3/components/#panels)
 Panels are made up of several classes attributed to nested <div> tags. There is the "panel" class, plus color choice in "panel-". Then the "panel-body" <div> would hold your main content. You can also add a "panel-heading" (above "panel-body"), and add a "panel-footer" (below "panel-body").
 
 ```html
@@ -211,7 +248,8 @@ Panels are made up of several classes attributed to nested <div> tags. There is 
 </div> <!-- closing of panel class -->
 ```
 
-#### Panel Challenge
+## Panel Challenge
+***slide 18*** **SHOW**
 *Give students 5-10 minutes to complete. Ask to raise hands or Slack you when complete and check their work.*
 
 * Make a new row with three columns
@@ -219,6 +257,9 @@ Panels are made up of several classes attributed to nested <div> tags. There is 
 * Make them colorful!
 * Let me know when you're finished
 * Share with class
+
+## Panel Solution
+***slide 19*** **SHOW**
 
 Possible Solution:
 ```html
@@ -251,8 +292,9 @@ Possible Solution:
 ```
 
 
-#### Wells
-[Bootstrap Wells](http://getbootstrap.com/components/#wells)
+## Well, Well, Well 1
+***slide 20***
+[Bootstrap Wells](http://getbootstrap.com/docs/3.3/components/#wells)
 The "well" class is like the panel's minimalist cousin. All you get is a grey box with a grey border surrounding your content. But, it's much more easier to implement.
 
 ```html
@@ -264,6 +306,10 @@ The "well" class is like the panel's minimalist cousin. All you get is a grey bo
   </p>
 </div>
 ```
+
+## Well, Well, Well 2
+***slide 21***
+
 There's also some size variation for wells.
 
 ```html
@@ -280,7 +326,9 @@ There's also some size variation for wells.
 </div>
 ```
 
-#### Well Challenge
+## Well Challenge
+***slide 22- this slide has solution on it, wait to SHOW*** 
+
 *Give students 5 minutes to complete. Ask to raise hands or Slack you when complete and check their work.*
 
 * Build a new row, this time with just 2 columns
@@ -306,9 +354,10 @@ Possible Solution:
 </div>
 ```
 
+## Buttons 1
+***slide 23***
 
-### Buttons
-[Bootstrap Buttons](http://getbootstrap.com/css/#buttons)
+[Bootstrap Buttons](http://getbootstrap.com/docs/3.3/css/#btn-groups)
 
 You can add Bootstrap button ("btn") classes to nearly any HTML tag (though results may vary). Generally, though, we add to <a> or <button> tags.
 
@@ -316,6 +365,9 @@ Add a button to your 3rd column:
 ```html
 <a href="#" class="btn btn-success">Sign Up Now!</a>
 ```
+## Buttons 2
+***slide 24***
+
 The "btn" classes will not alone create a button. You must also include the style/color of the button.
 
 The choices are:
@@ -331,12 +383,16 @@ You can also change the size of the button with:
 *"btn-sm" (small)
 *"btn-xs" (really small!)
 
-### Footer Challenge
+## Footer Challenge
+***slide 25***  **This slide has the solution, wait to SHOW"**
+
 *Give students 5 minutes to complete. Ask to raise hands or Slack you when complete and check their work.*
+
+Try looking up the code for a footer on your own to add to your site.
 
 *Add a footer
 *Use a 3 column layout (again)
-*Include copyright, navigation, follow me
+*Include the copyright symbol in the right col , navigation in the center col, and follow me in the right col.
 
 Possible Solution:
 ```html

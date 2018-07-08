@@ -149,12 +149,12 @@ Bootstrap isn't coming through yet, but we want to see the difference between no
 
 Let's add to our **index.html** page a couple of common Bootstrap components, then we will look at them in more detail.
 
-We're going to wrap everything in a <div> with the class of "jumbotron". Inside the <div> we'll keep the <h1>, add a <p>, and add an <a> tag that takes the classes of "btn" and "btn-primary" and "btn-lg".
+We're going to wrap everything in a `<div>` with the class of "jumbotron". Inside the `<div>` we'll keep the `<h1>`, add a `<p>`, and add an `<a>` tag that takes the classes of "btn" and "btn-primary" and "btn-lg".
 
 ```html
 <div class="jumbotron">
-	<h1>Aaron's Awesome Site</h1>
-	<p>My name is Aaron Groch.</p>
+	<h1>My Awesome Site</h1>
+	<p>Bask in it's AWESOMENESS.</p>
 	<a class="btn btn-primary btn-lg">Click this!</a>
 </div>
 ```
@@ -197,6 +197,33 @@ You can either use Sublime's lorem-autofill (type in "lorem" and then press *tab
   </div>
 </div>
 ```
+
+Show how to make uneven columns:
+
+```html
+<div class="container">
+  <div class="row">
+    <div class="col-lg-8">
+      <p>
+      	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor 
+        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis 
+        nostrud exercitation ullamco laboris nisi ut aliquip exea commodo consequat.
+      </p>
+    </div>
+    <div class="col-lg-4">
+      <p>
+      	Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu 
+        fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in 
+        culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </div>
+  </div>
+</div>
+```
+
+Show how to make responsive columns:
+
+Add classes for smaller screen size col-10 and col-2 to divs above
 
 ## Grid Challenge
 ***slide 15*** **[SHOW](http://techtalentsouth.slides.com/techtalentsouth/ftci-bootstrap?token=JpCRR0qg#/0/15)**
@@ -664,7 +691,7 @@ If time permits, have students research and present these features.  Otherwise j
 * Use the Inspector tool to determine the class you'd like to override. 
 * Write styles that take priority over Bootstrap's styles.
 
-## ## Overriding Bootstrap Styles 2
+## Overriding Bootstrap Styles 2
 ***slide 39***
 
 Let's say we want to change the color of <h1>s inside the "jumbotron". Inspecting that element tells us that the color in this Bootstrap style is inherited from a parent element.
@@ -677,6 +704,7 @@ To change this style we can define it in our own stylesheet. Inspecting again sh
 }
 ```
 
+**Why does this work?**
 
 ## Bootstrap Themes
 ***slide 40***
@@ -686,6 +714,22 @@ NEED INSTRUCTIONS HERE FOR IMPLEMENTING FROM ONE OF THESE
 [Bootswatch](http://bootswatch.com/)
 [Wrap Bootstrap](https://wrapbootstrap.com/)
 [Start Bootstrap](https://startbootstrap.com/)
+
+## Review Questions
+***no slide ***
+
+* What is Bootstrap? *A front-end framework with predefined CSS rules and JS code.*
+* What is the grid system in bootstrap? *The page is divided into 12 columns and as many rows as needed. Each column can be subdivided in the same way*
+* What are the three main classes that make up the grid system? *.container, .row, .col*
+How many columns are in a row? *12*
+How do we specify the width of column? *using the .col-"screen-size value"-"(1-12)" class format.*
+How does the xs, sm, med, lg, xl sizing work when on the same element? *Specifies column width at varying screen sizes."
+What class do use to make buttons in bootstrap? *.btn and .btn-"color"*
+What class do we use to make nice text boxes?
+<div> .card
+<div> .card-body
+<p> .card-tex
+
 
 
 ## Activity + Homework

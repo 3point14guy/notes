@@ -1,7 +1,5 @@
 # Bootstrap
 ## Pre-Built CSS & JS Framework
-***slide 1***
-
 Let's take a look at using Bootstrap's library of CSS and JavaScript classes and id's. Though it's good to have thorough Front End skills under your belt, if you need to get an app out to production quick, Bootstrap can help cut down the time you may spend on UI/UX.
 
 ## Useful Resources
@@ -35,7 +33,7 @@ Let's take a look at using Bootstrap's library of CSS and JavaScript classes and
 ---
 
 ## Concept Review
-***slide 2***
+***slide 1***
 
 Basic layout of an HTML page:
 
@@ -53,8 +51,8 @@ Basic layout of an HTML page:
 </html>
 ```
 
-### Review: Divs and Spans
-***slide 3***
+### Review: Div and Span
+***slide 2***
 
 Divs and spans are HTML tags that are commonly used with CSS. 
 * Divs are called "block" elements (for large chunks of code) and
@@ -79,11 +77,14 @@ Divs and spans are HTML tags that are commonly used with CSS.
 ```
 
 ## Review: Box Model
-***slide 4***
+***slide 3***
 
 Each HTML element can be considered a box. The box model is essentially a box that wraps around HTML elements. It consists of: margins, borders, padding, and the actual content.
 
----
+## Bootstrap responsive image
+***slide 4***
+
+*No content*
 
 ## What is Bootstrap?
 ***slide 5***
@@ -198,14 +199,14 @@ You can either use Sublime's lorem-autofill (type in "lorem" and then press *tab
 ```
 
 ## Grid Challenge
-***slide 15*** **SHOW**
+***slide 15*** **[SHOW](http://techtalentsouth.slides.com/techtalentsouth/ftci-bootstrap?token=JpCRR0qg#/0/15)**
 *Give students 5 minutes to complete. Ask to raise hands or Slack you when complete and check their work.*
 
 * Add a new row with 3 columns
 * Hint: use class="col-md-4"
 
 ## Grid Solution
-***slide 16*** **SHOW**
+***slide 16*** **[SHOW](http://techtalentsouth.slides.com/techtalentsouth/ftci-bootstrap?token=JpCRR0qg#/0/16)**
 
 Possible Solution:
 ```html
@@ -222,12 +223,13 @@ Possible Solution:
 </div>
 ```
 
+## Contained in Style
+***slide 17***
 
-### Bootstrap Containers
 The grid system only provide this x- and y- layout system for your page. It does not have any border or background properties (unless you write your own). We'll look now at two Bootstrap containers that do have these properties built-in (and can be used easily within the grid system).
 
 ## Panels!
-***slide 17***
+***slide 18***
 
 [Panels](https://getbootstrap.com/docs/3.3/components/#panels)
 Panels are made up of several classes attributed to nested <div> tags. There is the "panel" class, plus color choice in "panel-". Then the "panel-body" <div> would hold your main content. You can also add a "panel-heading" (above "panel-body"), and add a "panel-footer" (below "panel-body").
@@ -249,7 +251,7 @@ Panels are made up of several classes attributed to nested <div> tags. There is 
 ```
 
 ## Panel Challenge
-***slide 18*** **SHOW**
+***slide 19*** **[SHOW](http://techtalentsouth.slides.com/techtalentsouth/ftci-bootstrap?token=JpCRR0qg#/0/19)**
 *Give students 5-10 minutes to complete. Ask to raise hands or Slack you when complete and check their work.*
 
 * Make a new row with three columns
@@ -259,7 +261,7 @@ Panels are made up of several classes attributed to nested <div> tags. There is 
 * Share with class
 
 ## Panel Solution
-***slide 19*** **SHOW**
+***slide 20*** **[SHOW](http://techtalentsouth.slides.com/techtalentsouth/ftci-bootstrap?token=JpCRR0qg#/0/20)**
 
 Possible Solution:
 ```html
@@ -291,9 +293,8 @@ Possible Solution:
 </div>
 ```
 
-
 ## Well, Well, Well 1
-***slide 20***
+***slide 21***
 [Bootstrap Wells](http://getbootstrap.com/docs/3.3/components/#wells)
 The "well" class is like the panel's minimalist cousin. All you get is a grey box with a grey border surrounding your content. But, it's much more easier to implement.
 
@@ -308,7 +309,7 @@ The "well" class is like the panel's minimalist cousin. All you get is a grey bo
 ```
 
 ## Well, Well, Well 2
-***slide 21***
+***slide 22***
 
 There's also some size variation for wells.
 
@@ -327,7 +328,7 @@ There's also some size variation for wells.
 ```
 
 ## Well Challenge
-***slide 22- this slide has solution on it, wait to SHOW*** 
+***slide 23- this slide has solution on it, wait to*** **[SHOW](http://techtalentsouth.slides.com/techtalentsouth/ftci-bootstrap?token=JpCRR0qg#/0/23)** 
 
 *Give students 5 minutes to complete. Ask to raise hands or Slack you when complete and check their work.*
 
@@ -355,7 +356,7 @@ Possible Solution:
 ```
 
 ## Buttons 1
-***slide 23***
+***slide 24***
 
 [Bootstrap Buttons](http://getbootstrap.com/docs/3.3/css/#btn-groups)
 
@@ -366,7 +367,7 @@ Add a button to your 3rd column:
 <a href="#" class="btn btn-success">Sign Up Now!</a>
 ```
 ## Buttons 2
-***slide 24***
+***slide 25***
 
 The "btn" classes will not alone create a button. You must also include the style/color of the button.
 
@@ -383,8 +384,8 @@ You can also change the size of the button with:
 *"btn-sm" (small)
 *"btn-xs" (really small!)
 
-## Footer Challenge
-***slide 25***  **This slide has the solution, wait to SHOW"**
+## Add a Footer
+***slide 26 - This slide has the solution, wait to*** **[SHOW](http://techtalentsouth.slides.com/techtalentsouth/ftci-bootstrap?token=JpCRR0qg#/0/26)**
 
 *Give students 5 minutes to complete. Ask to raise hands or Slack you when complete and check their work.*
 
@@ -418,7 +419,7 @@ Note that copyright symbol could just be copy-n-pasted in, or you can use the pr
 W3Schools has a good [list of Symbols for HTML](https://www.w3schools.com/html/html_symbols.asp).
 
 ## Add a Glyph(icon)
-***slide 26***
+***slide 27***
 
 [Bootstrap Glyphicons](http://getbootstrap.com/docs/3.3/components/#glyphicons)
 
@@ -441,7 +442,7 @@ Example, within our Footer:
 
 
 ## Images
-***slide 27***
+***slide 28***
 [Bootstrap Images](http://getbootstrap.com/docs/3.3/css/#images)
 
 Bootstrap has some sweet classes for your images.
@@ -464,7 +465,7 @@ There are also classes that can change the overall shape of your image:
 
 
 ## Throw in a Navbar
-***slide 28***
+***slide 29***
 
 [Bootstrap Navbar](http://getbootstrap.com/docs/3.3/components/#navbar)
 
@@ -526,7 +527,7 @@ Taken straight from the docs:
 </nav>
 ```
 ## Navbar Features:
-***slide 29***
+***slide 30***
 
 *Brand (usually link to home/index page)
 *Dropdowns
@@ -539,6 +540,8 @@ You can pick and choose from their main example, you probably won't need every a
 If Dropdowns are not working, check to make sure jQuery and Bootstrap JS CDN links are written properly.
 
 ## Add a Media Object
+***slide 31***
+
 [Bootstrap Media Object](http://getbootstrap.com/docs/3.3/components/#media)
 
 Media Object classe are for building various types of components (like blog comments, Tweets, etc.) that feature a left- or right-aligned image alongside textual content.
@@ -563,7 +566,7 @@ Add a media object into your second column panel:
 
 
 ## Embed a Video!
-***slide 30***
+***slide 32***
 
 [Bootstrap Responsive Embed](http://getbootstrap.com/docs/3.3/components/#responsive-embed)
 
@@ -577,17 +580,25 @@ Find a video on YouTube and add it to the first column panel:
 </div>
 ```
 
+## Div-ception 1
+***slide 33*** **[show](http://techtalentsouth.slides.com/techtalentsouth/ftci-bootstrap?token=JpCRR0qg#/0/33)**
 
-## Div-ception 
-***slide 31***  **[SHOW](http://techtalentsouth.slides.com/techtalentsouth/ftci-bootstrap?token=JpCRR0qg#/0/34)**
+Exhibit meme.
 
-Using Bootstrap to development is a shortcut, but that doesn't mean it can't seem incredibly complicated. You tend to have <div>s within <div>s within <div>s to get the right layout.
+## Div-ception 2
+***slide 34***  **[SHOW](http://techtalentsouth.slides.com/techtalentsouth/ftci-bootstrap?token=JpCRR0qg#/0/34)**
+
+Using Bootstrap to development is a shortcut, but that doesn't mean it can't seem incredibly complicated. You tend to have `<div>` within `<div>` within `<div>` to get the right layout.
 We saw an example of this when working with **Panels**.
 
-## Challenge: Deep Div-ing
-***slide 32***
+## Challenge: Deep Div-ing 1
+***slide 35***  **[SHOW](http://techtalentsouth.slides.com/techtalentsouth/ftci-bootstrap?token=JpCRR0qg#/0/35)
+**
 
-The challenge is to create a layout similar to the one shown in the notes. [See Image here](http://techtalentsouth.slides.com/techtalentsouth/ftci-bootstrap?token=JpCRR0qg#/0/35)
+The challenge is to create a layout similar to the one shown in the slide. 
+
+## Challenge: Deep Div-ing 2
+***slide 36*** **[SHOW](http://techtalentsouth.slides.com/techtalentsouth/ftci-bootstrap?token=JpCRR0qg#/0/36)**
 
 Possible Solution:
 ```html
@@ -633,7 +644,11 @@ Possible Solution:
 ```
 
 
-### Additional Bootstrap Features
+## Additional Features
+***slide 37***
+
+If time permits, have students research and present these features.  Otherwise just highlight them quickly without code.
+
 * [Pagination](http://getbootstrap.com/components/#pagination)
 * [Badges](http://getbootstrap.com/components/#badges)
 * [Alerts](http://getbootstrap.com/components/#alerts)
@@ -641,11 +656,16 @@ Possible Solution:
 * [Carousel](http://getbootstrap.com/javascript/#carousel)
 
 
-### Overriding Bootstrap Styles
+## Overriding Bootstrap Styles 1
+***slide 38***
+
 * Add an external style sheet called "styles.css" to the "assets/stylesheets" folder.
 * Link this stylesheet to **index.html** - make sure this link is *after* your Bootstrap CDN link (page is read top-to-bottom).
 * Use the Inspector tool to determine the class you'd like to override. 
 * Write styles that take priority over Bootstrap's styles.
+
+## ## Overriding Bootstrap Styles 2
+***slide 39***
 
 Let's say we want to change the color of <h1>s inside the "jumbotron". Inspecting that element tells us that the color in this Bootstrap style is inherited from a parent element.
 
@@ -658,13 +678,19 @@ To change this style we can define it in our own stylesheet. Inspecting again sh
 ```
 
 
-### Bootstrap Themes
+## Bootstrap Themes
+***slide 40***
+
+NEED INSTRUCTIONS HERE FOR IMPLEMENTING FROM ONE OF THESE
+
 [Bootswatch](http://bootswatch.com/)
 [Wrap Bootstrap](https://wrapbootstrap.com/)
 [Start Bootstrap](https://startbootstrap.com/)
 
 
-## Homework
+## Activity + Homework
+***slide 41***
+
 (or in-class activity, if time allows)
 
 * Add Bootstrap to your personal site

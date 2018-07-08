@@ -222,7 +222,7 @@ There are several Markup languages out there. A couple of the most commonly know
 *Discuss the structure and some of the tags in the HTML example*
 
 ## Client Server Model - How the web works
-***slide 15***
+***slide 15*** **[graphic showing the 'web'](https://mdn.mozillademos.org/files/13677/Fetching_a_page.png)**
 
 When browsing the web, the client (your device) makes a request to a server (web server) which then responds to the client with the information requested. A client in this scenario would your computer, phone, tablet, or any similar device that has a web browser installed on it. You open your browser and request google.com and googles web servers then respond to you with the content that makes up google.com. When talking specifically about the web, HTTP Protocol that is used for communication between the client and server. HTTP stands for Hyper Text Transfer Protocol. We don't need a deep understanding of the HTTP protocol but we should understand that it is a defined set of rules that outline how clients and servers talk to eachother as it relates to the web.
 

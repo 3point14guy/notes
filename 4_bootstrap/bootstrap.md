@@ -167,13 +167,13 @@ Test out its responsiveness: change the size of the browser from big to small to
 ### Bootstrap Grid System
 These are building blocks of a Bootstrap website. They provide us with responsive page layouts using rows & columns. This lets us not have to worry about floating in CSS! 
 
-With Bootstrap, pages can be laid out in columns. Column size must add up to twelve (12). See the examples in Bootstrap's [documentation](http://getbootstrap.com/css/#grid).
+With Bootstrap, pages can be laid out in columns. Column size must add up to twelve (12). See the examples in Bootstrap's [documentation](http://getbootstrap.com/docs/3.3/css/#grid).
 
 ## Grid Talk 2
 ***slide 14***
 
 Columns work within a row, and rows work within a container.
-So we'll start with a <div> with "container" class, then a <div> with "row" class, then our <div>'s with "col-" classes.
+So we'll start with a `<div>` with "container" class, then a `<div>` with "row" class, then our `<div>`'s with "col-" classes.
 
 Let's add a full-width column with Lorem Ipsum filler text.
 
@@ -414,15 +414,12 @@ You can also change the size of the button with:
 ## Add a Footer
 ***slide 26 - This slide has the solution, wait to*** **[SHOW](http://techtalentsouth.slides.com/techtalentsouth/ftci-bootstrap?token=JpCRR0qg#/0/26)**
 
-*Give students 5 minutes to complete. Ask to raise hands or Slack you when complete and check their work.*
-
-Try looking up the code for a footer on your own to add to your site.
+Bootstrap doesn't have a prebuilt footer component like some of the other components we've used today, but with our new found grid knowledge, some `.nav` classes, and the `<footer>` tag, we can easily build our own.
 
 *Add a footer
 *Use a 3 column layout (again)
 *Include the copyright symbol in the right col , navigation in the center col, and follow me in the right col.
 
-Possible Solution:
 ```html
 <footer>
   <div class="container">
@@ -455,12 +452,25 @@ Glyphicons are just Bootstrap's fancy name for "icons" - those little pictures t
 Glyphicons come through as classes. Like the Bootstrap buttons, these are dependent on two classes: "glyphicon" and "glyphicon-", where the hyphen is proceded by a certain glyphicon name (see the docs).
 
 You can house these classes in either a <span> tag (traditional choice), or an <i> tag (as some developers have recently taken to doing, as italics was moved to the <em> tag).
+	
+New Accessibility guidelines state that websites must be accessible to blind people.  There is a tag attribute and a Bootstrap class we'll use here to make a complete experience for them. `aria-hidden="true"` will keep screen readers from announcing unuseful information when there is text present.
 
 Example, within our Footer:
 ```html
 <li>
   <a href="#">
-    Contact Us <span class="glyphicon glyphicon-envelope"></span>
+    Contact Us <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+  </a>
+</li>
+```
+
+Where icons are used without text we add another `<span>` that gives a screen reader a written interpretation of the icon.
+
+```html
+<li>
+  <a href="#">
+    <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
+    <span class="sr-only">Email</span>
   </a>
 </li>
 ```
@@ -599,6 +609,8 @@ Add a media object into your second column panel:
 
 These classes are MAGIC because they allow browsers to determine video or slideshow dimensions based on the width of their containing block by creating an intrinsic ratio that will properly scale on any device.
 
+We're also using `<iframes>`, which allow us to embed an HTML document, inside another HTML doc.  It is used to insert content from other sources, like Ads, for instance. The `.embed` classes activate some Javascript to make it work.
+
 Find a video on YouTube and add it to the first column panel:
 ```html
 <div class="embed-responsive embed-responsive-16by9">
@@ -613,7 +625,7 @@ Find a video on YouTube and add it to the first column panel:
 Exhibit meme.
 
 ## Div-ception 2
-***slide 34***  **[SHOW](http://techtalentsouth.slides.com/techtalentsouth/ftci-bootstrap?token=JpCRR0qg#/0/34)**
+***slide 34*** 
 
 Using Bootstrap to development is a shortcut, but that doesn't mean it can't seem incredibly complicated. You tend to have `<div>` within `<div>` within `<div>` to get the right layout.
 We saw an example of this when working with **Panels**.
@@ -694,7 +706,7 @@ If time permits, have students research and present these features.  Otherwise j
 ## Overriding Bootstrap Styles 2
 ***slide 39***
 
-Let's say we want to change the color of <h1>s inside the "jumbotron". Inspecting that element tells us that the color in this Bootstrap style is inherited from a parent element.
+Let's say we want to change the color of `<h1>`s inside the "jumbotron". Inspecting that element tells us that the color in this Bootstrap style is inherited from a parent element.
 
 To change this style we can define it in our own stylesheet. Inspecting again shows the Bootstrap style crossed out with our own taking priority.
 

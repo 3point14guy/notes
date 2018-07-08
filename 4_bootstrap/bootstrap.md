@@ -417,13 +417,14 @@ Possible Solution:
 Note that copyright symbol could just be copy-n-pasted in, or you can use the proper Number (&#169;) or Entity (&copy;).
 W3Schools has a good [list of Symbols for HTML](https://www.w3schools.com/html/html_symbols.asp).
 
+## Add a Glyph(icon)
+***slide 26***
 
-### Glyphicons
-[Bootstrap Glyphicons](http://getbootstrap.com/components/#glyphicons)
+[Bootstrap Glyphicons](http://getbootstrap.com/docs/3.3/components/#glyphicons)
 
 Glyphicons are just Bootstrap's fancy name for "icons" - those little pictures that often precede or procede text, or maybe replace text altogether, as a representation of what is meant (e.g., having an envelope icon instead of the phrase "Email us").
 
-Glyphicons comes through as classes. Like the Bootstrap buttons, these are dependent on two classes: "glyphicon" and "glyphicon-", where the hyphen is proceded by a certain glyphicon name (see the docs).
+Glyphicons come through as classes. Like the Bootstrap buttons, these are dependent on two classes: "glyphicon" and "glyphicon-", where the hyphen is proceded by a certain glyphicon name (see the docs).
 
 You can house these classes in either a <span> tag (traditional choice), or an <i> tag (as some developers have recently taken to doing, as italics was moved to the <em> tag).
 
@@ -439,8 +440,9 @@ Example, within our Footer:
 [Font Awesome](http://fontawesome.io/) is another place to get icons (and with a much greater selection to choose from). You go have to request a CDN link, however - it is no longer available right on their site.
 
 
-### Images
-[Bootstrap Images](http://getbootstrap.com/css/#images)
+## Images
+***slide 27***
+[Bootstrap Images](http://getbootstrap.com/docs/3.3/css/#images)
 
 Bootstrap has some sweet classes for your images.
 
@@ -461,8 +463,10 @@ There are also classes that can change the overall shape of your image:
 * "img-thumbnail" - gives a rounded border
 
 
-### Navbar
-[Bootstrap Navbar](http://getbootstrap.com/components/#navbar)
+## Throw in a Navbar
+***slide 28***
+
+[Bootstrap Navbar](http://getbootstrap.com/docs/3.3/components/#navbar)
 
 A *navbar* is that container you see at the top of many websites, listing contents of the page or links to other pages. All the social media sites have one. Bootstrap makes them easy!
 
@@ -521,7 +525,9 @@ Taken straight from the docs:
   </div><!-- /.container-fluid -->
 </nav>
 ```
-Navbar components:
+## Navbar Features:
+***slide 29***
+
 *Brand (usually link to home/index page)
 *Dropdowns
 *Active Class (denotes which page you're currently on)
@@ -532,9 +538,8 @@ You can pick and choose from their main example, you probably won't need every a
 
 If Dropdowns are not working, check to make sure jQuery and Bootstrap JS CDN links are written properly.
 
-
-### Media Object
-[Bootstrap Media Object](http://getbootstrap.com/components/#media)
+## Add a Media Object
+[Bootstrap Media Object](http://getbootstrap.com/docs/3.3/components/#media)
 
 Media Object classe are for building various types of components (like blog comments, Tweets, etc.) that feature a left- or right-aligned image alongside textual content.
 
@@ -557,10 +562,12 @@ Add a media object into your second column panel:
 ```
 
 
-### Responsive Embed
-[Bootstrap Responsive Embed](http://getbootstrap.com/components/#responsive-embed)
+## Embed a Video!
+***slide 30***
 
-THese classes allow browsers to determine video or slideshow dimensions based on the width of their containing block by creating an intrinsic ratio that will properly scale on any device.
+[Bootstrap Responsive Embed](http://getbootstrap.com/docs/3.3/components/#responsive-embed)
+
+These classes are MAGIC because they allow browsers to determine video or slideshow dimensions based on the width of their containing block by creating an intrinsic ratio that will properly scale on any device.
 
 Find a video on YouTube and add it to the first column panel:
 ```html
@@ -571,9 +578,14 @@ Find a video on YouTube and add it to the first column panel:
 ```
 
 
-### Div-ception Challenge
+## Div-ception 
+***slide 31***  **[SHOW](http://techtalentsouth.slides.com/techtalentsouth/ftci-bootstrap?token=JpCRR0qg#/0/34)**
+
 Using Bootstrap to development is a shortcut, but that doesn't mean it can't seem incredibly complicated. You tend to have <div>s within <div>s within <div>s to get the right layout.
 We saw an example of this when working with **Panels**.
+
+## Challenge: Deep Div-ing
+***slide 32***
 
 The challenge is to create a layout similar to the one shown in the notes. [See Image here](http://techtalentsouth.slides.com/techtalentsouth/ftci-bootstrap?token=JpCRR0qg#/0/35)
 

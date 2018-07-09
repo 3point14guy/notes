@@ -98,7 +98,7 @@ The purpose of the Ice Breaker is to highlight critical thinking, working togeth
 This is advice that will help students be successful in the program and as a professional developer.
 
 * This class is going to be tough.  
-    - You’ve already invested a lot of money and now you’ll need to invest a great deal of time and mental effort. We are going to go over a tremendous amount of material at a very brisk pace.  In 8 weeks, we are going to go over what others cover in 2 or 4 year programs.  Of course, we’ll not be covering things in the same depth. We will show you the “how” of things much more than the “why.”  When you learned to drive, you probably didn’t spend a lot of time learning about Newtons 1st law about an object in motion stays in motion or how an internal combustion engine takes a small amount of fuel, mixes it with air in a chamber and applies a spark to ignite it.  The resulting explosion pushes a cylinder that in turn rotates a shaft and eventually causes the car to move.
+    - You’ve already invested a lot of money and now you’ll need to invest a great deal of time and mental effort. We are going to go over a tremendous amount of material at a very brisk pace.  In 8 weeks, we are going to go over what others cover in 2 or 4 year programs.  Of course, we’ll not be covering things in the same depth. We will show you the “how” of things much more than the “why.”  When you learned to drive, you probably didn’t spend a lot of time learning about Newtons 1st law about an object in motion stays in motion or how an internal combustion engine takes a small amount of fuel, mixes it with air in a chamber and applies a spark to ignite it, where by the resulting explosion pushes a cylinder that in turn rotates a shaft and eventually causes the car to move.
 
     - Like hiking a mountain with a 40lb pack and not using the switchbacks. We’ll be taking a shortcut up the side of the mountain.  Once at the top, you’ll find you are actually only at the tip of the ice berg…there’ll be a lot more that you need to know.
 * Get in the right mindset
@@ -114,7 +114,7 @@ This is advice that will help students be successful in the program and as a pro
 * **ASK QUESTIONS!!** - 
     * Clarifying and deepening - Great!
     * Pontification or too specific - Save for Office Hours!
-    * Pay attention when others ask questions: Do your best to answer that question to yourself.  By testing yourself this way, you see what you really know and if you’ve made wrong assumptions.
+    * Pay attention when others ask questions: Do your best to answer that question to yourself.  By testing yourself this way, you see what you really know and if you’ve made any wrong assumptions.
     * In fact, every time you run a block a code, you should be anticipating what result you will get.  Ask yourself what is going to happen when I run this? If you get the result you expected, great.  Many times you won’t and you’ll want to use the computer’s response to formulate your next steps.
 
 * Be active and engaged in the development community. Go to meetups and stay on top of new technologies. Always be learning!
@@ -132,8 +132,10 @@ Set expectations of what students should expect from the boot camp and its intru
 * We'll take a 10 minute break every hour.  It is important to give your mind a break. Please talk about something else, do something else.  It really makes a difference!
 * Homework will be assigned at the end of class. So much of programming is solving problems and sometimes these problems are not solved easily or quickly.  You have to try from multiple approaches.  Also, leaving a problem for a while and coming back to it later often gives your brain time to process the problem subconsciously.  Therefore, I will be available for help, tips or hints on homework during the office hours after it is due.  
 * Materials will be published in the Titus Portal (link in Useful Resources) after each piece of the curriculum has been delivered. (I have your usernames and passwords if you don't have them already.)
-* We will build several projects during the bootcamp
+* We will build 3 major projects, a half dozen smaller projects, and you'll do one major project on your own. 
     - Please feel free to work on as many of your own projects as you like for practice. 
+* Class room hours can be recorded.  This is mostly for instructor and material evaluation. We are a remote campus and so there are rarely evaluators who come in person.  They are looking for what types of questions are being asked to see if the material is accomplishing what it is supposed to.
+* Being a remote campus, we are guests in another business' offices.  This building is owned by Greenstone Media, who also manages the coworking space.  Several other businesses have offices in here and there are a dozen or so people utilizing the coworking space.  Please make sure that you are conducting yourself in a professional manner and mindful of your noise level.  
 * There will office hours for each session. Please take advantage of this time to get answers to any questions or address any concerns you may have. This is also a great time for you to give us feedback on how we are doing.
 * If there are any issues about class that you don't want to talk to me about, reach out to the community organizer, Tracy. You should all have her contact info from her email.
 * Communication will be via Slack
@@ -185,7 +187,10 @@ As discussed, in order to program a computer we need to use a programming langua
 
 #### Exercise - Make a bowl of cereal
 We are going to write out the instructions for making a bowl of cereal.  We are going to write these instructions for a computer, not a person.  We wont use a programming language just yet. We'll use pseudo-code; what we want to accomplish in our code, but written in English.
-Be as specific as possible. Assume nothing. 
+
+Be as specific as possible. 
+
+Assume nothing. 
 
 **Example**
 > 1. Open panty

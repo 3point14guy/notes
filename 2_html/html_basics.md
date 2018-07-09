@@ -507,6 +507,32 @@ We are going to look at two excellent resources for you to use in this course; M
 * each person in the first group will research an HTML element at Mozilla, the second group will use W3Schools
 * after 5 minutes, each student will give a synopsis of the element and how it is used
 
+## Activity
+
+Sign-Up page
+
+Use the instructions below to create a simple sign-up page.  Tomorrow, we'll add CSS to make it look pretty.
+
+1. Start with the standard HTML boilerplate.
+2. In the body, add a set of `<div>` tags. Give it an "id" attribute with the value of "login-box".
+3. Inside of the `<div>` tags, nest two other sets of `<div>` tags, one right after the other.  In the top `<div>`, put a "class of "left", in the bottom `<div>`, the "class" of "right".
+4. Inside of there, add an `<h1>` that says "Create Account".
+5. Below the `<h1>` tag, put a `<form>` tag. For it's attributes put "class" "action" and "post".  The values for those attributes will be "sign-up", "index.html", and "POST", respectively.
+6. Nested in the `<form>` tag, put 4 `<input>` tags. All 4 will have a "type" attribute with the value of "text". All `<input>`s will have "name" and "placeholder" attributes.
+   - The value for both "name" and "placeholder" attributes in the 
+      - first `<input>` will be "username"
+      - second `<input>` will be "email"
+      - third `<input>` will be "password"
+   - In the fourth `<input>`, the value for "name" will be "confirm-password" and the value for "placeholder" will be "re-type password". Add a "sign-up-button" class.
+7. After the last `<input>`, but still within the `<form>` tags, add `<button>` tags. The "type" will be "submit" and the button should read "Sign Me Up".
+8. In the bottom `<div>`, add a `<span>` tag first.  The test with the tags should read "Sign in with Social Network"
+9. Next, create 3 sets of `<button>` tags underneath the `<span>` tags. The text for the buttons will be "Log in with FaceBook", "Log in with Twitter", "Log in with Google+".
+10. Make a new line between the last two closing `</div>` tags and put a new pair of `<div>` tags there with the text "or" and give it a class of "or".
+11. Open the file in your browser...it wont look so good...yet.
+
+
+
+
 ## Review Questions
 
 * When we use HTML we are wrapping our contents in? *Tags*

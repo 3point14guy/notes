@@ -13,11 +13,13 @@ This day will be for introductions to each other and some of the concepts that w
 [Rails Install instructions provided to students](https://techtalentsouth.com/rails_install/)  
 
 ## welcome.rb
-***slide 2***
+***slide 1*** **[SHOW](http://techtalentsouth.slides.com/techtalentsouth/intro-to-programming-code-immersion-1093?token=bnzM3gB7#/0/1)**
+
+Have on screen when students walk in.
 
 ---
 ## Lesson Overview
-***slide 3***
+***slide 2***
 
 What we will do today
 
@@ -45,7 +47,7 @@ What we will do today
 ---
 
 ## Introductions
-***slide 4***
+***slide 3***
 Let's use this time to get to know everyone.
 
 **Go around to each student and ask the talk about the following:**
@@ -58,7 +60,7 @@ Let's use this time to get to know everyone.
 
 
 ## Ice Breaker - Machines
-***slide 5***
+***slide 4***
 
 1. Split the class into teams of 2 or 3 depending on the size of the class.
 2. Teams should be standing up and in their respective groups. It's a team exercise. Let's see those teams.
@@ -75,7 +77,7 @@ Let's use this time to get to know everyone.
 5. As each team is performing, the rest of the class is to guess the machine the group is acting out.
 
 ## Why did we just do that?
-***slide 6***
+***slide 5***
 
 ***Discussion Topics***  
 
@@ -91,7 +93,7 @@ The purpose of the Ice Breaker is to highlight critical thinking, working togeth
 * Encourage students to talk through issues with their neighbors. Through helping each other they will help themselves retain the curriculum
 
 ## Keys to Success
-***slide 7***
+***slide 6*** **[SHOW](http://techtalentsouth.slides.com/techtalentsouth/intro-to-programming-code-immersion-1093?token=bnzM3gB7#/0/6)**
 
 This is advice that will help students be successful in the program and as a professional developer.
 
@@ -119,7 +121,7 @@ This is advice that will help students be successful in the program and as a pro
 
 
 ## What you should expect
-***slide 8***
+***slide 7*** **[SHOW](http://techtalentsouth.slides.com/techtalentsouth/intro-to-programming-code-immersion-1093?token=bnzM3gB7#/0/7)**
 
 Set expectations of what students should expect from the boot camp and its intructors
 
@@ -128,8 +130,8 @@ Set expectations of what students should expect from the boot camp and its intru
 * Homework will be breifly reviewed at the start of each session. This will give an opportunity to address any questions. 
 * Classes will be a mixture of lecture and hands on coding.
 * We'll take a 10 minute break every hour.  It is important to give your mind a break. Please talk about something else, do something else.  It really makes a difference!
-* Homework will be assigned at the end of class. I will not be giving any help, tips or hints on homework until after it is due.  Any questions about topics after that we go over it in class can be discussed during office hours. So much of programming is solving problems and sometimes these problems are not solved easily or quickly.  You have to try from multiple approaches.  Also, leaving a problem for a while and coming back to it later often gives your brain time to process the problem subconsciously.  
-* Materials will be published in the Titus Portal (link in Useful Resources) after each piece of the curriculum has been delivered.
+* Homework will be assigned at the end of class. So much of programming is solving problems and sometimes these problems are not solved easily or quickly.  You have to try from multiple approaches.  Also, leaving a problem for a while and coming back to it later often gives your brain time to process the problem subconsciously.  Therefore, I will be available for help, tips or hints on homework during the office hours after it is due.  
+* Materials will be published in the Titus Portal (link in Useful Resources) after each piece of the curriculum has been delivered. (I have your usernames and passwords if you don't have them already.)
 * We will build several projects during the bootcamp
     - Please feel free to work on as many of your own projects as you like for practice. 
 * There will office hours for each session. Please take advantage of this time to get answers to any questions or address any concerns you may have. This is also a great time for you to give us feedback on how we are doing.
@@ -154,7 +156,7 @@ Set expectations of what students should expect from the boot camp and its intru
 In this section we will touch upon some common conepts in the programming world. We will discuss what computer programming is, how the web works, and some common principles related to programming
 
 ## Intro to Programming
-***slide 9***
+***slide 8*** **[SHOW](http://techtalentsouth.slides.com/techtalentsouth/intro-to-programming-code-immersion-1093?token=bnzM3gB7#/0/9)**
 
 ### Computer Programming
 At a very high level computer programming is the concept of telling a computer through a programming language with a given set of instructions.
@@ -164,25 +166,25 @@ At a very high level computer programming is the concept of telling a computer t
 *What are some "tech" terms you've heard of that you are curious about?
 
 ## Are computers smart?
-***slide 10***
+***slide 9***
 
 Computers are fast, not smart. They only do what they are told, no more no less. I know computers can seem smart but that's because they were programmed to behave that way. Computers are really great at calculations but should probably leave the higher level thinking to us.
 
 ## Programming languages
-***slide 11***
+***slide 10***
 
-As discussed, in order to program a computer we need to use a programming language. There are a ton of programming languages in the world andome are more popular than others. For this class we will focus on a language called "Ruby". Ruby is a simple and very powerful object-oriented language.
+As discussed, in order to program a computer we need to use a programming language. There are a ton of programming languages in the world and some are more popular than others. For this class we will focus on a language called "Ruby". Ruby is a simple and very powerful object-oriented language.
 
 ***Discussion Topics***  
 *Can anyone name any other programming languages?*  
 
-*Can anyone explain the difference between a front-end and back-end language?*
+*Can anyone explain the difference between a front-end and back-end language?*  *We'll get to the answer in just a bit...*
 
 ## Classroom Challenge 1
-***slide 12***
+***slide 11***  **[SHOW](http://techtalentsouth.slides.com/techtalentsouth/intro-to-programming-code-immersion-1093?token=bnzM3gB7#/0/11)**
 
 #### Exercise - Make a bowl of cereal
-In plain english write step-by-step instructions for making a bowl of cereal.
+We are going to write out the instructions for making a bowl of cereal.  We are going to write these instructions for a computer, not a person.  We wont use a programming language just yet. We'll use pseudo-code; what we want to accomplish in our code, but written in English.
 Be as specific as possible. Assume nothing. 
 
 **Example**
@@ -193,15 +195,16 @@ Be as specific as possible. Assume nothing.
 
 Have the students read out their instructions and the instructor tells them where the computer will "throw an error."
 ## Classroom Challenge 2
-***slide 13***
+***slide 12***
 
 ***Discussion Topics***  
 *Discuss some of the solutions to the exercise and touch on how this process is similar to how we tell a computer what to do through a programming language.*
 
 Computers only appear smart because of PROGRAMMERS!
 
-## Markup Languages - Focus on HTML
-***slide 14***
+
+## Markup Languages - Focus on HTML 
+***slide 13*** 
 
 There are several Markup languages out there. A couple of the most commonly known are HTML and XML. Markup languages put an opinion on how to format data in a text file usually for processing and presentation. They do this with the use of "tags" or "elements". HTML is the markup language we will focus on in this bootcamp.
 
@@ -221,8 +224,9 @@ There are several Markup languages out there. A couple of the most commonly know
 ***Discussion Topics***  
 *Discuss the structure and some of the tags in the HTML example*
 
+
 ## Client Server Model - How the web works
-***slide 15*** **[graphic showing the 'web'](https://mdn.mozillademos.org/files/13677/Fetching_a_page.png)**
+***slide 14*** **[graphic showing the 'web'](https://mdn.mozillademos.org/files/13677/Fetching_a_page.png)**
 
 When browsing the web, the client (your device) makes a request to a server (web server) which then responds to the client with the information requested. A client in this scenario would your computer, phone, tablet, or any similar device that has a web browser installed on it. You open your browser and request google.com and googles web servers then respond to you with the content that makes up google.com. When talking specifically about the web, HTTP Protocol that is used for communication between the client and server. HTTP stands for Hyper Text Transfer Protocol. We don't need a deep understanding of the HTTP protocol but we should understand that it is a defined set of rules that outline how clients and servers talk to eachother as it relates to the web.
 
@@ -230,7 +234,7 @@ When browsing the web, the client (your device) makes a request to a server (web
 *Great opportunity to draw this out on the whiteboard*  
 
 ## How Does the Web Work?
-***slide 16***
+***slide 15***
 
 The browser uses something called HTTP (hypertext transfer protocol) which is the underlying technology that makes it possible for a client (your computer, laptop, smartphone) to interact with a server over the web. The server is where your programs run (i.e., your Ruby on Rails programs). 
 
@@ -241,7 +245,7 @@ With the HTTP protcol their is an agreement to connect, a request for data, and 
 *Discuss other protocols like FTP, SMTP, FTP*
 
 ## HTTP Verbs
-***slide 17***
+***slide 16*** **[SHOW](http://techtalentsouth.slides.com/techtalentsouth/intro-to-programming-code-immersion-1093?token=bnzM3gB7#/0/16)**
 
 * GET  - Retrieve items from resource.
 * POST - Create new item in resource.
@@ -258,8 +262,7 @@ This relates to RESTful design.
 * With RESTful design, you don’t need to know how all the underlying code works.  You need to know what type of request to send, where to send it and what type of data will be returned.
 
 ## So...Ruby and...Rails?
-***slide 18***
-
+***slide 17***
 
 Ruby and Rails are not the same thing. This section aims to talk Ruby and Rails and how they relate to each other.
 
@@ -285,7 +288,7 @@ Ruby and Rails are not the same thing. This section aims to talk Ruby and Rails 
 * Rails is written with Ruby
 
 ## A few rules of safety...
-***slide 19***
+***slide 18*** **[SHOW](http://techtalentsouth.slides.com/techtalentsouth/intro-to-programming-code-immersion-1093?token=bnzM3gB7#/0/18)**
 
 THIS IS A REALLY BAD SLIDE- Talk about convention over configuration first and then their bad analogy.
 
@@ -302,7 +305,7 @@ With convention, it's like buying one of those spaceship kits with all the fancy
 ## The KISS Principle "Keep it simple, stupid"
 ***no slide***
 
-The KISS principle states that most systems work best if they are kept simple rather than made complicated; therefore simplicity should be a key goal in design and unnecessary complexity should be avoided. So solving a simple version of a problem first and then building on that. An extension of this is **MVP**, which is the idea of getting the most basic functions to market before adding complexity. 
+The KISS principle states that most systems work best if they are kept simple rather than made complicated; therefore simplicity should be a key goal in design and unnecessary complexity should be avoided. By extension solve a simple version of a problem first and then build on that. This is the idea behind **MVP**, which is the idea of getting the most basic functions to market before adding complexity. 
 
 ***Discussion Topics***  
 *Break problems down into small pieces. You want to get to the solution one piece at a time*
@@ -310,7 +313,7 @@ The KISS principle states that most systems work best if they are kept simple ra
 *Don't over-engineer. Build only the features you need for basic functionality. You can do the fancy stuff once the core functionality is solid*
 
 ##  The DRY "Don't Repeat Yourself" Principle
-***slide 20***
+***slide 19***
 
 It's a common occurance to catch yourself duplicating code in your software application. Sometimes you just need to do the same thing somewhere else in your code. This is where the DRY principle comes in. Rather than duplicating the code we should try to find a way to make that code re-useable. Making code re-useable makes it easier to maintain. You can now update code in one spot and it's fixed in all the places it is used in the application. You can imagine the incosistensies and errors that may occur if you had to remember all the places you need to update that duplicated code. 
 
@@ -319,7 +322,7 @@ It's a common occurance to catch yourself duplicating code in your software appl
 
 
 ## Environment Check 1
-***slide 21***
+***slide 20***  **[SHOW](http://techtalentsouth.slides.com/techtalentsouth/intro-to-programming-code-immersion-1093?token=bnzM3gB7#/0/20)**
 
 ***Reccommended bootcamp software***
 
@@ -335,7 +338,7 @@ It's a common occurance to catch yourself duplicating code in your software appl
 * **[Git Bash](https://git-scm.com/downloads)** - Linux like git command line experience on mac
 
 ## Envrionment Check 2
-***slide 22***
+***slide 21***  **[SHOW](http://techtalentsouth.slides.com/techtalentsouth/intro-to-programming-code-immersion-1093?token=bnzM3gB7#/0/21)**
 
 Let's take a few minutes to make sure our environments are configured properly. We are going to verify the versions of the software we need to complete this bootcamp. This will also give us a sneek peek at the command line.
 
@@ -390,7 +393,7 @@ Homebrew/homebrew-core (git revision c0e2a; last commit 2017-01-10)
 ```
 
 ## Just in case
-***slide 23***
+***slide 22***
 
 **Incase the above didn't go so well**  
 Issues with student environments should be taken care of before class. If for some reason you run into issue please use cloud9 as a backup environment.
@@ -398,14 +401,14 @@ Issues with student environments should be taken care of before class. If for so
 * **[Cloud9](https://c9.io/)** - A cloud based Development Environment
 
 ## Navigating Your Machine
-***slide 24***
+***slide 23***
 
 #### The command-Line
 The command line is a quick, powerful, text-based interface developers use to more effectively and efficiently communicate with computers. Once you get the hang of it, you'll be able to navigate directories, run programs and launch
 applications much faster than pointing and clicking. It may feel a bit awkward at first after years of relying on a GUI interface, but the more you use the command line the more comfortable you will feel.
 
 ## Essential Commands 1
-***slide 25***
+***slide 24***
 
 * **`cd directory_name`** - change directory
 * **`cd ..`** - go one level up in the directory structure
@@ -416,7 +419,7 @@ applications much faster than pointing and clicking. It may feel a bit awkward a
 * **`open`** (start in Windows) - opens file in default program
 
 ## Essential Commands 2
-***slide 26***
+***slide 25***
 
 * **`mv from_path to_path`** (`move` in windows) - move file or directory, also used to rename
 * **`cp from_path to_path`** (`copy` in windows) - copy file or directory
@@ -437,13 +440,13 @@ applications much faster than pointing and clicking. It may feel a bit awkward a
 *CTRL-C to exit an active command*
 
 ## Activity
-***slide 27***
+***slide 26***  **[SHOW](http://techtalentsouth.slides.com/techtalentsouth/intro-to-programming-code-immersion-1093?token=bnzM3gB7#/0/26)**
 
 can use command_line_README.md (which doesn't match slide)
 or use actual slide
 
 ## Setting up the "subl." command
-***slide 28***
+***slide 27***  **[SHOW](http://techtalentsouth.slides.com/techtalentsouth/intro-to-programming-code-immersion-1093?token=bnzM3gB7#/0/27)**
 
 ##Homework
 Recreate the file structure and answer the questions. Submit a picture of the file tree along with any answers in a `.txt` file. Complete the first two lessons of [CodeCademy - Learn the command-line](https://www.codecademy.com/learn/learn-the-command-line)

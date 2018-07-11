@@ -258,16 +258,20 @@ This can get complicated pretty fast. Let's touch on the basics for now. combina
 ```
 
 
-### CSS Properties 1
+## CSS Properties 1
+***slide [13](http://techtalentsouth.slides.com/techtalentsouth/css-basics-code-immersion?token=EmxRE2wf#/0/13)***
+
 There a ton of CSS properties; 370 and counting. Don't be scared, we'll only be using about 50 in this class. Auto-fill will help alot w both props and values.
 
 ***Common Properties***
 [Common Property Reference](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Properties_Reference)
 
 * **background** - Control all things related to the background including but not limited to color and image
-* **color** - Controls the color of the text within an element. SHOW [CSS Color Reference](http://www.w3schools.com/cssref/css_colors.asp)
+* **color** - Controls the color of the text within an element. **SHOW** [CSS Color Reference](http://www.w3schools.com/cssref/css_colors.asp)
 
-### CSS Properties 2
+## CSS Properties 2
+***[slide 14](http://techtalentsouth.slides.com/techtalentsouth/css-basics-code-immersion?token=EmxRE2wf#/0/14)***
+
 * **font-weight** - controls the boldness of the font. Common values are normal and bold
 * **font-size** - specifies the size of the font. Usually in pixes or em units. 
 
@@ -285,7 +289,7 @@ Use px, em, rem, or %
 
 The box model:
 
-By default width is setting content width; padding, border and margin all are added on
+By default width is setting content width; padding, border and margin are all added onto the width value.
 can use **box-sizing** property with a value of **border box** and it will make the width property include the padding, border and margin.
 * **padding** - sets the padding space on all sides of an element. 
 * **margin** - sets the margin on all sides of an element. 

@@ -1,23 +1,16 @@
 /* targeting an element by it's name */
 
-h2 {
-  color: green;
-}
+
 
  /* targeting an element by a given class (class="myClass") */
  
- .last-header {
-  color: red;
- }
+
 
   /* targeting an element by a given id (id="myId") */
 
-#one-header {
-  font-weight: 100;
-}
+
 
   /* The Universal Selector. Select all the things */
-
 
 
 
@@ -27,37 +20,25 @@ h2 {
 
 
   /* All elements with the attribute "href"
-  with the exact value "#" are orange*/
+  with the exact value "#" are 2x as big */
 
-[href="#"] {
-  color: orange;
 
-}
 
   /* Change what a link should look like when hovered over with the mouse */
 
-a:hover {
-  color: lightblue;
-  text-decoration: none;
-}
+
 
   /* Change what a link should look like when its been visited */
 
-a:visited {
-  color: purple;
-}
+
 
   /* target all <p> tags within a <div> and make the text red */
 
-div h2 {
-  border: 2px solid black;
-}
+
 
   /* target all <div> and <p> tags on the page and make their text blue */
 
-h1, p {
-  background-color: yellow;
-}
+
 
   /*The Box Model example*/
 

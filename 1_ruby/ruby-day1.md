@@ -163,6 +163,7 @@ Integers are whole numbers. Floats are numbers with decimal places. Even if it's
 
 Though they have some different properties, they are still somewhat compatible (more so than Numbers and Strings).
 
+
 Here is a guide to how equations between the Integers and Floats will behave:
 
 Integer + (or) - (or) * Integer = Integer
@@ -176,6 +177,8 @@ Float / Float = Float
 Integer + (or) - (or) * Float = Float
 Integer / Float = Float
 Float / Integer = Float
+
+*Simply put - if you mix data types in mathematical operations, the resulting answer will be a float.
 
 Ruby also has equation shortcuts! We can stack the operators with an equal sign between variables (only) and reassign result to the first variable.
 
@@ -206,8 +209,11 @@ It is represented by the percentage symbol. When put between two numbers, it ret
 
 
 ### Input
+***slide 12***
 In Ruby, **gets** is the command that takes input, but it takes it with a line break.
 **.chomp** is a function (method) that works on **gets** to removes the line break.
+
+To run code that that would have mutliple steps in irb, we can build a method.  A method begin's with ```def``` (for define) followed by a variable name and always ends with ```end```.
 
 ```ruby
 puts "What's your name?"
@@ -264,6 +270,8 @@ my_number.to_f
 
 
 ### Concatentation vs. Interpolation
+***slide 14***
+
 When printing out a variable attached or within a String, there are two schools of thought:
 
 **Concatentation**
@@ -284,6 +292,8 @@ When printing out a variable attached or within a String, there are two schools 
 
 
 ### Running Ruby Programs
+***slide 15***
+
 Let's move beyond irb...
 
 To run a Ruby program:
@@ -353,7 +363,10 @@ end
 
 When doing comparisons, make sure you're using double-equal (==), not just a single-equal (=)! Single-equal is for assigned value, and will mess up your conditional!
 
-#### If/Else Activities
+
+### If/Else Activities
+***slide 18*** **[SHOW](http://techtalentsouth.slides.com/techtalentsouth/ruby-one-ci?token=lu5mb-q_#/18)**
+
 *Write these along with students; ask for their input on how to write the programs*
 
 * Dog Says Cat Says: ask user to enter 'dog' or 'cat', program prints animal's sound
@@ -413,6 +426,7 @@ else
 end
 ```
 
+
 #### elsif
 Maybe you want to give your program more choice. You can add as many else ifs (written in Ruby as elsif) in between your if and else.
 
@@ -428,7 +442,9 @@ else
 end
 ```
 
-#### elsif Exercise
+
+### elsif Exercise
+***slide 20*** **[SHOW](http://techtalentsouth.slides.com/techtalentsouth/ruby-one-ci?token=lu5mb-q_#/20)**
 
 Update the Dog Says Cat Says program:
 * Ask the user for an animal
@@ -457,6 +473,7 @@ else
 end
 ```
 
+
 #### && and ||
 Sometimes you want two conditions to be met before you perform a task. This is where AND and OR come in handy. AND is written as two ampersands ( && ), OR is written as two pipes ( || ).
 
@@ -478,7 +495,9 @@ else
 end
 ```
 
-#### AND/OR Exercise
+
+### AND/OR Exercise
+***slide 22*** **[SHOW](http://techtalentsouth.slides.com/techtalentsouth/ruby-one-ci?token=lu5mb-q_#/22)**
 Update the Guessing Game program:
 * Ask the user for a number between 1 & 100
 * Use both AND/OR and elsif to test for both exactness and closeness
@@ -503,12 +522,12 @@ end
 #### case Statement
 There is an alternative to the if/elsif/else structure: the *case* conditional. *case* is probably better learned from show than tell, so see an example:
 ```ruby
-#we have a variable called 'option' that we want to test
+#we have a variable called 'answer' that we want to test
 
-case option
-  when 1 #when option == 1
+case answer
+  when 1 #when answer == 1
       #do something  
-  when 2 #when option == 2
+  when 2 #when answer == 2
       #do something else
   else
       #do a third thing

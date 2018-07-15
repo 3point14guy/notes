@@ -600,17 +600,17 @@ Possible Solution (**carlot.rb**):
 vehicles = {"Prius"=>"Toyota", "CRV"=>"Toyota", "Civic"=>"Honda", "Fusion"=>"Ford", "Veyron"=>"Bugati"}
 
 puts "What car are you looking for today?"
-car = gets.chomp
+car = gets.chomp.downcase
 
 in_stock = false
-vehicles.each do |vehicle|
-	if vehicle == car
+vehicles.each do |model, make|
+	if model.downcase == car
 		in_stock = true
 	end
 end
 
 if in_stock
-	puts "Ah, yes, our selection of #{vehicle[car]} vehicles is right over here!"
+	puts "Ah, yes, our selection of #{vehicles[car.capitalize]} vehicles is right over here!"
 else
 	puts "Sorry, we're all out of stock at the moment."
 end

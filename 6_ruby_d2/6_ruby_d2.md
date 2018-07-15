@@ -5,6 +5,7 @@ Looking at Ruby's collection data types, Array & Hash, and their properties, as 
 
 ## Useful Resources
 [Official Ruby Docs](http://ruby-doc.org/)
+
 [Code Academy's Ruby Course](https://www.codecademy.com/learn/ruby)
 
 ---

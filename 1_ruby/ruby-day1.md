@@ -132,6 +132,13 @@ You can also think of a String as a set of characters. And you can pull an indiv
 => "o"
 ```
 
+What if we do:
+
+```
+veggie = potato
+veggie[6]
+=> 
+
 Strings have several "methods" attached to them that help you search through and modify them.
 
 ```sh
@@ -154,6 +161,7 @@ Strings have several "methods" attached to them that help you search through and
 => 22
 ```
 
+We call the ```.``` a dot operator. It allows us to reference methods on the object.
 
 ### Numbers
 [Ruby Docs - Integers](http://ruby-doc.org/core-2.4.1/Integer.html)
@@ -178,7 +186,11 @@ Integer + (or) - (or) * Float = Float
 Integer / Float = Float
 Float / Integer = Float
 
-*Simply put - if you mix data types in mathematical operations, the resulting answer will be a float.
+
+
+*Simply put - if you mix data types in mathematical operations, the resulting answer will be a float. This is called "casting" and means that the type is being changed.*
+
+Math in code follows **M**y **D**ear **A**unt **S**ally: multiply, divide, add, then subtract. Anything in parentheses takes precedence.
 
 Ruby also has equation shortcuts! We can stack the operators with an equal sign between variables (only) and reassign result to the first variable.
 
@@ -196,8 +208,12 @@ Example:
 This works with the other operators, too.
 
 #### The Modulus
+
+What do you think will happen if you do ```5 / 2```?  What about ```5 / 2.0```?
+
 Another mathematical operator that you may not be familiar with, but will help you more than you'd imagine is the modulus (or modulo)
 It is represented by the percentage symbol. When put between two numbers, it returns the remainder of the division of those two numbers.
+
 
 ```ruby
 10 % 5 == 0
@@ -290,6 +306,8 @@ When printing out a variable attached or within a String, there are two schools 
 => "Yesterday I turned 58-years-old!"
 ```
 
+*Only double quotes will interpolate. Single quotes will give an exact reproduction of the content within.*
+
 
 ### Running Ruby Programs
 ***slide 15***
@@ -321,6 +339,8 @@ $
 "Control Flow" has to do with the idea of **if** a condition is true, **then** a certain thing will happen. For example, if a variable has a value greater than five, we ask the program to print out a particular message. If the variable is five or less, then nothing happens.
 
 But if you do want something to happen if the variable is less than five, then you say **else** and a second **then** block of code.
+
+So it is evaluating for truthiness or falsiness.  **only false and nil are false in Ruby**
 
 We can refer to these as *if statements* or *if/then statements* or *if/else statements*.
 
@@ -597,4 +617,9 @@ else
 	puts "You passed! Have a cool summer!"
 end
 ```
+
+### Other behaviors to note
+***no slide***
+
+
 Copyright © 2013 - 2017 Tech Talent South. All rights reserved. 

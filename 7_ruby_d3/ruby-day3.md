@@ -135,12 +135,20 @@ $ ruby add_it.rb
 $
 ```
 
-You can give a method arguments or parameters (passed values) to play with!
+
+### Give Me Something to Work With
+***slide_7*** **[SHOW](http://techtalentsouth.slides.com/techtalentsouth/ruby-three-ci?token=Rm6saPYA#/7)**
+
+Note to students: This slide doesn't make the definitions clear.
+You can give a method parameters (passed values as variables,) to play with!
 ```ruby
 def add_it_up(num1, num2)
   sum = num1 + num2
 end
+```
 
+When you call those methods, the variables you pass in are called arguements.
+```
 puts add_it_up(4, 5)
 #what would be printed to screen?
 ```
@@ -157,7 +165,10 @@ space = 5
 puts add_it_up(time, space)
 ```
 
-#### Method Exercises
+### Method Exercises
+***slide 9*** **[SHOW](http://techtalentsouth.slides.com/techtalentsouth/ruby-three-ci?token=Rm6saPYA#/8)**
+
+
 **Work through with students, asking for their input**
 
 * Create a method for converting weight from pounds to kilos.
@@ -179,6 +190,8 @@ puts "Okay, that's #{pounds_to_kg(weight)} kg."
 * Create a method that takes a String argument and outputs the String in reverse. (But you can't use .reverse!)
 
 This one is tricky, and probably has several solutions.
+
+*TALK THIS ONE OUT 1ST*
 
 Possible Solution (**reverse_string.rb**):
 ```ruby

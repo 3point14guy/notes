@@ -226,6 +226,8 @@ puts reverser(str)
 * Create a method that converts an Array into a Hash
 (indexes become keys).
 
+Talk about what we are starting with and the anatomy of an array and then what we want our final product to be and the anatomy of a hash.
+
 Though having integers as keys is probably not the best, we're going for practice rather than practicality.
 Possible Solution (**array_2_hash.rb**):
 ```ruby

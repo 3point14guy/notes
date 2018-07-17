@@ -450,13 +450,13 @@ The code to be performed comes first, then the condition, and we lose the *end*.
 
 The same can apply to *unless* conditionals:
 ```ruby
-unless problems.include?("glitch")
-  puts "I got 99 problems..."
+unless response.include?("stop")
+  puts "Thank you, may I have another."
 end
 ```
 Remember, our *puts* will only perform if the condition returns *false*. Let's see that on just one line:
 ```ruby
-puts "I got 99 problems..." unless problems.include?("glitch")
+puts "Thank you, may I have another." unless response.include?("glitch")
 ```
 *(if you're like, "What does that even mean?"... ask a TTS old-timer)*
 
@@ -496,7 +496,7 @@ end
 ```
 With Ternary Operator:
 ```ruby
-answer = arr.include?(42) ? "everything" : "nothing"
+puts answer = arr.include?(42) ? "everything" : "nothing"
 ```
 
 #### More Ternary Exercises

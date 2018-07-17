@@ -173,6 +173,8 @@ puts add_it_up(time, space)
 
 * Create a method for converting weight from pounds to kilos.
 
+**How would we think about solving this if we didn't use a method?**
+
 Possible Solution (**weight_conversion.rb**):
 ```ruby
 def pounds_to_kg(lbs)
@@ -251,13 +253,121 @@ puts array2hash(arr)
 In-class activity: lead the students through this exercise.
 
 In Ruby 6 / 4 == 1. But what if we want the remainder also?
-Write a program that asks for two (2) Integers, divides the first by the second and returns the result including the remainder.
+Write a program that asks for two (2) Integers, divides the larger by the smaller and returns the result including the remainder.
  
 If either of the numbers is not an Integer, then don't accept the number and ask again.
  
 Do not accept zero (0) as a number.
 
-Possible Solution (**remainder_challenge.rb**):
+We know we will have to get 2 numbers.  There will be some duplication of code there, so let's see about putting that into a method.
+
+```ruby
+def get_num
+	print "Please enter a number: "
+	num = gets.chomp
+	return num
+end
+```
+
+That get's us one number.  We'll have to call this function twice to get both of our numbers.
+
+```ruby
+2.times do
+	number = get_num.to_i
+end
+```
+
+The problem with this is that when the loop runs the second time, it overwrites the value that was assigned to ```number``` the first time.  We are going to save these numbers in an array because that will let us do a little trick.
+
+```ruby
+arr = []
+2.times do
+	number = get_num.to_i
+	arr.push(number)
+end
+
+arr.sort!
+```
+
+We're now set up to do our math.  We are going to refer to these numbers by their position in the array. 
+
+```ruby
+if arr[1] % arr[0] == 0
+	puts "#{arr[1]} / #{arr[0]} = #{arr[1] / arr[0]}"
+else
+	puts "#{arr[1]} / #{arr[0]} = #{arr[1] / arr[0]} with a remainder of #{arr[1] % arr[0]}"
+end	
+```
+
+There's some duplication here too, but we will leave that refactoring for you to try at some other time. Our program still has two more conditions that it needs to meet to get to MVP.
+
+```ruby
+def int_check(numb)
+	if numb.to_i == 0 || numb.include?(".")
+		return true
+	else
+		return false
+	end
+end
+```
+
+It would be nice to test the numbers right after we collect them from the user.  Let's call this method inside our get number method.  Then, if it fails, we can prompt the user to enter a valid number.
+
+```ruby
+def get_num
+	print "please enter a number: "
+	num = gets.chomp
+	if int_check(num)
+		puts "I can't divide very well, though."
+		puts "I only use non-zero integers."
+		get_num
+	else
+		return num
+	end	
+end
+```
+
+The final code all together will look like this:
+
+```ruby
+puts "I can divide integers!"
+
+def get_num
+	print "please enter a number: "
+	num = gets.chomp
+	if int_check(num)
+		puts "I can't divide very well, though."
+		puts "I only use non-zero integers."
+		get_num
+	else
+		return num
+	end	
+end
+
+def int_check(numb)
+	if numb.to_i == 0 || numb.include?(".")
+		return true
+	else
+		return false
+	end
+end
+
+arr = []
+2.times do
+	number = get_num.to_i
+	arr.push(number)
+end
+
+arr.sort!
+
+if arr[1] % arr[0] == 0
+	puts "#{arr[1]} / #{arr[0]} = #{arr[1] / arr[0]}"
+else
+	puts "#{arr[1]} / #{arr[0]} = #{arr[1] / arr[0]} with a remainder of #{arr[1] % arr[0]}"
+end	
+```
+
+ Similar Possible Solution (**remainder_challenge.rb**):
 ```ruby
 # method to see if input is not a whole number,
 # if there is a period/decimal point, we can

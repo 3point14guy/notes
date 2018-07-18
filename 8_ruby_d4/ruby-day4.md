@@ -48,6 +48,8 @@ Learning about what a Ruby Class is, what an Object refers to, and how to create
 
 
 ### Object vs. Class
+**SHOW first 3 slides**
+
 An object is a piece of data.
 
 A class is what type of data that is.
@@ -101,7 +103,7 @@ class Thing
 
 end
 
-There's one method we that is a must: **initialize**. This method will allow for the creation of a new Object (a new instance of this Class).
+There's one method that is a must: **initialize**. This method will allow for the creation of a new Object (a new instance of this Class).
 
 ```ruby
 class Object
@@ -122,24 +124,35 @@ What's the difference?
 
 *Local variable*:
 ```ruby
-name = "Aaron"
+instructor = "Nick"
 
 def display_name
-  puts name
+  puts instructor
 end
 ```
 This will result in an error: "variable name inside the method is undefined." We would need to pass the outside definition of 'name' to the method for anything to happen.
 
-*Instance variable*:
 ```ruby
-@name = "Aaron"
+instructor = "Nick"
+
+def display_name(x)
+  puts x
+end
+
+display_name(instructor)
+```
+
+A poor alternative is to use an instance variable
+
+```ruby
+@name = "Nick"
 
 def display_name
   puts @name
 end
 ```
 
-The instance variable can be seen inside the method without passing it as an argument. While this is possible, it is not practical (or recommended). Why? Because that method is no bound to that specific variable. Whereas if we pass the method an argument, any variable (and the values within) could be used.
+The instance variable can be seen inside the method without passing it as an argument. While this is possible, it is not practical (or recommended). Why? Because that method is not bound to that specific variable. Whereas if we pass the method an argument, any variable (and the values within) could be used.
 
 #### Class Exercises
 
@@ -200,8 +213,8 @@ We need a way to access the data in our new Object, and there's actually two way
 ```ruby
 class Person
 
-    def initialize(name, age)
-        @name = name
+    def initialize(f_name, age)
+        @f_name = f_name
         @age = age
     end
 
@@ -220,13 +233,13 @@ my_profile = Person.new("Aaron", 34)
 puts "Hi, I am #{my_profile.name} and I am #{my_profile.age}-years-old."
 class Person
 
-  def initialize(name, age)
-    @name = name
+  def initialize(f_name, age)
+    @f_name = f_name
     @age = age
   end
 
-  def name
-    @name
+  def f_name
+    @f_name
   end
 
   def age
@@ -237,7 +250,7 @@ end
 
 my_profile = Person.new("Aaron", 34)
 
-puts "Hi, I am #{my_profile.name} and I am #{my_profile.age}-years-old."
+puts "Hi, I am #{my_profile.f_name} and I am #{my_profile.age}-years-old."
 ```
 
 The "name" and "age" methods are just returning those values.
@@ -246,12 +259,12 @@ And then creating methods that let you modify the data:
 
 ```ruby
 # added to the Person class:
-  def birthday
+  def older
     @age += 1
   end
 
-  def change_name(name)
-    @name = name
+  def change_name(new_name)
+    @f_name = new_name
   end
 ```
 
@@ -262,15 +275,15 @@ my_profile = Person.new("Aaron", 33)
 
 puts my_profile.age
 
-my_profile.birthday
+my_profile.older
 
 puts my_profile.age
 
-puts "I am no longer #{my_profile.name}..."
+puts "I am no longer #{my_profile.f_name}..."
 
 my_profile.change_name("King Ruby")
 
-puts "My name is now #{my_profile.name}."
+puts "My name is now #{my_profile.f_name}."
 ```
 
 The easy (or, at least, DRY-er) way can be approached with three different keywords:

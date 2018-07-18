@@ -46,6 +46,15 @@ Learning about what a Ruby Class is, what an Object refers to, and how to create
 5. How many arguments can a method take?
 *Trick question! No limit!*
 
+6. What’s a method? What’s it good for?
+*A block of code that acts like a variable. Keeping code dry.*
+
+7. How do you get a value back from a method?
+*return*
+
+8. How do you write a one-line if/else statement?
+*condition ? code if true : code if false*
+
 
 ### Object vs. Class
 **SHOW first 3 slides**
@@ -61,6 +70,36 @@ A class is what type of data that is.
 | true      			| Boolean								 |
 | [8,15,16,23,42] | Array				 					 |
 
+When we talk about an object we can talk about its' properties and functions.
+
+Marker
+	Properties
+		Color
+		How much ink
+	Functionality
+		Write
+Cat
+	Properties
+		Name
+		Color
+		Fullness (internal)
+	Functionality
+		Digest (internal)
+		Lounge
+		Scratch stuff
+
+You can think of objects in programming the same way:
+
+String
+	Properties
+		the character data e.g. "Money"
+	Functionality
+		.reverse
+		.upcase
+		.split()
+		
+We can make our own objects.  First we need to make a Class to create the objects.
+A class is a definition of what is in a n object
 
 ### Data Types == Classes
 So in Ruby, the different data types are considered classes
@@ -346,19 +385,31 @@ class Product
 		@quantity = quantity
 		@brand = brand
 	end
+	
+	sale_item = Product.new("tv", 499.99, 13, "Samsung")
+
+	puts sale_item.qty
+
+	sale_item.qty = 34
+	puts sale_item.qty
 
 	# if we didn't have the attr_accessor
 	# we would need two methods...
 	# one for when product is sold:
-	# def qty_sold(amount)
+	# def qty_sold(amount = 1)
 	#	 @quantity -= amount
 	# end
 
 	# another for when more stock comes in:
-	# def shipment(amount)
+	# def qty_recieved(amount = 1)
 	# 	@quantity += amount
 	# end
 end
+
+sale_item = Product.new("tv", 499.99, 13, "Samsung")
+puts sale_item.qty
+sale_item.qty(34)
+puts sale_item.qty
 ```
 
 
@@ -454,6 +505,14 @@ puts "Enter personnel data. Type 'done' when finished."
 while completion != "done"
     print "Name: "
     name = gets.chomp
+    if name.downcase = "done"
+    	completion = "done"
+	# break exits out of the innermost loop
+	break
+	# # or use return to exit out of the entire method. you'll need to put your final message in here tho
+	# puts "Personnel entry complete!"
+	# return
+    end
     print "Age: "
     age = gets.chomp
     profile = Person.new(name, age)
@@ -463,6 +522,21 @@ end
 
 puts "Personnel entry complete!"
 ```
+
+Now to retrieve this data, it seems like we could just puts the array, but that doesn't work.  We can do this:
+
+```ruby
+	puts all_the_people[0].f_name
+```
+
+And that will call the name method on the person object in the first position of the array. To put out all the data we need to iterate:
+
+```ruby
+	all_the_people.each do |person|
+		puts person.f_name
+	end
+```
+
 
 Try it with Pets (*ask for student input*):
 ```

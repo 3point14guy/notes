@@ -44,7 +44,7 @@ Learning how to keep your code DRY, using methods, and some other handy tips.
 
 ### Methods
 
-As programs get more complex, it makes sense to group your code into methods.
+Loops are great for repeating code, but some times you don't want to repeat the code immediately.  As programs get more complex, it also makes sense to group your code into methods.  We define a method like this:
 
 ```ruby
 def my_first_method
@@ -76,7 +76,7 @@ end
 
 But you have to ask yourself: will this reduce lines of code? For the first one ("hello" method), it would only make sense to make this method if you going to print out "Hello Universe" more than four times (three lines for the method definition, one line for "calling" the method).
 
-A method will not be performed until it is "called".
+A method will not be performed until it is "called". You "call" it's name to activate the code.
 
 ```ruby
 # define the method:
@@ -96,7 +96,8 @@ $ ruby adding.rb
 $
 ```
 
-A method can do more than just print to screen its results.
+A method can do more than just print to screen its results. The result of this code is the integer 4. We could even assign it to a varialble and use that result in other code blocks.
+
 ```ruby
 def two_plus_two
   sum = 2 + 2
@@ -117,7 +118,7 @@ puts two_plus_two
 answer = two_plus_two
 # assigns the value returned by the method to a variable
 ```
-
+one thing to keep in mind about ```return``` is that any code coming after it will not be executed.
 You don't even need to put return at the end of a method: Ruby will return the last value assigned.
 
 ```ruby
@@ -135,6 +136,65 @@ $ ruby add_it.rb
 $
 ```
 
+We have to be aware of something called scope.  Scope is the idea that varialbles and methods can only be accessed within given bounds. The variables inside the method only exist while that method is running so we can't reference them from outside the method.
+
+```ruby
+def add_up(number)
+	number + 2
+end
+
+puts add_up(3)
+puts number
+
+# This returns 5 and error!
+```
+
+We can define our variables outside a method and then they will be accessible outside that method, but take note:
+
+```ruby
+number = 1
+
+def add_up(number)
+	number + 2
+end
+
+puts add_up(3)
+puts number
+
+#This returns 5 and 1
+```
+
+What if we add little line of code to take a peak at what number the parameter is?
+
+```ruby
+number = 1
+
+def add_up(number)
+	puts number
+	number + 2
+end
+
+puts add_up(3)
+puts number
+
+#This returns 3, 5 and 1
+```
+
+One other variation to mull over:
+
+```ruby
+number = 1
+
+def add_up(number)
+	puts number
+	number + 2
+end
+
+puts add_up(number)
+puts number
+
+#This returns 1, 5 and 1
+```
 
 ### Give Me Something to Work With
 ***slide_7*** **[SHOW](http://techtalentsouth.slides.com/techtalentsouth/ruby-three-ci?token=Rm6saPYA#/7)**

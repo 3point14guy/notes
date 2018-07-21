@@ -143,7 +143,7 @@ def welcome_screen
 		when 1
 			sign_in
 		when 2
-			sign_up
+			sign_up("","")
 		else
 			puts "Invalid selection."
 			welcome_screen
@@ -164,7 +164,7 @@ def sign_in
 	# Are there even any customers at all?
 	if @customers.empty?
 		# There are no customers, let's just sign up customer no. 1
-		puts "No customer found with that information."
+		puts "No customer found with that information. Registering now..."
 		sign_up(name, location)
 		# See, that's why it takes arguments!
 	end
@@ -212,12 +212,14 @@ end
 
 
 def sign_up(name, location)
+	if name == "" && location == ""
 		puts "Sign Up"
 		puts "_________________________________"
 		print "What's your name? "
 		name = gets.chomp.downcase
 		print "What's your location? "
 		location = gets.chomp.downcase
+	end
 
 	# Time to create a new instance of a Customer!
 	# We're also going to save them in an instance variable,
@@ -277,7 +279,7 @@ def create_account
 	# The account number will be based on how many accounts 
 	# we have. So we'll check the length of the array before
 	# we put this new Account into it, and add by one.
-	new_acct = Account.new(@current_customer, amount, (@accounts.length+1), account_type)
+	new_acct = Account.new(@current_customer, account_type, (@accounts.length+1), amount)
 	@accounts.push(new_acct)
 	puts "#{account_type.capitalize} account created successfully!"
 
@@ -296,7 +298,7 @@ def review_account
 
 	account_exists = false
 	@accounts.each do |account|
-		if @current_customer = account.customer && type == account.acct_type.downcase
+		if @current_customer = account.customer && type == account.account_type.downcase
 			@current_account = account
 			account_exists = true
 		end
@@ -310,7 +312,7 @@ def review_account
 		puts "1. Return to Account Review"
 		puts "2. Create Account"
 		puts "3. Sign out"
-		choice = get_integer
+		choice = gets.chomp.to_i
 
 		case choice
 		when 1 
@@ -355,7 +357,7 @@ def account_actions
 			account_actions
 		when 4
 			# Go back a step:
-			review_account
+			account_menu
 		when 5
 			# Sign Out:
 			sign_out
@@ -370,7 +372,7 @@ def continue
 	puts ""
 	puts "1. to continue."
 	puts "2. to sing out"
-	choice = get_integer
+	choice = gets.chomp.to_i
 
 	if choice == 1
 		return true

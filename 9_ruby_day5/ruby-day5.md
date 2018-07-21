@@ -62,25 +62,22 @@ class Account
 	attr_reader :acct_number, :balance
 	attr_accessor :customer, :acct_type
 
-	def initialize(customer, balance, acct_number, acct_type)
+	def initialize(customer, account_number, account_type, balance)
 		@customer = customer
 		@balance = balance
-		@acct_number = acct_number
-		@acct_type = acct_type
+		@account_number = account_number
+		@account_type = account_type
 	end
 
 	# As mentioned above, if we can move some
 	# code into the class definition, that's best.
-	# So we'll have "deposit" and "withdrawal" methods
-	# that do a little bit more than just 
-	# change the balance.
+	# So we'll have "balance", "deposit" and "withdrawal" methods
 
 	def deposit
 		puts "How much would you like to deposit?"
 		print "$"
 		amount = gets.chomp.to_f
 		@balance += amount
-		puts "Your new balance is $#{'%0.2f'%(@balance)}"
 	end
 
 	def withdrawal
@@ -92,12 +89,17 @@ class Account
 		if @balance < amount
 			#if not, charge overdraft fee of $25
 			@balance -= (amount + 25)
+			puts "You were accessed an overdraft fee of $35 for having insufficient funds in your account"
 		else
 			@balance -= amount
 		end
-		puts "Your new balance is $#{'%0.2f'%(@balance)}"
 	end
-
+	
+	def balance
+		puts ""
+		puts "The current balance in your account is $#{'%0.2f'%(@balance)}."
+		puts ""
+	end	
 end
 ```
 
@@ -116,11 +118,14 @@ require_relative 'bank_classes'
 @customers = []
 @accounts = []
 
+
 # Let's create a method that will act
 # as a sort of "home screen" for the
 # program - it welcomes and asks for direction
+
 def welcome_screen
 	@current_customer = ""
+	
 	# What is this about? We're creating a way
 	# to save the currently "signed in" customer
 	# and allows us access to that variable without
@@ -128,33 +133,33 @@ def welcome_screen
 	# method that is called after its set.
 
 	puts "Welcome to Tech Talent Bank"
-	puts "Please choose from the following:"
-	puts "-----------------------"
+	puts "_________________________________"
+	puts "Please choose from the following:"	
 	puts "1. Customer Sign-In"
 	puts "2. New Customer Registration"
-
 	choice = gets.chomp.to_i
 
 	case choice
 		when 1
 			sign_in
 		when 2
-			sign_up("","")
-			# sign_up will take two arguments
-			# because it's possible we'll get
-			# the info before calling that method
-			# (you'll see an instance of this in sign_in).
+			sign_up
+		else
+			puts "Invalid selection."
+			welcome_screen
 	end
-
 end
+
 
 # this is for a user who has
 # already gone through registration (sign_up)
 def sign_in
+	puts "Sign In"
+	puts "_________________________________"
 	print "What's your name? "
-	name = gets.chomp
+	name = gets.chomp.downcase
 	print "What's your location? "
-	location = gets.chomp
+	location = gets.chomp.downcase
 
 	# Are there even any customers at all?
 	if @customers.empty?
@@ -184,6 +189,7 @@ def sign_in
 	if customer_exists
 		# They gave us matching info to our records,
 		# let's go ahead...
+		puts "Welcome back name.capitalize"
 		account_menu
 	else
 		# Not finding a record of that:
@@ -204,37 +210,39 @@ def sign_in
 	end
 end
 
-def sign_up(name,location)
-	if name == "" && location == ""
-		# If you came from welcome screen, we need to fill in the blanks
-		print "What's your name? "
-		name = gets.chomp
-		print "What's your location? "
-		location = gets.chomp
-	end
 
-	# At this point, no matter which method you came from,
-	# everyone has name and location.
+def sign_up(name, location)
+		puts "Sign Up"
+		puts "_________________________________"
+		print "What's your name? "
+		name = gets.chomp.downcase
+		print "What's your location? "
+		location = gets.chomp.downcase
+
 	# Time to create a new instance of a Customer!
 	# We're also going to save them in an instance variable,
 	# so we don't have to keep passing an argument down
 	# the line of methods.
+	
 	@current_customer = Customer.new(name, location)
 
 	# And save them in our customer collector!
 
 	@customers.push(@current_customer)
 	
-	puts "Registration successful!"
+	puts "Registration successful! Welcome #{@current_customer.name.capitalize}"
 	
 	# And now we can move on to dealing with Accounts...
 	account_menu
 end
 
+
 # Creating/Looking Up Account - what will it be?
 def account_menu
+
+	puts "_________________________________"
 	puts "Account Menu"
-	puts "---------------"
+	puts "_________________________________"
 	puts "1. Create an Account"
 	puts "2. Review an Account"
 	puts "3. Sign Out"
@@ -247,9 +255,7 @@ def account_menu
 		when 2
 			review_account
 		when 3
-			puts "Thanks for banking with us."
-			# Sign Out if the user is all done...
-			welcome_screen
+			sign_out
 		else
 			puts "Invalid selection."
 			account_menu
@@ -258,18 +264,22 @@ end
 
 # Let's create a new instance of an Account...
 def create_account
+	puts "_________________________________"
+	puts "Create an Account"
+	puts "_________________________________"
+	puts ""
 	print "How much will your initial deposit be? $"
 	amount = gets.chomp.to_f
 
 	print "What type of account will you be opening? "
-	acct_type = gets.chomp
+	account_type = gets.chomp.downcase
 
 	# The account number will be based on how many accounts 
 	# we have. So we'll check the length of the array before
 	# we put this new Account into it, and add by one.
-	new_acct = Account.new(@current_customer, amount, (@accounts.length+1), acct_type)
+	new_acct = Account.new(@current_customer, amount, (@accounts.length+1), account_type)
 	@accounts.push(new_acct)
-	puts "Account successfully created!"
+	puts "#{account_type.capitalize} account created successfully!"
 
 	# Now we'll go back a step, so they can stay signed-in,
 	# and either create another Account or review the one(s)
@@ -293,48 +303,91 @@ def review_account
 	end
 
 	if account_exists
-		current_account_actions
+		account_actions
 	else
-		puts "Try again."
-		review_account
+		puts "An account of that type does not exist for #{@current_customer.name.capitalize}"
+		puts ''
+		puts "1. Return to Account Review"
+		puts "2. Create Account"
+		puts "3. Sign out"
+		choice = get_integer
+
+		case choice
+		when 1 
+			review_account
+		when 2
+			create_account
+		when 3
+			sign_out
+		else
+			puts "Invalid selection"
+			review_account
+		end
 	end
 end
 
 # Alright... we have an Account.
 # Now what are we going to do with it?
-def current_account_actions
+def account_actions
 	puts "Choose From the Following:"
-	puts "----------------------"
+	puts "_________________________________"
 	puts "1. Balance Check"
 	puts "2. Make a Deposit"
 	puts "3. Make a Withdrawal"
 	puts "4. Return to Account Menu"
 	puts "5. Sign Out"
-
 	choice = gets.chomp.to_i
 
 	case choice
 		when 1
-			puts "Current balance is $#{'%0.2f'%(@current_account.balance)}"
-			current_account_actions
+			# This method is built into the class:
+			@current_account.balance
+			account_actions
 		when 2
 			# This method is built into the class:
 			@current_account.deposit
-			current_account_actions
+			@current_account.balance
+			account_actions
 		when 3
 			# This method is built into the class:
 			@current_account.withdrawal
-			current_account_actions
+			@current_account.balance
+			account_actions
 		when 4
 			# Go back a step:
 			review_account
 		when 5
 			# Sign Out:
-			welcome_screen
+			sign_out
 		else
 			puts "Invalid selection."
-			current_account_actions
+			account_actions
 	end
+end
+
+# gives customer time to review info before proceeding to next task
+def continue
+	puts ""
+	puts "1. to continue."
+	puts "2. to sing out"
+	choice = get_integer
+
+	if choice == 1
+		return true
+	elsif choice == 2
+		sign_out
+	else
+		puts "Invalid selection"
+		choice
+	end
+end
+
+def sign_out
+	puts ""
+	puts "Thank you for using Da Bank!"	
+	puts ""
+	# sleep(2)
+	welcome_screen
 end
 
 # Let's get it started...

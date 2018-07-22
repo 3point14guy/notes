@@ -382,7 +382,11 @@ calculator.rb
 	# puts calculation2.divide
 ```
 
-Nothing unexpected from ```num1``` and ```num2```. ```self``` points to the place in memory where the instance of the Calculator class is. It is referring to the calculator1 object.  Let's explore this a little further.
+Nothing unexpected from ```num1``` and ```num2```. ```self``` points to the place in memory where the instance of the Calculator class is. It is referring to the calculator1 object.  
+
+*We called the divide method; why don't we see the result of that calculation?*
+
+Let's explore this a little further.
 
 calculator.rb
 ```ruby

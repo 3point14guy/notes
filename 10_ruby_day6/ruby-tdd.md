@@ -54,9 +54,9 @@ end
 
 2. Check to see if it installed by running: `rspec -v`
 
-3. Inside of your Ruby directory create a new directory called *fighter*
+3. Inside of your Ruby directory create a new directory called *ruby_day6*
 
-4. Inside of *fighter* create two more directories *spec* and *lib*
+4. Inside of *ruby_day6* create two more directories *spec* and *lib*
 
 5. In fighter create the file **".rspec"**
 
@@ -169,7 +169,7 @@ end
 Next, in "calculator_spec.rb" under the '.num1' spec let's add a spec that will num2.
 
 ```ruby
- it '.num2 returns the value of num2' do
+ it '#num2 returns the value of num2' do
     expect(Calculator.new(5,10).num2).to eql(10)
   end
 ```
@@ -329,7 +329,7 @@ let (:calculation2){Calculator.new(4,12)}
 Add the following test to your test spec
 
 ```ruby
-it '#mystery returns the result of a secret equation' do
+it '#mystery_math returns the result of a secret equation' do
       expect(calculation1.mystery(calculation2)).to eql(146)
   end	
 ```
@@ -337,11 +337,22 @@ it '#mystery returns the result of a secret equation' do
 
 We'll never know... because the test failed.  But we need to know! Let's fix the code! 
 
+One solution is: 
+
+calculator.rb
+```ruby
+def mystery_math
+	num ** 2 + num1 / 2
+end
+```
+
+The complicated solution (to illustrate a point):
+
 caculator.rb
 
 ```ruby
- def mystery(calc2)
-    (self.multiply) - (calc2.times_two)
+ def mystery_math(calc2)
+    (self.multiply) + (calc2.times_two)
  end	
  def times_two
     (self.num1 * self.num2) * 2
@@ -349,20 +360,87 @@ caculator.rb
     
 ```
 
+## WHAT THE FLIP IS GOING ON HERE?!?!
 
+Here ```self``` refers to the instance of a class.  Let's back up a bit and look at this more simply. Comment out the ```mystery_math``` code for now and in ```divide```:
 
+calculator.rb
+```ruby
+	# lets add some puts statements to get a clearer idea of what we are working with
+	def divide
+		num1 / num2.to_f
+		puts "In divide, num1 is #{num1}"
+		puts "num2 is #{num2}"
+		puts "self is #{self}"
+	end
+	
+	# commented out code here ...
+	
+	calculation1 = Calculator.new(5, 10)
+	# calculation2 = Calculator.new(4, 12)
+	puts calculation1.divide
+	# puts calculation2.divide
+```
 
+Nothing unexpected from ```num1``` and ```num2```. ```self``` points to the place in memory where the instance of the Calculator class is. It is referring to the calculator1 object.  Let's explore this a little further.
 
+calculator.rb
+```ruby
+	def divide
+		num1 / num2.to_f
+		puts "In divide, num1 is #{num1}"
+		puts "num2 is #{num2}"
+		puts "self is #{self}"
+		puts "self.num1 is #{self.num1}"
+		puts "self.num2 is #{self.num2}"
+		puts "self.multiply is #{self.multiply}"
+	end
 
+```
 
+The output to the terminal now shows:
 
+```
+In divide, num1 is 5
+num2 is 10
+self is #<Calculator:0x007fa5df95f2e0>
+self.num1 is 5
+self.num2 is 10
+self.multiply is 50
+```
 
+The idea of self here is pretty straight forward, but is it working the same way in the ```mystery_math``` method?  We'll put some comments in those methods too to take a peak.
 
+calculator.rb
+```ruby
+	def mystery_math(calculation2)
+		puts ""
+		puts "In mystery_math, self = #{self.num1}, #{self.num2}"
+		puts "calculation2 = #{calculation2.num1}, #{calculation2.num2}"
+		puts ""
+		self.multiply + times_two
+	end
 
+	def times_two
+		puts "In times_two, self.num1 = #{self.num1}"
+		puts "self.num2 = #{self.num2}"
+		puts ""
+		(self.num1 * self.num2) * 2
+	end
+	
+	#lets now call the mystery_math method. remember it requires an arguement.
+	puts calculation1.mystery_math(calculation2)
+```
 
+Let's make some predicitions about what we expect to be returned. When we look at the results, pay close attention to the values for ```self``` in ```times_two```:
 
+```
+In mystery_math, self = 5, 10
+calculation2 = 4, 12
 
+In times_two, self.num1 = 4
+self.num2 = 12
 
-
-
+146
+```
 Copyright © 2013 - 2018 Tech Talent South. All rights reserved. 

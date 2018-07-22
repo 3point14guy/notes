@@ -395,3 +395,18 @@ end
 # Let's get it started...
 welcome_screen
 ```
+
+Demonstrate [Python Tutor](http://www.pythontutor.com/) {:target="blank"}
+
+```ruby
+marker = false
+i = 0
+while marker == false
+ if i < 4
+   puts "I think I can"
+ else
+   marker = true
+ end
+ i += 1
+end
+```

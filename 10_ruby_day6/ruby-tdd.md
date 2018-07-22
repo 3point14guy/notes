@@ -447,4 +447,6 @@ self.num2 = 12
 
 146
 ```
+
+*If time permits, go through the fighter example in the slides*
 Copyright © 2013 - 2018 Tech Talent South. All rights reserved. 

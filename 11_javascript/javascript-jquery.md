@@ -59,6 +59,8 @@ Actually, it was created in 10 days. And because it was a rush job, it wasn't fu
 
 
 #### JS Frameworks
+[Js library comic](http://techtalentsouth.slides.com/techtalentsouth/javascript-jquery-ci?token=QRVJGNY1#/0/5)
+
 Because JavaScript is a language that has been sort of hacked together over the ages, developers have been trying to make the language more uniform and easier to write. 
 
 The common way this is done is through a library (or framework). A JavaScript library is pre-written JS which allows for easier development of common JS practices. Unlike other languages which have just a few frameworks each, JS has TONS of libraries.
@@ -88,11 +90,24 @@ If you are running this lesson after going through Ruby, the students should obv
 “Hello World” is what is called a String, a data type frequently used in JavaScript and all programming. A String  is a way of representing a sequence of characters. Here are some examples of JavaScript strings:
 
 ```javascript
-“My name is John”
+“My name is Nick”
 
-‘Wow, this is so simple!’
+‘word’
 
 “1234”
+
+// we can assign to a variable
+
+a = "word"
+
+// and we can find out what data type we are working with by using a function.  (We know about methods, methods are Ruby's version of a function.)
+
+typeof(a);
+
+// we can also do
+
+typeof("1234");
+
 ```
 As you can see above, we surrounded our Strings in single-   or double-quotes .
 
@@ -105,20 +120,36 @@ Once again, if you're teaching in a post-Ruby environment, students know Integer
 
 Within JavaScript, we have numbers as well. These numbers can be with or without decimals. This is the Number data type. Take a look at the examples below:
 ```javascript
-  1234
 
-  23.4  
+	// show what would be considered in Ruby an integer
+  > 1234
+	
+	// show what would be considered in Ruby a float
+  > 23.4  
 
-  0.45
+	// show those two divided
+	> 1234 / 23.4
+	
+	// which will return
+	<* 52.7350....
+	
+	// now let's divide two integers:
+	> 9 / 4
+	<* 2.25
+	
+	// What's happening?  Let's check it's data type
+	> typeof(9)
+	<* "number"
+	
+	> typeof(23.4)
+	<* "number"
 ```
 
-This is not usually the case in programming languages. Usually whole numbers and decimals are two different data types!! Let's try this out in console:
+There is no separate float data type in JS. What you know of as Integers and Floats are just considered numbers, but JS numbers will behave like Ruby Floats. This is not usually the case in programming languages. Usually whole numbers and decimals are two different data types!! The good news is that a modulus will still work like you expect:
 
 ```sh
-> 1 + 3
-<* 4
-> 3 + 34.5
-<* 37.5
+> 9 % 4
+<* 1
 ```
 
 ### Mathmatical Operations
@@ -144,11 +175,16 @@ From these examples, you can see that one of JavaScript ’s many functions is t
 #### String Arithmetic
 Interestingly enough, you can also use the arithmetic operators mentioned above on strings.
 ```sh
-> “Hello, “ + “Your Name”
+> “Hello, “ + “stranger”;
 ```
-This is known as concatenation! Get used to this, as you will use it a lot!
+This is known as concatenation! You will see it a lot in the code examples in this course.
 
-*Instructor Note: let Ruby-knowledgable students know there will be no Interpolation in JS. Counselors will be on hand.*
+We can do a version of interpolation, which JS refers to as using template litterals. Note those little marks are back-tics and not quotes:
+
+```sh
+	> name = "stranger";
+	> `Hello, ${name}`
+```
 
 You can also combine strings with numbers.
 
@@ -181,6 +217,8 @@ String(100.7 + 23)
 ```
 
 Converting to Number
+
+*there is no function toNumber()*
 ```javascript
 Number("98")
 Number("3.14159")
@@ -188,10 +226,11 @@ Number(" ")
 Number("54 42") //Returns NaN which stands for Not a Number!
 ```
 
-Fortunately for us, JavaScript does a pretty good job of Automatic type conversion!!
+Fortunately for us, JavaScript does a pretty good job of Automatic type conversion!! (null and undefined are both ways to refer to the absence of value. 
 ```javascript
-9 + null    // returns 9 - because null is converted to 0
-"9" + null  // returns "9null" - because null is converted to "null"
+// 9 + null    // returns 9 - because null is converted to 0
+// "9" + null  // returns "9null" - because null is converted to "null"
+
 "5" + 2     // returns 52 - because 2 is converted to "2"
 "5" - 2     // returns 3 - because "5" is converted to 5
 "5" * "2"   // returns 10 - because "5" and "2" are converted to 5 and 2
@@ -368,6 +407,12 @@ function greeting() {
 }
 
 greeting();
+
+// fat arrow function version
+
+greeting = () => {
+	console.log("Hello Zack!")
+}
 ```
 
 We use the function keyword, followed by the functions name and a pair of parenthesis. This is also followed by curly brackets. Whatever is written inside of these brackets is performed when the function is called. 

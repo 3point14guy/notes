@@ -380,6 +380,8 @@ console.log(myName + ' is ' + heightCentimeters + ' cm and ' + weightKilograms +
 
 
 ### Functions
+***slide 25*** **[SHOW](http://techtalentsouth.slides.com/techtalentsouth/javascript-jquery-ci?token=QRVJGNY1#/0/25)
+
 We've already used several built in JS functions. It’s important to note that the following can all be considered methods:
 	console.log("Hello handsome!");
 	prompt("Type your name");
@@ -413,6 +415,9 @@ greeting();
 greeting = () => {
 	console.log("Hello Zack!")
 }
+
+// we call it the same way
+greeting()
 ```
 
 We use the function keyword, followed by the functions name and a pair of parenthesis. This is also followed by curly brackets. Whatever is written inside of these brackets is performed when the function is called. 
@@ -422,11 +427,15 @@ Unlike many other programming languages, we can pass variables into the function
 ```javascript
 var myName = "Zack";
 
-function greeting() {
-	console.log("Hello " + myName);
+function greeting(name) {
+	console.log("Hello " + name);
 }
 
-greeting();
+greeting = (name) => {
+	console.log(`Hello ${name}`)
+}
+
+greeting(myName);
 ```
 This is not recommended however.
 *Instructor Note: just as using a global (@) variable into a Ruby method is possible, but not recommended.*
@@ -443,7 +452,7 @@ function greeting(name) {
 greeting(myName);
 ```
 
-In the function name, we have an argument inside of the parenthesis. This acts as a variable. Then when we call the function, we must pass in data through that argument slot. 
+In the function name, we have an parameters inside of the parenthesis. This acts as a variable. Then when we call the function, we must pass in data through that argument slot. 
 
 We can have as many arguments as you want. Though they must be entered in order.
 
@@ -469,7 +478,7 @@ function addItUp(x,y) {
 }
 ```
 
-You can then assign the call of that method to a variable:
+Note: We will have to call return here...it is not implicit like in Ruby. You can then assign the call of that method to a variable:
 ```javascript
 var num = addItUp(40,2);
 
@@ -480,9 +489,8 @@ var num = addItUp(40,2);
 Change your **imperial_to_metric_height.js** and use a function to help you there!
 
 ```javascript
-function convertInchesToCentimeters(number) {
-    heightCentimeters = number * 2.54
-    return heightCentimeters
+function convertToCentimeters(number) {
+    return number * 2.54
 }
 
 var myName = prompt("What is your name?");
@@ -491,43 +499,13 @@ var heightInches = prompt("How tall are you in inches?");
 
 var weightPounds = prompt("How much do you weigh in pounds?");
 
-var heightCentimeters = heightInches * 2.54;
 
 var weightKilograms = weightPounds * 0.453592;
 
-console.log(myName + ' is ' + convertInchesToCentimeters(heightInches) + ' cm and ' + weightKilograms + ' kg.');
+console.log(myName + ' is ' + convertToCentimeters(heightInches) + ' cm and ' + weightKilograms + ' kg.');
 ```
 
 Again the curly brackets open and close our function. You can also see that we named the function **convertInchesToCentimeters**, again using camel-casing. We included number as our argument. Finally, we called the function that we created back into the last few lines of the program passing in a variable we create earlier, heightInches. This variable is retrieving user input via the prompt function!
-
-
-### HTML Functions
-Let's move out of the console. JavaScript has built-in functions that let us modify HTML & CSS.
-
-First, we need to establish which HTML element we want to affect.
-```javascript
-document.getElementById()
-
-document.getElementsByClass()
-
-document.getElementsByTagName()
-```
-
-Notice how the last two address "Element s "?
-That's why it's best to just work with IDs!
-
-Once you select something to change, we have to figure out what to do with it.
-
-```javascript
-//add or replace HTML text inside an element with a certain ID
-document.getElementById("div1").innerHTML = "Something changed here...";
-
-//add a class to an element with a certain ID
-document.getElementById("div2").className = "nice-div";
-
-//add an ID to an element with a certain ID
-document.getElementById("div3").id = "cool_id";
-```
 
 
 ### Conditionals
@@ -556,20 +534,20 @@ if ( num < 50 ) {
 ```
 
 
-### JS Activity: MadLibs
-*Instructor Note: only do if you think there's enough time*
+*### JS Activity: MadLibs
+Instructor Note: only do if you think there's enough time*
 
-Create a Mad Lib Program!
+*Create a Mad Lib Program!
 	* Have at least 10 inputs
-	* Include at least one number
+	* Include at least one number*
 
-**Example**
+***Example**
 Please enter the following.
 Exclamation: Holy Bananas
 Name: Zack
-Verb: jump
+Verb: jump*
 
-*Holy Bananas*! Is that *Zack*? Wow, they sure do love to *jump*!
+*Holy Bananas! Is that Zack? Wow, they sure do love to jump!*
 
 ```javascript
 alert("Please enter the following...");
@@ -580,7 +558,39 @@ var verb = prompt("Verb");
 console.log(exc + "! Is that " + name "? Wow, they sure do love to " + verb + "!");
 ```
 
-Create your own story, or steal one from the internetz. 
+*Create your own story, or steal one from the internetz. *
+
+
+### HTML Functions
+Let's move out of the console. JavaScript has built-in functions that let us modify HTML & CSS.
+
+First, we need to establish which HTML element we want to affect.
+```javascript
+document.getElementById()
+
+document.getElementsByClass()
+
+document.getElementsByTagName()
+```
+
+Notice how the last two address "Element s "?
+That's why it's best to just work with IDs!
+
+### HTML Functions
+***slide 34*** **[SHOW](http://techtalentsouth.slides.com/techtalentsouth/javascript-jquery-ci?token=QRVJGNY1#/0/34)
+
+Once you select something to change, we have to figure out what to do with it.
+
+```javascript
+//add or replace HTML text inside an element with a certain ID
+document.getElementById("div1").innerHTML = "Something changed here...";
+
+//add a class to an element with a certain ID
+document.getElementById("div2").className = "nice-div";
+
+//add an ID to an element with a certain ID
+document.getElementById("div3").id = "cool_id";
+```
 
 
 ### jQuery Intro & Set-Up
@@ -619,6 +629,8 @@ The second line performs virtually the same function as our <link> element to ou
 	* Create two red squares and one green circle. 
  
 	* You should have a "square" class and a "circle" id.
+	
+	* in between the squares, enter a line of text in a ```<p>``` tag.
  
 	* Big Hint: use the border-radius property.
 
@@ -653,6 +665,7 @@ $('#circle').click(function() {
   $('p').html(“We’ve changed the text!”);
 });
 ```
+*show including both into one function. Then put back to two bits of jQuery*
 
 What if we want the text change when we hover over the circle? We would simply change click to hover on Line 1! It's that easy!
 
@@ -670,7 +683,9 @@ $('.square').click(function() {
 ```
 
 **this**? What does that mean?
-*this *is a JavaScript function that simply means the object that’s been referenced immediately before (so, in this case, 'div'). 
+*this *is a JavaScript function that simply means the object that’s been referenced immediately before (so, in this case, 'div'). ```this``` does not play well with fat arrow functions
+
+#Not sure what ```this``` is refering to?  ```console.log(this)```
 
 The CSS function is just like the attr function we used a minute ago, with a CSS attribute/value pair within the parantheses.
 
@@ -697,6 +712,13 @@ Take a parameter of a class (no dot/period needed)
 **.toggleClass()**
 Takes same parameter as above,
 but will do both on the same clickable ID
+
+```javascript
+$('.square').hover(function() {
+	$(this).toggleClass('blue');
+	console.log(this);
+});
+```
 
 **.val()**
 Can pull or set the value from a specified input field

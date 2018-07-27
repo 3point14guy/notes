@@ -114,8 +114,7 @@ This file contains basic details about the Rails Application and a description o
 This file can be converted to an .md file to display on Github.
 
 #### Rakefile
-Rake is a software task management and build automation tool.
-This file helps with building, packaging and testing the Rails code. It will be used by rake utility supplied along with Ruby installation.
+Rake is a software task management and build automation tool.  This file helps with building, packaging and testing the Rails code. It will be used by rake utility supplied along with Ruby installation.  You can put code in here to run with command line code.
 
 #### app/
 This organizes your application components. It's got subdirectories that hold the html files (views), controllers (controllers), and the backend logic (models), as well as assets, mailers, and more!
@@ -134,12 +133,12 @@ The migrate folder and other files won't appear until
 we first tell Rails to create a new table in our database.
 
 #### lib/
-This is a space for application specific libraries. These include any kind of custom code that doesn’t fit in anywhere else. Think of these files as extended features for our application that aren’t available in Rubygems.
+This is a space for application specific libraries that aren't in Gem form. These include any kind of custom code that doesn’t fit in anywhere else. Think of these files as extended features for our application that aren’t available in Rubygems.
 
 #### log/
-The log files from your application. Literally everything we do with our application will be recorded here.
+The log files from your application. Literally everything we do with our application will be recorded here, including errors which can be useful for debugging.
 
-A great place to debug your code or just see how it is working. You can also see your code run in terminal.
+A great place to see how it is working. You can also see your code run in terminal.
 
 #### public/
 Like the public directory for a web server, this directory has web files that don't change, such as JavaScript files (public/javascripts), graphics (public/images), stylesheets (public/stylesheets), and HTML files (public).
@@ -208,7 +207,7 @@ $ rails g controller Welcome index about contact
 g = generate
 Welcome = the name of the controller
 (but you can call it whatever you like; capitalized, camelcase)
-index about contact = views (or, html pages) that you want associated with this controller (lowercase, with underscores); important: no commas between views, just a space.
+index about contact = views (or, html pages) that you want associated with this controller (snake_case); important: no commas between views, just a space.
 
 
 ### Routes
@@ -219,6 +218,8 @@ After generating our Welcome controller, here's what our Routes file (found in t
 # [railsprojectname]/config/routes.rb
 
 Rails.application.routes.draw do
+
+#using these default setting, rails automatically pairs with the correct action in the welcome controller
   get 'welcome/index'
 
   get 'welcome/about'
@@ -227,7 +228,7 @@ Rails.application.routes.draw do
 end
 ```
 
-If a URL is formatted as "controller/action", it is assumed you want it pointing to that specific controller/action pair.
+If a URL is formatted as "controller/action", it is assumed you want it pointing to that specific controller/action pair.  When I receive a Get Request for this address I’ll tell the controller to return the matching page in the views folder.
 
 A Root path is your landing (or: home) page. Call it by it's associated controller action!
 

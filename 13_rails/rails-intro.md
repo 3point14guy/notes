@@ -104,22 +104,27 @@ Each gem has a name, version, and platform. For example, the rails gem has a 5.0
 
 Your Gemfile is a list of all gems that you want to include in the project. It is used with bundler (also a gem) to install, update, remove and otherwise manage your gems.
 
+#### Gemfile.lock
+
+Ensures that the gem versions used to build the app, will be the ones used whenever it is deployed or downloaded on other machines. 
+
 #### 	README.rdoc
-This file contains basic details about the Rails Application and a description of the different directories in an application.
+This file contains basic details about the Rails Application and a description of the different directories in an application. 
 
 This file can be converted to an .md file to display on Github.
 
 #### Rakefile
+Rake is a software task management and build automation tool.
 This file helps with building, packaging and testing the Rails code. It will be used by rake utility supplied along with Ruby installation.
 
 #### app/
 This organizes your application components. It's got subdirectories that hold the html files (views), controllers (controllers), and the backend logic (models), as well as assets, mailers, and more!
 
 #### bin/
-This directory contains the commands and utilities that you use day to day. These are executable binary ruby files - hence the the directory name bin.
+This directory contains the commands and utilities that you use day to day. These are executable binary ruby files - hence the the directory name bin.  There's some overlap of functionality with executables that you could put in the rake file but with some subtle differences. Some of the commands we'll use in terminal are routed through here.
 
 #### config/
-The config/ contains the small amount of configuration code that your application will need, including your database configuration (in database.yml), your Rails environment structure (environment.rb), and routing of incoming web requests (routes.rb).
+The config/ contains the small amount of configuration code that your application will need, including your database configuration (in database.yml), your Rails environment structure (environment.rb), and routing of incoming web requests (routes.rb). The database connection and application behavior can be altered by the files inside this directory.
 
 #### db/
 Your Rails application will have model objects that interact with relational database tables. You can manage the relational database with code that you would add to this directory.

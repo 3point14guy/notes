@@ -209,12 +209,6 @@ sqlite> SELECT * FROM users WHERE name = 'Jason';
 4|Jason|Indianapolis|22|2014-08-18 12:56:31.751468|2014-08-18 12:56:31.751468
 
 sqlite>
-
-sqlite> SELECT * FROM users WHERE name = 'Jason';
-
-4|Jason|Indianapolis|22|2014-08-18 12:56:31.751468|2014-08-18 12:56:31.751468
-
-sqlite>
 ```
 In this case, we use the 'where' clause to get specific.
  
@@ -335,9 +329,6 @@ end
 ActiveRecord has its own console:
 
 ```sh
-Running via Spring preloader in process 20820
-Loading development environment (Rails 5.0.2)
-2.2.4 :001 > 
 $ rails console
 Running via Spring preloader in process 20820
 Loading development environment (Rails 5.0.2)
@@ -368,19 +359,6 @@ location: "Edmonton", age: 29, created_at: "2014-11-10 23:32:10", updated_at:
 "2014-11-10 23:32:10">, #<User id: 6, name: "Sam", location: "Pensacola", age: 33, 
 created_at: "2015-08-10 01:39:17", updated_at: "2015-08-10 01:39:17">]>
 :002 >
-:001 > User.all
-  User Load (3.7ms)  SELECT "users".* FROM "users"
- => #<ActiveRecord::Relation [#<User id: 1, name: "Jude", location: "Atlanta", age: 25, 
-created_at: "2014-11-10 23:31:26", updated_at: "2014-11-10 23:31:26">, #<User id: 2, 
-name: "Ellen", location: "San Diego", age: 65, created_at: "2014-11-10 23:31:36", 
-updated_at: "2014-11-10 23:31:36">, #<User id: 3, name: "Norah", location: "Venice", 
-age: 32, created_at: "2014-11-10 23:31:46", updated_at: "2014-11-10 23:31:46">, 
-#<User id: 4, name: "Jason", location: "Indianapolis", age: 22, created_at: 
-"2014-11-10 23:31:58", updated_at: "2014-11-10 23:31:58">, #<User id: 5, name: "Leila", 
-location: "Edmonton", age: 29, created_at: "2014-11-10 23:32:10", updated_at: 
-"2014-11-10 23:32:10">, #<User id: 6, name: "Sam", location: "Pensacola", age: 33, 
-created_at: "2015-08-10 01:39:17", updated_at: "2015-08-10 01:39:17">]>
-:002 >
 ```
 
 The output format may be uglier than SQL's, but the command is so much easier!
@@ -392,14 +370,6 @@ Also, notice how it shows you the SQL query.
 We can look at specific entries...
 
 ```sh
-  User Load (0.2ms)  SELECT  "users".* FROM "users"   ORDER BY "users"."id" ASC LIMIT 1
- => #<User id: 1, name: "Jude", location: "Atlanta", age: 25, 
-created_at: "2014-11-10 23:31:26", updated_at: "2014-11-10 23:31:26">
-:003 > User.last
-  User Load (0.2ms)  SELECT  "users".* FROM "users"   ORDER BY "users"."id" DESC LIMIT 1
- => #<User id: 6, name: "Sam", location: "Pensacola", age: 33, created_at: nil, 
-updated_at: nil>
-:004 >
 :002 > User.first
   User Load (0.2ms)  SELECT  "users".* FROM "users"   ORDER BY "users"."id" ASC LIMIT 1
  => #<User id: 1, name: "Jude", location: "Atlanta", age: 25, 
@@ -513,7 +483,7 @@ But that's so many lines of code! Can't we get it done in just one line?
 Yes we can! With .create()!
 
 ```sh
-:021 > Newbie.create(name: "Daphne", location: "Spokane", age: 31)
+:021 > User.create(name: "Daphne", location: "Spokane", age: 31)
    (0.1ms)  begin transaction
   SQL (0.4ms)  INSERT INTO "users" ("name", "location", "age", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)  [["name", "Daphne"], ["location", "Spokane"], ["age", 31], ["created_at", "2016-04-18 16:20:16.797104"], ["updated_at", "2016-04-18 16:20:16.797104"]]
    (1.2ms)  commit transaction

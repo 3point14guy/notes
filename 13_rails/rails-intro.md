@@ -384,6 +384,8 @@ Let's take a look at the generated code on each page:
 		* This page is what's called a *partial* . A partial (denoted by an underscore) is reusable code that can be *render*ed in many locations which keeps our code DRY. This code drops a form into our views and gathers data from the user.
 
 
+### Tour the controller and look at the methods for the CRUD actions
+
 ### Customizing the Index View
 Each pet id exists in our table but doesn't show by default in the view. Let's add an id column to our index.
 

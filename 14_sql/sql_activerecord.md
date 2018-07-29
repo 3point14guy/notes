@@ -243,13 +243,13 @@ sqlite>
 #### SELECT Functions
 Functions are built-in utilities that assist us in performing some calculations. Here are just a few of the useful functions we can use:
 
-	* AVG (average)
-	* SUM
+	* AVG (average) SELECT AVG(age) FROM users;
+	* SUM		SELECT SUM(age) FROM users;
 	* COUNT
 	* MIN (minimum)
 	* MAX (maximum)
 	* UPPER
-	* DISTINCT
+	* DISTINCT	SELECT DISTINCT location FROM users;
 
 [List of Numeric Functions](http://www.tutorialspoint.com/sql/sql-numeric-functions.htm)
 [List of String Functions](http://www.tutorialspoint.com/sql/sql-string-functions.htm)

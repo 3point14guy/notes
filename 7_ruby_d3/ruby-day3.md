@@ -264,14 +264,12 @@ def reverser(str)
 
 	# we will store the reversed
 	# items in another array
-	reverse = []
+	reversed = []
 
 	# iterate through original array
-	arr.each do |x|
-		# instead of pushing,
-		# insert at index 0 each item
-		# so that the next one is first
-		reverse.insert(0,x)
+	arr.each do |character|
+		# .push, .pop, .shift, .unshift
+		reversed.unshift(character)
 	end
 
 	# return the reversed array

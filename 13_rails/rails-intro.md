@@ -114,8 +114,7 @@ This file contains basic details about the Rails Application and a description o
 This file can be converted to an .md file to display on Github.
 
 #### Rakefile
-Rake is a software task management and build automation tool.  This file helps with building, packaging and testing the Rails code. It will be used by rake utility supplied along with Ruby installation.  You can put code in here to run with command line code.
-
+Rake is a software task management and build automation tool.  This file helps with building, packaging and testing the Rails code. It will be used by rake utility supplied along with Ruby installation.  You can put code in here that can be run from the command line.
 #### app/
 This organizes your application components. It's got subdirectories that hold the html files (views), controllers (controllers), and the backend logic (models), as well as assets, mailers, and more!
 
@@ -127,6 +126,8 @@ The config/ contains the small amount of configuration code that your applicatio
 
 #### db/
 Your Rails application will have model objects that interact with relational database tables. You can manage the relational database with code that you would add to this directory.
+
+When we did the atm project, we had to keep logging in and creating accounts to test our code.  We weren't persisting (or saving) our data.
 
 For right now, you probably on see the seeds.rb file.
 The migrate folder and other files won't appear until

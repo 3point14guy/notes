@@ -74,6 +74,8 @@ We're going to use these two pages to pass information back and forth, using *Qu
 
 
 ### Query Strings
+***slide 6***  **[SHOW](http://techtalentsouth.slides.com/techtalentsouth/rails-blog-one-ci?token=Haq_LgJA#/0/6)**
+
 You've seen query strings before, whether you realize it or not. A question mark in the URL denotes the beginning of a query string.
 
 A query string holds additional information, stored in variables, which the URL may not address. In this example (image in the slides), the URL handles the location, while the Query String handles all other data (dates, # of guests, etc.). The ampersands in the Query String separate different variable/value pairs.
@@ -152,7 +154,7 @@ How can we use our color of choice? Let's use it for CSS! We'll set a particular
 
 <div id="color_me_in">
   <p>
-    <%= @color.uppercase %> BOX ACTIVATED!
+    <%= @color.upcase %> BOX ACTIVATED!
   </p>
 </div>
 ```
@@ -198,6 +200,8 @@ We can create a message in our Index view using the name provided in the form in
 ```
 
 The last step: we need to set @name to params[:name], for when we do arrive via the About page form.
+
+Rails gives us access to the data passed in query strings and the data posted in forms by stroing it in a params "hash". You can access the values in this params "hash" using either symbols or keys.  These values are always saved as strings.
 
 ```ruby
 class PracticeController < ApplicationController
@@ -270,6 +274,12 @@ end
 *Instructors: walk the students through the different controller actions*
 ```ruby
 class PostsController < ApplicationController
+
+	# This is a filter.  Filters are applied "before", "after", or "around" a controller action. 
+	# A common before action is one set for login. If not loged in, don't honor any requests.
+	# The before action here is for all methods that act on a single resource and sets @post to the values in that row.
+	
+	
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   # GET /posts
@@ -283,21 +293,27 @@ class PostsController < ApplicationController
   def show
   end
 
+	# This just renders the form for creating a new Post object. 
+	# Post.new here just creates an new instance of Post with no attributes yet assigned.
   # GET /posts/new
   def new
     @post = Post.new
   end
 
+	# Again, this get request is just rendering a form.
   # GET /posts/1/edit
   def edit
   end
 
   # POST /posts
-  # POST /posts.json
+  # Here we are passing in the attributes that will actually make the Post object/instance.
   def create
     @post = Post.new(post_params)
 
     respond_to do |format|
+    # "redirect_to" makes a new HTTP request and retrieves updated data.  
+    # "render" just displays the cached page. Which is great for the user, 
+    # because their inputs are still there and they only need fix the failed input.
       if @post.save
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @post }
@@ -309,7 +325,6 @@ class PostsController < ApplicationController
   end
 
   # PATCH/PUT /posts/1
-  # PATCH/PUT /posts/1.json
   def update
     respond_to do |format|
       if @post.update(post_params)
@@ -323,7 +338,6 @@ class PostsController < ApplicationController
   end
 
   # DELETE /posts/1
-  # DELETE /posts/1.json
   def destroy
     @post.destroy
     respond_to do |format|
@@ -331,9 +345,8 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
+	# private methods are not accessible from our routes...all these other methods have have routes that bring them to the actions in this controller.	
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.find(params[:id])
     end
@@ -368,54 +381,6 @@ Notice all the ActiveRecord calls in your controller:
 It's hard to conceptualize the look of our app without any content. So let's make some! Create at least 4 blog posts!
 
 *Instructors: give students about 5 minutes to make some blog posts. Encourage them to use Ipsum to fill in the Blog Entry area.*
-
-### Bootstrap Gem
-Now that we have content, we can tell what a mess it's going to be with the design Rails gave us.
-
-Let's use Bootstrap to make this app at least more readable. But this time, let's do it the Rails ways: let's use Gems!
-
-According to the [Bootstrap Sass Gem](https://github.com/twbs/bootstrap-sass) documentation, we need their gem along with the 'sass-rails' gem -- which comes standard in a Rails app Gemfile:
-
-```ruby
-gem 'sass-rails', '~> 5.0'
-gem 'bootstrap-sass'
-gem 'jquery-rails' **(required for users using rails 5.1 or newer)
-```
-
-Then run in Terminal: 
-```sh
-$ bundle install
-```
-
-A couple more steps are required to activate the Bootstrap libraries.
-
-In assets/stylsheets/application.css:
-
-```css
-// below all the comments at the top you ad:
-
-@import "bootstrap-sprockets";
-@import "bootstrap";
-```
-You also need to change the extension of the file. In Sublim, right-click (or ctrl+click) and choose "Rename" from the menu. It will open up a bar at the bottom of the window. Leave the file name as "application", but add an "s" before "css".
-
-Your file should now be named **application.scss**. This will make it recognize SASS ([Stylistically Awesome Style Sheets](http://sass-lang.com/)) notation.
-
-Then, in your 'application' javascript file add:
-```javascript
-//= require jquery  **(must be added for rails 5.1)
-//= require jquery_ujs **(must be added for rails 5.1)
-//= require bootstrap-sprockets
-//= require turbolinks
-//= require_tree .
-```
-It's the third one down that we added. Make sure that Bootstrap line comes after the jQuery lines, as Bootstrap is jQuery-dependent.
-
-And now we have Bootstrap!
-Try it out: Go add the container <div> around the <%= yield %> in **application.html.erb**.
-
-Scaffold Re-Design will be homework! Have fun with that!
-
 
 ### Scaffold Comment Resource
 Unless it's been disabled because users are just being abusive or obnoxious, Commenting is usually a common aspect of Blog (or blog-like) web apps.
@@ -664,3 +629,51 @@ You can go head and make all the comments you want, but none are going to show..
 ```
 
 Try it all out!
+
+
+### Bootstrap Gem
+Now that we have content, we can tell what a mess it's going to be with the design Rails gave us.
+
+Let's use Bootstrap to make this app at least more readable. But this time, let's do it the Rails ways: let's use Gems!
+
+According to the [Bootstrap Sass Gem](https://github.com/twbs/bootstrap-sass) documentation, we need their gem along with the 'sass-rails' gem -- which comes standard in a Rails app Gemfile:
+
+```ruby
+gem 'sass-rails', '~> 5.0'
+gem 'bootstrap-sass'
+gem 'jquery-rails' **(required for users using rails 5.1 or newer)
+```
+
+Then run in Terminal: 
+```sh
+$ bundle install
+```
+
+A couple more steps are required to activate the Bootstrap libraries.
+
+In assets/stylsheets/application.css:
+
+```css
+// below all the comments at the top you ad:
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+```
+You also need to change the extension of the file. In Sublime, right-click (or ctrl+click) and choose "Rename" from the menu. It will open up a bar at the bottom of the window. Leave the file name as "application", but add an "s" before "css".
+
+Your file should now be named **application.scss**. This will make it recognize SASS ([Stylistically Awesome Style Sheets](http://sass-lang.com/)) notation.
+
+Then, in your 'application' javascript file add:
+```javascript
+//= require jquery  **(must be added for rails 5.1)
+//= require jquery_ujs **(must be added for rails 5.1)
+//= require bootstrap-sprockets
+//= require turbolinks
+//= require_tree .
+```
+It's the third one down that we added. Make sure that Bootstrap line comes after the jQuery lines, as Bootstrap is jQuery-dependent.
+
+And now we have Bootstrap!
+Try it out: Go add the container <div> around the <%= yield %> in **application.html.erb**.
+
+Scaffold Re-Design will be homework! Have fun with that!

@@ -593,6 +593,8 @@ We want to create new comments on the Post show page. We can render the "_form" 
 </p>
 
 <div>
+	<!-- show a template from another controller's views  
+	populate it with a new instance of comment (@comment) -->
 	<%= render 'comments/form', comment: @comment %>
 </div>
 

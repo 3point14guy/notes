@@ -147,6 +147,7 @@ Our first step in truly requiring authentication to use our app is to put a filt
 
 ```ruby
 class ApplicationController < ActionController::Base
+# protects from Cross Site Request Forgery
   protect_from_forgery with: :exception
 
   # this line below!
@@ -162,7 +163,8 @@ Let's create a button that will allow us to sign out of the current User session
 
 ```html
 <div class="container">
-  <div class="pull-right">
+  <!--<div class="pull-right">-->
+	<div class="float-right"
     <% if user_signed_in? %>
       <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
     <% end %>
@@ -170,7 +172,7 @@ Let's create a button that will allow us to sign out of the current User session
 ...
 ```
 
-We put the code within a <div> with a "pull-right" Bootstrap class, which just floats the div to the right of the container <div>
+We put the code within a <div> with a "float-right" Bootstrap class, which just floats the div to the right of the container <div>
 
 
 ### User Replaces Author

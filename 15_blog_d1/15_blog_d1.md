@@ -574,6 +574,16 @@ It would be best if we could do it without the author's knowledge. Let's add to 
 </div>
 ```
 
+By default, Rails builds it's forms with form labels.  If we keep these, then we also need to pass form field ids like seen here:
+
+```
+  <div class="field">
+    <%= form.label :author %>
+    <br>
+    <%= form.text_field :author, id: :post_author %>
+  </div>
+```
+
 We want to create new comments on the Post show page. We can render the "_form" partial from the Comments views, in the post_controller, we initiate the variable @comment, and in the comments_controller we redirect the page after comment creation:
 
 ```html
@@ -582,7 +592,7 @@ We want to create new comments on the Post show page. We can render the "_form" 
   <%= link_to 'Edit', edit_post_path(@post) %>
 </p>
 
-<div id="comments">
+<div>
 	<%= render 'comments/form', comment: @comment %>
 </div>
 
@@ -616,7 +626,7 @@ We want to create new comments on the Post show page. We can render the "_form" 
 You can go head and make all the comments you want, but none are going to show...until we do this: On the posts/show.html.erb page, between the comment creation div and the link back to the index:
 
 ```html
-<div id="comments">
+<div>
 	<%= render 'comments/form', comment: @comment %>
 
   <% @post.comments.each do |comment| %>

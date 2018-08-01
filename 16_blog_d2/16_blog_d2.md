@@ -31,6 +31,7 @@ Useful Resources
 Hopefully you did your homework and re-designed your index and show pages (using the grid and panels or wells, for example). What you may not have touched is your forms.
 But Bootstrap has CSS classes for those, too!
 
+#This does not work anymore!!!!!
 There are a pair of classes to be used in forms:
 *form-group* and *form-control*
 
@@ -71,6 +72,18 @@ There are a pair of classes to be used in forms:
   <%= f.submit "Submit", class: "btn btn-primary" %>
 </div>
 ```
+#Do this instead!
+
+```gem "bootstrap_form", ">= 4.0.0.alpha1"```
+
+```bundle install```
+
+``` *= require rails_bootstrap_forms```
+
+In form views, change ```form_with``` to ```bootstrap_form_with```
+
+You can also add ```class: "btn btn-success"``` to ```<%= form.submit %>``` so that the new line of code looks like:
+```<%= form.submit class: "btn btn-success"%>```
 
 
 ### Authentication

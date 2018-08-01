@@ -651,8 +651,14 @@ Let's use Bootstrap to make this app at least more readable. But this time, let'
 According to the [Bootstrap Sass Gem](https://github.com/twbs/bootstrap-sass) documentation, we need their gem along with the 'sass-rails' gem -- which comes standard in a Rails app Gemfile:
 
 ```ruby
+#already installed:
 gem 'sass-rails', '~> 5.0'
-gem 'bootstrap-sass'
+
+# original instructions:
+# gem 'bootstrap-sass'
+
+#fix as of 7/31/18
+# gem 'bootstrap', '~> 4.1.3'
 gem 'jquery-rails' **(required for users using rails 5.1 or newer)
 ```
 
@@ -667,9 +673,16 @@ In assets/stylsheets/application.css:
 
 ```css
 // below all the comments at the top you ad:
+# original instruction:
+# @import "bootstrap-sprockets";
+# @import "bootstrap";
 
-@import "bootstrap-sprockets";
-@import "bootstrap";
+# fix as of 7/31/18, use only:
+@ import "bootstrap";
+
+# and remove
+*= require_tree.
+*= require_self
 ```
 You also need to change the extension of the file. In Sublime, right-click (or ctrl+click) and choose "Rename" from the menu. It will open up a bar at the bottom of the window. Leave the file name as "application", but add an "s" before "css".
 

@@ -130,9 +130,9 @@ And then Step 3: Create a new view
 <h1>All Posts by <%= @user.username %></h1>
 
 <% @user.posts.each do |post| %>
-  <div class="row">
+  <!-- <div class="row">
     <div class="col-md-8 col-md-offset-2">
-      <div class="well">
+      <div class="well"> -->
         <h3><%= post.title %></h3>
         <p><em>posted on <%= local_time(post.created_at, "%m/%d/%Y at %l:%M%P") %></em></p>
         <p>
@@ -145,10 +145,12 @@ And then Step 3: Create a new view
 	    <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
 	  <% end %>
         </p>
-      </div>
+      <!--</div>
     </div>
-  </div>
+  </div>-->
 <% end %>
+<!-- add kaminari 
+<%= paginate @user_posts => -->
 ```
 
 Make sure you're creating the view in the appropriate folder (posts), and that it is named the same as the action.
@@ -162,6 +164,8 @@ class PostsController < ApplicationController
 
   def user_posts
     @user = User.find(params[:id])
+    # can also add kaminari here
+    # @user_posts = @user.posts.page(params[:page])
   end
 
   #file continues with index action

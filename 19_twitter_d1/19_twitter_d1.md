@@ -359,7 +359,7 @@ That takes care of the back end, now we can set-up the front end. First, where t
   and /edit.html.erb-->
 
 <div class="form-group">
-  <strong>Upload a Profile Pic:</strong>
+  <strong>Upload a Profile Pic:</strong><br>
   <%= f.file_field :avatar %>
 </div>
 ```
@@ -389,41 +389,37 @@ It'd be great if we could sign out to test multiple users, so let's add (with a 
 ```html
 <!-- app/views/layouts/application.html.erb -->
 <body>
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <%= link_to "Home", root_path, class: "navbar-brand" %>
-      </div>
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li><%= link_to "Compose New Tweet", new_tweet_path %></li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <% if user_signed_in? %>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                <% if current_user.avatar.blank? == false %>
-                  <%= image_tag current_user.avatar.url, size:25, class: "user-pic-nav" %>
-                <% end %> 
-                @<%= current_user.username %> <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
-                <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
-              </ul>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-  </nav>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-between">
+		<%= link_to "Home", root_path, class: "navbar-link" %><span class="sr-only">(current)</span>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item active">
+					<%= link_to "Tweet", new_tweet_path, class: "nav-link" %>
+				</li>
+			</ul>
+			<ul class="navbar-nav float-right">
+				<% if user_signed_in? %>
+					<li class="nav-item dropdown"><span class="caret"></span>
+						<a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							<% if current_user.avatar.blank? == false %>
+								<%= image_tag current_user.avatar.url, size:25, class: "user-pic-nav" %>
+							<% end %>
+							@<%= current_user.username %>
+						</a>
+						<div class="dropdown-menu" aria-labelledby="navbarDropdown">
+							<%= link_to "Edit Profile", edit_user_registration_path, class: "dropdown-item" %>
+							<%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+						</div>
+					</li>
+				<% end %>
+			</ul>
+		</div>
+	</nav>
+         
 	<div class="container">
     <%= yield %>
 	</div>

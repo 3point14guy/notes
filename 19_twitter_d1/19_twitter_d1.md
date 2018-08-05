@@ -181,6 +181,8 @@ With that in mind, have at it:
 $ rails g scaffold Tweet message:string user_id:integer
 ```
 
+migration time!!
+
 
 ### Association Review: Users & Tweets
 Let's add the association definitions to our models...

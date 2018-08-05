@@ -434,13 +434,6 @@ Devise has built-in *presence* validations on email and password, so let's add t
 
 ```ruby
 # user.rb
-	validates :username, presence: true
-  validates :username, uniqueness: true
-```
-
-Though it would be more DRY to do it all in one line...
-```ruby
-# user.rb
   validates :username, presence: true, uniqueness: true
 ```
 We also need validation on the Tweets - not just presence, but also: what makes a Tweet a Tweet? Its length!
@@ -448,7 +441,7 @@ We also need validation on the Tweets - not just presence, but also: what makes 
 ```ruby
 # tweet.rb
   validates :message, presence: true
-  validates :message, length: {maximum: 140, too_long: "A tweet is only 140 max. Everybody knows that!"}
+  validates :message, length: {maximum: 250, too_long: " - If you need more than 250 characters, create a blog."}
 ```
 
 Test it out.
@@ -457,10 +450,13 @@ We set up that "username" must be present and unique, Devise took care of the ot
 And then there's the validation errors we set for the Tweets. What if we wanted to customize the error messages?
 
 #### YAML
+**Y**et **A**nother **M**arkup **L**anguage
 In the config folder, down into the locales folder,
 you'll find a file called "en.yml".
-This file can store the verbiage for our error messages;
-some messages, like for length, will have to remain in the model.
+
+This file's intended use is for translating your app into other languages. This file acts as a data store for translations for Active Record's error_messages_for Helper and we are going to co-opt this feature to put in some more custom error messages (in English.)
+
+Some messages, like for length, will have to remain in the model.
 
 **config/locales/en.yml**
 ```yaml

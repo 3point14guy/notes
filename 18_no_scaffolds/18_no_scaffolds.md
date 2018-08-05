@@ -70,10 +70,10 @@ We're going to focus on modeling two aspects of the Scaffold:
 1. Create an instance of Resource
 2. View all instances of a Resource
 
-We've done both of these before without a Scaffold, but we'll review them here, and then see how we can even better mimic a Scaffold without running the scaffold generator. So for review: let's revisit the Ruby Form Tag!
+We've done both of these before without a Scaffold, but we'll review them here, and then see how we can even better mimic a Scaffold without running the scaffold generator. So for review: let's look at Ruby's ```form_with``` helper method!
 
 
-### Form Tag
+### Form With using URL
 We've used this one several times before. This Ruby tag creates a general form that is not tied to any specific Resource, but can be used to create one. We're gonna use it to take input on a new User.
 
 ```html
@@ -82,15 +82,15 @@ We've used this one several times before. This Ruby tag creates a general form t
 
 <div style="margin:50px;">
   <h3>Create a User</h3>
-    <%= form_tag create_users_path do %>
-			<%= text_field_tag :name, nil, placeholder: "Your Name" %><br />
-			<%= number_field_tag :age, nil, placeholder: "Your Age" %><br />
-      <%= submit_tag "Create Profile" %>
+    <%= form_with(url: create_users_path) do |f| %>
+			<%= f.text_field :name, placeholder: "Your Name" %><br />
+			<%= f.number_field :age, placeholder: "Your Age" %><br />
+      <%= f.submit "Create Profile" %>
     <% end %>
 </div>
 ```
 
-Notice where the form_tag is pointed to: create_users_path
+Notice where the form this form tag is pointed to: create_users_path
 This isn't particularly important as far as naming - it could lead to any path - back to this same page, even. But it does mean:
 	1. We're going to need a POST route.
 	2. We're going to need a new action.
@@ -98,7 +98,7 @@ This isn't particularly important as far as naming - it could lead to any path -
 	4. Do we need a new view?
 
 
-#### Form Tag: Routes
+#### Form With: Routes
 ```ruby
 # routes.rb
 Rails.application.routes.draw do
@@ -115,7 +115,7 @@ end
 We set our 'index' page as our route, we add a new POST route and we customized our 'users' route.
 
 
-#### Form Tag: Actions
+#### Form With: Actions
 ```ruby
 # welcome_controller.rb
 class WelcomeController < ApplicationController
@@ -139,7 +139,7 @@ end
 *Here's what we saw:*
 
 **'index' action**
-Nothing to add here! The form_tag works on its own, it does need any help from any code the action.
+Nothing to add here! The ```form_with``` using a url works on its own, it does need any help from any code the action.
 
 **'create_users' action**
 Our new action! This one does what it's called! It creates a User, using Active Record. But there's no view, so we redirect to the Users action.
@@ -172,7 +172,7 @@ Now to round it out, and fill in the users.html.erb view:
 <%= link_to "Return to Index", root_path %>
 </p>
 ```
-
+***NOT WORKING***
 We also could've cut out the middle action...
 ```ruby
 # in routes.rb
@@ -194,8 +194,8 @@ end
 ```
 
 
-### Form For
-We've used the form_for tag many times - it's in a scaffolded _form file. But we've never made our own!
+### Form With using a Model
+We've used the form_with tag many times - it's in a scaffolded _form file. But we've never made our own!
 
 Let's create one to make Products:
 ```html
@@ -203,11 +203,11 @@ Let's create one to make Products:
 
 <h1>Home Page</h1>
 
-<!-- form_tag for Users -->
+<!-- form_with for Users -->
 
 <div style="margin:50px;">
     <h3>Create a Product</h3>
-    <%= form_for @product do |f| %>
+    <%= form_with(model: @product do) |f| %>
 	<%= f.text_field :name, placeholder: "Product Name" %><br />
 	<%= f.number_field :price, placeholder: "Price", step: :any %><br />
 	<%= f.number_field :quantity, placeholder: "Quantity" %><br />
@@ -216,20 +216,11 @@ Let's create one to make Products:
 </div>
 ```
 
-Notice the differences:
-```html
-<%= form_for @product do |f| %>
-  <%= f.text_field :name, placeholder: "Product Name" %><br />
-  <%= f.number_field :price, placeholder: "Price", step: :any %><br />
-  <%= f.number_field :quantity, placeholder: "Quantity" %><br />
-  <%= f.submit %>
-<% end %>
-```
 **form_for** works off an instance variable (representing the resource), not a route.
 **form_for** uses an iterator, passing the variable 'f' throughout the inputs, form_tag is like, "Huh?"
 
 
-#### Form For: Routes
+#### Form With Model: Routes
 
 ```ruby
 # routes.rb
@@ -269,7 +260,7 @@ product      GET    /products/:id(.:format)      products#show
 (When the prefix seems blank, it actually takes the one listed before)
 
 
-#### Form For: Actions
+#### Form With Model: Actions
 
 ```ruby
 # welcome_controller.rb

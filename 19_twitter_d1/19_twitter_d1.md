@@ -629,6 +629,9 @@ We include tweets from people we follow, and our own tweets, in our "following_t
 
 The Show User page shows the profile and tweets of a single User. We want to also include a way for the current_user to follow them. Since we're not taking any input from the user, we can just use a link (as opposed to a form)!
 
+We need to have a filter that will prevent the "Follow" button from displaying if we're looking at our own profile page.
+It's a pretty easy fix: Just add an If Statement!
+
 ```html
 <!-- show_user.html.erb -->
 <h1>@<%= @user.username %>'s Profile & Tweets</h1>
@@ -679,6 +682,13 @@ Yeah...that's all we need in there! Thing is, to reach this page, we need to fol
 <td><%= link_to tweet.user.username, show_user_path(id: tweet.user.id) %></td>
 ```
 
+One more place too:
+
+```html
+<!-- epicenter/feed.html.erb -->
+<p>@<%= link_to tweet.user.username, show_user_path(id: tweet.user.id) %></p>
+```
+
 In the controller, we'll add to the current_user's Following array, then, instead of continuing to the view page, let's go back to the page we were on (**redirect**).
 
 ```ruby
@@ -698,16 +708,6 @@ You could delete the associated view if you wanted (now_following.html.erb).
 
 We could test out this functionality now.
 
-We need to have a filter that will prevent the "Follow" button from displaying if we're looking at our own profile page.
-
-It's a pretty easy fix: Just add an If Statement!
-
-```html
-<!-- epicenter/show_user.html.erb -->
-<% if current_user != @user.id %>
-    <%= link_to "Follow", now_following_path(id: @user.id), class: "btn btn-primary" %>
-<% end %>
-```
 
 The "unfollow" action will be nearly identical to the "now_following" action: deleting from the "following" attribute (instead of pushing to).
 
@@ -722,4 +722,3 @@ end
 ```
 
 Once again, you could delete the associated view if you wanted (**unfollow.html.erb**).
-

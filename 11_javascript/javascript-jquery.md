@@ -604,7 +604,7 @@ Let's practice using jQuery in a new space...
  
 **Step 3:**
 In your <head>, create a link to an external stylesheet called style.css, then create that file in your folder. 
-Next create a JavaScript file called site.js. Link that script file and our HTML file together, and then embed the jQuery library into our file via a CDN. 
+Next create a JavaScript file called site.js. Link that script file and our HTML file together, and then embed the jQuery library into our file via a CDN. Grab current version from the jQuery CDN website.
 
 Note: JavaScript is typically included at the bottom of your HTML page.  The reason for this is we want our HTML to load before our JavaScript loads, because again, our JS is manipulating our HTML.
 
@@ -612,7 +612,7 @@ Note: JavaScript is typically included at the bottom of your HTML page.  The rea
 <!-- index.html -->
 <body>
     <!-- Lots of HTML. Oh yeah! -->   
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="crossorigin="anonymous"></script>
     <script src="site.js"></script>
 </body>
 ```
@@ -754,9 +754,9 @@ Combines slideUp/slideDown into one clickable
 ### jQuery UI
 jQuery UI is the official home to a lot of great pre-built plugins that save lazy people like you and me some time. There are two files we need to import to be able to use plugins from the UI:
 ```html
-<link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<link rel="stylesheet" href="CURRENT JQUERY-UI THEME CDN HERE">
 
-<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script src="CURRENT JQUERY-UI JS FILE HERE"></script>
 ```
 
 The link tag should go in your <head> underneath your CSS link. Your script should go just before your own script file

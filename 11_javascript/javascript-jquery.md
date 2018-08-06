@@ -155,10 +155,10 @@ There is no separate float data type in JS. What you know of as Integers and Flo
 ### Mathmatical Operations
 The following are basic  arithmetic operators :
  
-+  for addition
--  for subtraction
-*  for multiplication
-/  for division
+\+  for addition
+\-  for subtraction
+\*  for multiplication
+\/  for division
 
 Now let’s use a few of these in console :
 ```sh
@@ -243,7 +243,7 @@ Sometimes it's a little unpredictable, but it usually does what you want it to :
 In order for us to run JS programs in Chrome, we have to run it through an HTML file.
 
 	* Create a new folder called JavaScript.
-	* In that folder create a new file called conversion.html
+	* In that folder create a new file called js_code_along.html
 	* Build out your html structure.
 	* Open that file in Chrome. 
 	* Open up the console.
@@ -252,7 +252,7 @@ In your html code, add the script tag to your body:
 ```html
 <!-- conversion.html -->
 <body>
-   <script src="height_to_centimeters.js"></script>
+   <script src="code_along.js"></script>
 </body>
 ```
 
@@ -266,7 +266,7 @@ console.log(72 * 2.54);
 Once these changes have been made and you’ve saved your program, refresh your browser to see:
 
 ```sh
-182.88       height_to_centimeters.js:1
+182.88       code_along.js:1
 ```
 Congrats! You just wrote your first program!
 
@@ -280,10 +280,11 @@ Do not forget your semi-colons!
 
 
 ### Variables
-In JS, variables are memory locations which hold any data used within a given program. Think of it like a container. Let’s try a simple example. Navigate back to your height_to_centimeters.js  file to enter the following line of code in place of what we entered before:
+In JS, variables are memory locations which hold any data used within a given program. Think of it like a container. Let’s try a simple example. Navigate back to your code_along.js  file to enter the following line of code in place of what we entered before:
 
 ```javascript
-var a = 72;
+let a = 72;
+const pi = 3.14
 
 console.log(a * 2.54);
 ```
@@ -293,7 +294,7 @@ Refresh the page in Chrome, look at the Console, and you will see that it output
 In JS, we declare a variable using the var keyword. This creates a new instance of the variable. We can reassign the variable's value later, but when we do, we do not need to use the var key word again.
 
 ```javascript
-var x = "Aaron is dangerous";
+let x = "Aaron is dangerous";
 console.log(x);
 x = "Aaron is more dangerous than juggling chainsaws...on fire!";
 console.log(x);
@@ -301,7 +302,7 @@ console.log(x);
 
 JS is also Dynamically Typed, which means there is no limitation on what a data type variable can store.
 ```javascript
-var theAnswer = 42;
+let theAnswer = 42;
 console.log(theAnswer);
 theAnswer = "Abe Lincoln";
 console.log(theAnswer);
@@ -309,28 +310,24 @@ console.log(theAnswer);
 
 Also, variable names must start with a lowercase letter. It is convention to use camel case if it has more than one word. 
 
-Now, let’s create a new program called **imperial_to_metric_height.js**. Enter the following code into the program via Sublime:
+Comment out the existing code. Enter the following code into the program via Sublime:
 ```javascript
-var myName = 'John Smith';
+let myName = 'John Smith';
 
-var heightInches = 60;
+let heightInches = 60;
 
-var weightPounds = 120;
+let weightPounds = 120;
 
-var heightCentimeters = heightInches * 2.54;
+let heightCentimeters = heightInches * 2.54;
 
-var weightKilograms = weightPounds * 0.453592;
+let weightKilograms = weightPounds * 0.453592;
 
 console.log(myName + ' is ' + heightCentimeters + ' cm and ' + weightKilograms + ' kg.');
+console.log(`${myName} is ${heightCentimeters} and ${weightKilograms} kg.`);
+
 ```
 
 As you can see, we’ve used a bunch of variables to store different information such as name, height, and weight. We then went on to call these variables back in at later points in the program, making use of the automatic data conversion and concatenation.
-
-Link up your new JS file to your conversion.html, and refresh your browser!
-```html
-<!-- conversion.html -->
-<script src="imperial_to_metric_height.js"></script>
-```
 
 Once the program has been called in the Console, the output should be a sentence containing information about the name, height (centimeters), and weight (kilograms) of John Smith. Bear in mind that **console.log** is responsible for this, as it prints out to the console what was passed to it.
 
@@ -343,19 +340,19 @@ Problem is: that defeats the whole purpose of programming, right? Let's make our
 The best way for us to do this in Chrome is to use a function called **prompt()**. Prompt is a built in function that will pop up an alert box, and allow the user to enter data. The data is then stored in memory for our use in the program! With this we must also have a user prompt, to let the user know exactly what we are looking for. 
 
 ```javascript
-var deepThought = prompt("What is the answer to life, the universe, and everything?");
+let deepThought = prompt("What is the answer to life, the universe, and everything?");
 ```
 
 Navigating back to **height_to_centimeters.js** in Sublime, let’s make use of **prompt()**:
 ```javascript
-var a = prompt("How tall are you in inches?");
+let a = prompt("How tall are you in inches?");
 
 console.log(a * 2.54);
 ```
 
 Refresh your browser, and notice the pop up that now wants your info. Once you enter any value, it saves the value to the variable a and applies it to the rest of the program.
  
-**Classroom Challenge:** Edit height_to_centimeters.js in Sublime to have it output something like this in Console:
+**Classroom Challenge:** Edit your code in Sublime to have it output something like this in Console:
 ```sh
 > 60 inches = 152.4 centimeters
 ```
@@ -363,19 +360,19 @@ Refresh your browser, and notice the pop up that now wants your info. Once you e
 #### Classroom Challenge:
 *Instructor Note: Ask students for input*
 
-Edit your Imperial_to_metric_height.js to be fully interactive:
+Edit your Imperial_to_metric_height code to be fully interactive:
 ```javascript
-var myName = prompt("What is your name?");
+let myName = prompt("What is your name?");
 
-var heightInches = prompt("How tall are you in inches?");
+let heightInches = prompt("How tall are you in inches?");
 
-var weightPounds = prompt("How much do you weigh in pounds?");
+let weightPounds = prompt("How much do you weigh in pounds?");
 
-var heightCentimeters = heightInches * 2.54;
+let heightCentimeters = heightInches * 2.54;
 
-var weightKilograms = weightPounds * 0.453592;
+let weightKilograms = weightPounds * 0.453592;
 
-console.log(myName + ' is ' + heightCentimeters + ' cm and ' + weightKilograms + ' kg.');
+console.log(`${myName} is ${heightCentimeters} and ${weightKilograms} kg.`);
 ```
 
 
@@ -425,14 +422,14 @@ We use the function keyword, followed by the functions name and a pair of parent
 Unlike many other programming languages, we can pass variables into the function.
 
 ```javascript
-var myName = "Zack";
+let myName = "Zack";
 
-function greeting(name) {
-	console.log("Hello " + name);
+function greeting() {
+	console.log("Hello " + myName);
 }
 
 greeting = (name) => {
-	console.log(`Hello ${name}`)
+	console.log(`Hello ${myName}`)
 }
 
 greeting(myName);
@@ -443,7 +440,7 @@ This is not recommended however.
 What is recommended is passing data into the function via parameters/arguments.
 
 ```javascript
-var myName = "Zack";
+let myName = "Zack";
 
 function greeting(name) {
 	console.log("Hello " + name);
@@ -457,12 +454,12 @@ In the function name, we have an parameters inside of the parenthesis. This acts
 We can have as many arguments as you want. Though they must be entered in order.
 
 ```javascript
-var myName = prompt("What is your name?");
-var newLang = prompt("Do you know a language besides English?");
-var welcomeSaying = prompt("How do you greet others in that language?")
+let myName = prompt("What is your name?");
+let newLang = prompt("Do you know a language besides English?");
+let welcomeSaying = prompt("How do you greet others in that language?")
 
 function greeting(name, language, saying) {
-	console.log(saying + " " + name + ", nice to speak with someone who knows " + language);
+	console.log(`${saying} ${name}, nice to speak with someone who knows ${language}`);
 }
 
 greeting(myName, newLang, welcomeSaying);
@@ -471,7 +468,7 @@ greeting(myName, newLang, welcomeSaying);
 A function can also "return" a value.
 ```javascript
 function addItUp(x,y) {
-  var z = x + y;
+  let z = x + y;
   return z;
   // or simply:
   // return x + y;
@@ -480,29 +477,29 @@ function addItUp(x,y) {
 
 Note: We will have to call return here...it is not implicit like in Ruby. You can then assign the call of that method to a variable:
 ```javascript
-var num = addItUp(40,2);
+let num = addItUp(40,2);
 
 // you can also still call it
 // within console.log() or alert()
 ```
 
-Change your **imperial_to_metric_height.js** and use a function to help you there!
+Change your **imperial_to_metric_height code** and use a function to help you there!
 
 ```javascript
 function convertToCentimeters(number) {
     return number * 2.54
 }
 
-var myName = prompt("What is your name?");
+let myName = prompt("What is your name?");
 
-var heightInches = prompt("How tall are you in inches?");
+let heightInches = prompt("How tall are you in inches?");
 
-var weightPounds = prompt("How much do you weigh in pounds?");
+let weightPounds = prompt("How much do you weigh in pounds?");
 
 
-var weightKilograms = weightPounds * 0.453592;
+let weightKilograms = weightPounds * 0.453592;
 
-console.log(myName + ' is ' + convertToCentimeters(heightInches) + ' cm and ' + weightKilograms + ' kg.');
+console.log(`${myName} is ${convertToCentimeters(heightInches)} cm and ${weightKilograms} kg.`);
 ```
 
 Again the curly brackets open and close our function. You can also see that we named the function **convertInchesToCentimeters**, again using camel-casing. We included number as our argument. Finally, we called the function that we created back into the last few lines of the program passing in a variable we create earlier, heightInches. This variable is retrieving user input via the prompt function!
@@ -514,7 +511,7 @@ Again the curly brackets open and close our function. You can also see that we n
 Sometimes, we want JS to perform an action only if  a certain condition is met.
 
 ```javascript
-var num = 45;
+let num = 45;
 
 if ( num < 50 ) {
     console.log("Less than half.");
@@ -524,10 +521,12 @@ if ( num < 50 ) {
 In addition to if , you will also usually tell the program what else  to do:
 
 ```javascript
-var num = 45;
+let num = 45;
 
 if ( num < 50 ) {
     console.log("Less than half.");
+} else if {
+    console.log("More than half way there.");
 } else {
     console.log("That ain't half bad!");
 }

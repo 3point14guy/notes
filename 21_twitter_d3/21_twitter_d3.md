@@ -104,7 +104,7 @@ def create
 
   message_arr.each do |word|
     if word[0] == "#"
-      if Tag.pluck(:phrase).include?(word)
+      if Tag.pluck(:phrase).include?(word.downcase)
         #save that Tag as a variable (to use in TweetTag creation)
       else
         #create a new instance of Tag
@@ -128,12 +128,12 @@ def create
 
   message_arr.each do |word|
     if word[0] == "#"
-      if Tag.pluck(:phrase).include?(word)
+      if Tag.pluck(:phrase).include?(word.downcase)
       	# if the Tag already exists, look it up:
-        tag = Tag.find_by(phrase: word)
+        tag = Tag.find_by(phrase: word.downcase)
       else
       	# if the Tag doesn't exist, create it:
-        tag = Tag.create(phrase: word)
+        tag = Tag.create(phrase: word.downcase)
       end
     end
   end
@@ -152,10 +152,10 @@ def create
 
   message_arr.each do |word|
     if word[0] == "#"
-      if Tag.pluck(:phrase).include?(word)
-        tag = Tag.find_by(phrase: word)
+      if Tag.pluck(:phrase).include?(word.downcase)
+        tag = Tag.find_by(phrase: word.downcase)
       else
-        tag = Tag.create(phrase: word)
+        tag = Tag.create(phrase: word.downcase)
       end
       # Create the TweetTag
       tweet_tag = TweetTag.create(tweet_id: @tweet.id, tag_id: tag.id)
@@ -177,10 +177,10 @@ def create
   # .each with index iterator:
   message_arr.each_with_index do |word, index|
     if word[0] == "#"
-      if Tag.pluck(:phrase).include?(word)
-        tag = Tag.find_by(phrase: word)
+      if Tag.pluck(:phrase).include?(word.downcase)
+        tag = Tag.find_by(phrase: word.downcase)
       else
-        tag = Tag.create(phrase: word)
+        tag = Tag.create(phrase: word.downcase)
       end
       tweet_tag = TweetTag.create(tweet_id: @tweet.id, tag_id: tag.id)
       # at the appropriate index, we will
@@ -204,10 +204,10 @@ def create
 
   message_arr.each_with_index do |word, index|
     if word[0] == "#"
-      if Tag.pluck(:phrase).include?(word)
-        tag = Tag.find_by(phrase: word)
+      if Tag.pluck(:phrase).include?(word.downcase)
+        tag = Tag.find_by(phrase: word.downcase)
       else
-        tag = Tag.create(phrase: word)
+        tag = Tag.create(phrase: word.downcase)
       end
       tweet_tag = TweetTag.create(tweet_id: @tweet.id, tag_id: tag.id)
       message_arr[index] = "<a href='/tag_tweets?id=#{tag.id}'>#{word}</a>"
@@ -230,10 +230,10 @@ def create
 
   message_arr.each_with_index do |word, index|
     if word[0] == "#"
-      if Tag.pluck(:phrase).include?(word)
-        tag = Tag.find_by(phrase: word)
+      if Tag.pluck(:phrase).include?(word.downcase)
+        tag = Tag.find_by(phrase: word.downcase)
       else
-        tag = Tag.create(phrase: word)
+        tag = Tag.create(phrase: word.downcase)
       end
       tweet_tag = TweetTag.create(tweet_id: @tweet.id, tag_id: tag.id)
       message_arr[index] = "<a href='/tag_tweets?id=#{tag.id}'>#{word}</a>"
@@ -263,10 +263,10 @@ module TweetsHelper
 		message_arr = tweet.message.split
 		message_arr.each_with_index do |word, index|
 			if word[0] == "#"
-				if Tag.pluck(:phrase).include?(word)
-				  tag = Tag.find_by(phrase: word)
+				if Tag.pluck(:phrase).include?(word.downcase)
+				  tag = Tag.find_by(phrase: word.downcase)
 				else
-				  tag = Tag.create(phrase: word)
+				  tag = Tag.create(phrase: word.downcase)
 				end
 				tweet_tag = TweetTag.create(tweet_id: tweet.id, tag_id: tag.id)
 				message_arr[index] = "<a href='/tag_tweets?id=#{tag.id}'>#{word}</a>"

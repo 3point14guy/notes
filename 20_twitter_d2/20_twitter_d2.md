@@ -394,20 +394,21 @@ class Tweet < ApplicationRecord
       # it will return in an new Array the outcome
       # of our code within the curly brackets,
       # which in this case is true or false
-      index = arr.map { |x| x.include? "http://" }.index(true)
+      indx = arr.map { |x| x.include? "http://" }.index(true)
       # we then find which index has the value of "true"
       # this will be the index in "arr" that has the URL
 
-      self.link = arr[index]
+      self.link = arr[indx]
 
-      if arr[index].length > 23
-        arr[index] = "#{arr[index][0..20]}..."
+      if arr[indx].length > 23
+        arr[indx] = "#{arr[indx][0..20]}..."
       end
 
       self.message = arr.join(" ")
     end
   end
 end
+```
 
 Link Check Step-by-Step:
 	* We check to see if the message even includes a URL (starts w/ "http://")
@@ -468,7 +469,7 @@ Let's build a new method, still in the private area of the model:
 # tweet.rb
 	def apply_link
 	  arr = self.message.split
-	  index = arr.map { |x| x.include? "http://" }.index(true)
+	  indx = arr.map { |x| x.include? "http://" }.index(true)
 	  url = arr[index]
 
 	end
@@ -482,10 +483,10 @@ Next, we'll use that url and self.link to build an anchor tag and replace arr[in
 # tweet.rb
 def apply_link
 	arr = self.message.split
-	index = arr.map { |x| x.include? "http://" }.index(true)
-	url = arr[index]
+	indx = arr.map { |x| x.include? "http://" }.index(true)
+	url = arr[indx]
 
-	arr[index] = "<a href='#{self.link}' target='_blank'>#{url}</a>"
+	arr[indx] = "<a href='#{self.link}' target='_blank'>#{url}</a>"
 
 	self.message = arr.join(" ")
 
@@ -505,6 +506,18 @@ Remember to mark anyplace that the message is being displayed with .html_safe
 
 <!-- depending on which view you're on -->
 ```
+We now need to call this method somewhere.  We are going to use after_action this time, because we are going to make it so the link length does not deduct from the 250 character limit. The ```on: :create``` assures that these methods only happen when run a ```.create``` ActiveRecord call. (The ```create``` *method* has two ActiveRecord calls in it: ```.create``` and ```.save```.)
+
+```rb
+#tweet.rb
+
+ #before_validation :link_check, on: :create
+
+ #validates :message, presence: true
+ #validates :message, length: {maximum: 140, too_long: "A tweet is only 140 max. Everybody knows that!"}, on: :create
+
+ after_validation :apply_link, on: :create
+```
 
 Now it's time to try it out!
 
@@ -516,7 +529,7 @@ We can go back and add OR (||) conditions to places in the code where we're just
 
 Example:
 ```ruby
-index = arr.map { |x| x.include?("http://") || x.include?)"https://") }.index(true)
+indx = arr.map { |x| x.include?("http://") || x.include?)"https://") }.index(true)
 ```
 
 Also notice that you will likely have to start using *parentheses* with .include? if you're going to add an OR.

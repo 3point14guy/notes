@@ -27,9 +27,9 @@ And before you say, "Well, just change the color of the button to green. Green i
 
 Let's use some jQuery to get it done!
 
-Remember, Rails apps have a jQuery gem automatically set in the Gemfile - so there's no need to use the link we did when we were working in a purely Front End environment. (Some of our Bootstrap wouldn't be working if that wasn't the case.)
+Remember, we installed a jQuery gem - so there's no need to use the link we did when we were working in a purely Front End environment. (Some of our Bootstrap wouldn't be working if that wasn't the case.)
 
-First, change the button's resting state from "Unfollow"/"btn-danger" to "Following"/"btn-primary", and give it an ID for jQuery to identify it ("unfollow_btn").
+First, change the button's resting state from "Unfollow"/"btn-danger" to "Following"/"btn-primary", and give it an ID for jQuery to identify it ("unfollow-btn").
 
 ```html
 <!-- views/epicenter/show_user.html.erb -->
@@ -37,7 +37,7 @@ First, change the button's resting state from "Unfollow"/"btn-danger" to "Follow
   <% if current_user.following.include?(@user.id) %>
   	<!-- This line here: -->
     <%= link_to "Following", unfollow_path(id: @user.id), 
-        class: "btn btn-primary", id: "unfollow_btn" %>
+        class: "btn btn-primary", id: "unfollow-btn" %>
   <% else %>
     <% if current_user.id != @user.id %>
       <%= link_to "Follow", now_following_path(id: @user.id), 
@@ -50,7 +50,7 @@ First, change the button's resting state from "Unfollow"/"btn-danger" to "Follow
 Then we can add some jQuery to change the button's wording and color when we hover over it. This can be placed in application.js or epicenter.js (changed from .coffee).
 
 ```javascript
-$(document).ready(function(){
+$(document).on('turbolinks:load', function(){
   $('#unfollow_btn').hover(function(){
   	// when we hover over
     $(this).removeClass('btn-primary');
@@ -196,7 +196,7 @@ Next, it's on to the controller to create the actions. We need to make these act
 
     User.all.each do |user|
       if @user.following.include?(user.id)
-        @followed_users.push(user)
+        @users.push(user)
       end
     end
   end
@@ -207,7 +207,7 @@ Next, it's on to the controller to create the actions. We need to make these act
 
     User.all.each do |user|
       if user.following.include?(@user.id)
-        @followers.push(user)
+        @users.push(user)
       end
     end
   end
@@ -251,9 +251,11 @@ We can take all the code from all_users.html.erb and make it a new partial file.
             <h3><%= user.name %></h3>
             <p>@<%= user.username %></p>
           <% end %>
-          <p>
-            <%= user.bio %>
-          </p>
+ 	<p><%= user.bio %></p><br>
+          <div class="container">
+            <p><%= link_to "Followers", followers_path(id: user.id), class: "btn btn-primary" %>
+            <%= link_to "Following", following_path(id: user.id), class: "btn btn-primary"%></p>
+	  </div>
         </div>
       </div>
     </div>
@@ -291,20 +293,21 @@ How to say how long ago a Tweet was posted. There's a Rails method for that: tim
 
 ```html
 <!-- views/epicenter/feed.html.erb -->
-<% @following_tweets.each do |tweet| %>
-  <div class="well">
-    <p>
-      <%= image_tag tweet.user.avatar.url, class: "user-pic-nav" %> 
-      <%= link_to tweet.user.name, show_user_path(id: tweet.user_id) %> 
-      @<%= link_to tweet.user.username, show_user_path(id: tweet.user_id) %> 
+<% @following_tweets.sort { |x,y| y <=> x }.each do |tweet| %>
+  #<div class="well">
+    #<p>
+      <%#= image_tag tweet.user.avatar.url, class: "user-pic-nav" %> 
+
+      <%= link_to "@#{tweet.user.username}", show_user_path(id: tweet.user_id) %> 
       • <%= time_ago_in_words(tweet.created_at) %>
     </p>
-    <p><%= tweet.message.html_safe %></p>
-  </div>
-<% end %>
+    #<p><%= tweet.message.html_safe %></p>
+  #</div>
+#<% end %>
 ```
 
-For the bullet, you can either copy-n-paste one in, or use the ASCII code &#8226;
+For the bullet, you can either copy-n-paste one in, or use the ASCII code &#8226, or use the HTML character entity &code;
+We also are sorting the results to be most recent first with the help of the spaceship operator.
 
 Using time_ago_in_words() will give us a timestamps like this:
 	* less than a minute

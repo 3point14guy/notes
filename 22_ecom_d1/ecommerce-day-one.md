@@ -366,23 +366,25 @@ Copy the code from the "Live Demo" section, and paste it in the bottom of your *
 <!-- at the bottom of the page -->
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+<button type="button" class="btn btn-primary" >
   Launch demo modal
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
-        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
       </div>
       <div class="modal-body">
         ...
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
@@ -402,8 +404,8 @@ In addition, add "_<%= product.id %>" to the data-target, this will let us have 
 ```html
 <!-- all_items.html.erb -->
 <p>
-  <a href="#" data-toggle="modal" data-target="#myModal_<%= product.id %>">
-    <span class="glyphicon glyphicon-plus"></span> Quick Info
+  <a href="#" data-toggle="modal" data-target="#modal_<%= product.id %>">
+    <span class="fa fa-plus"></span> Quick Info
   </a>
 </p>
 ```
@@ -411,19 +413,23 @@ In addition, add "_<%= product.id %>" to the data-target, this will let us have 
 Next move the modal code into a space between the <% end %> tag and the last </div> to close above that:
 ```html
 <!-- all_items.html.erb -->
-<div class="modal fade" id="myModal_<%= product.id %>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+
+
+<div class="modal fade" id="modal_<%= item.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+	<h5 class="modal-title" id="exampleModalLabel"><%= link_to item.name, item %></h5>
+	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	  <span aria-hidden="true">&times;</span>
+	</button>
       </div>
       <div class="modal-body">
-        <% if product.image.url.nil? == false %>
-          <p><%= image_tag product.image.url, class: "storefront-pics" %></p>
+	<% if item.image.url.nil? == false %>
+          <p><%= image_tag item.image.url, width: "100%" %></p>
         <% end %>
-        <h3><%= link_to product.name, product %></h3>
-        <p><%= number_to_currency product.price %></p>
-        <p>made by <%= product.brand %></p>
+        <p><%= number_to_currency item.price %></p>
+        <p>made by <%= item.brand %></p>
       </div>
       <div class="modal-footer">
         <p>
@@ -433,8 +439,8 @@ Next move the modal code into a space between the <% end %> tag and the last </d
     </div>
   </div>
 </div>
-
-	* At the top of this code you'll find id="myModal"
+	 
+	* At the top of this code you'll find id="exampleModal"
 	* add "_<%= product.id %>" to that so it corresponds to the data-target in the anchor tag above.
 
 Refresh and your modal should be working for each product!

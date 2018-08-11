@@ -153,7 +153,7 @@ Then it's time to mock up a View page:
 </div>
 ```
 
-Pretty standard stuff there...except take a look at the second "row" <div>:
+Pretty standard stuff there...except take a look at the second "row" ```<div>```:
 
 ```html
 <div class="row">
@@ -238,7 +238,7 @@ We can take all the code from all_users.html.erb and make it a new partial file.
 <div class="row">
   <% @users.each do |user| %>
     <div class="col-md-3">
-      <div class="card style="width:auto;"">
+      <div class="card" style="width:auto;">
         <div class="row">
           <div class="col-md-6">
             <%= image_tag user.avatar.url, width: 50%>

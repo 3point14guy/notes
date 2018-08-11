@@ -125,6 +125,7 @@ gem 'cancancan'
 
 gem 'hirb'       # or 'pry-rails'; for rails c
 gem 'better_errors', group: :development
+gem 'binding_of_caller'
 ```
 
 ```sh

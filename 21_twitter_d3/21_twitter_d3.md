@@ -112,31 +112,40 @@ Then it's time to mock up a View page:
 <div class="row">
   <% @users.each do |user| %>
     <div class="col-md-3">
-      <div class="well user-list-wells">
+      <div class="card style="width:auto;"">
         <div class="row">
           <div class="col-md-6">
-            <%= image_tag user.avatar.url, class: "user-pic-md" %>
+            <%= image_tag user.avatar.url, width: 50%>
           </div>
           <div class="col-md-6">
             <p>
               <% if current_user.following.include?(user.id) %>
-                <%= link_to "Following", unfollow_path(id: user.id), class: "btn btn-primary", id: "unfollow_btn" %>
+                <%= link_to "Following", unfollow_path(id: user.id), class: "btn btn-light btn-sm", id: "unfollow-btn" %>
               <% else %>
                 <% if current_user.id != user.id %>
-                  <%= link_to "Follow", now_following_path(id: user.id), class: "btn btn-primary" %>
+                  <%= link_to "Follow", now_following_path(id: user.id), class: "btn btn-light btn-sm" %>
                 <% end %>
               <% end %>
             </p>
           </div>
         </div>
         <div class="row">
-          <%= link_to show_user_path(name: user.name) do %>
-            <h3><%= user.name %></h3>
+          <div class="col">
+          <%= link_to show_user_path(id: user.id) do %>
+            <h5><%= user.name %></h5>
             <p>@<%= user.username %></p>
           <% end %>
-          <p>
-            <%= user.bio %>
-          </p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <p><%= user.bio %></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+         <p><%= link_to "Followers", followers_path(id: user.id), class: "btn btn-light btn-sm" %>
+          <%= link_to "Following", following_path(id: user.id), class: "btn btn-light btn-sm"%></p></div>
         </div>
       </div>
     </div>
@@ -229,33 +238,40 @@ We can take all the code from all_users.html.erb and make it a new partial file.
 <div class="row">
   <% @users.each do |user| %>
     <div class="col-md-3">
-      <div class="well user-list-wells">
+      <div class="card style="width:auto;"">
         <div class="row">
           <div class="col-md-6">
-            <%= image_tag user.avatar.url, class: "user-pic-md" %>
+            <%= image_tag user.avatar.url, width: 50%>
           </div>
           <div class="col-md-6">
             <p>
               <% if current_user.following.include?(user.id) %>
-                <%= link_to "Following", unfollow_path(id: user.id), class: "btn btn-primary", id: "unfollow_btn" %>
+                <%= link_to "Following", unfollow_path(id: user.id), class: "btn btn-light btn-sm", id: "unfollow-btn" %>
               <% else %>
                 <% if current_user.id != user.id %>
-                  <%= link_to "Follow", now_following_path(id: user.id), class: "btn btn-primary" %>
+                  <%= link_to "Follow", now_following_path(id: user.id), class: "btn btn-light btn-sm" %>
                 <% end %>
               <% end %>
             </p>
           </div>
         </div>
         <div class="row">
-          <%= link_to show_user_path(name: user.name) do %>
-            <h3><%= user.name %></h3>
+          <div class="col">
+          <%= link_to show_user_path(id: user.id) do %>
+            <h5><%= user.name %></h5>
             <p>@<%= user.username %></p>
           <% end %>
- 	<p><%= user.bio %></p><br>
-          <div class="container">
-            <p><%= link_to "Followers", followers_path(id: user.id), class: "btn btn-primary" %>
-            <%= link_to "Following", following_path(id: user.id), class: "btn btn-primary"%></p>
-	  </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <p><%= user.bio %></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+         <p><%= link_to "Followers", followers_path(id: user.id), class: "btn btn-light btn-sm" %>
+          <%= link_to "Following", following_path(id: user.id), class: "btn btn-light btn-sm"%></p></div>
         </div>
       </div>
     </div>

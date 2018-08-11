@@ -327,29 +327,31 @@ Make sure to update your Storefront controller so that you can display the all i
 <p>Give us your money!</p>
 
 <div class="row">
-  <% @products.each do |product| %>
-    <div class="col-md-4">
-      <div class="well center-it">
-        <% if product.image.url.nil? == false %>
-          <p><%= image_tag product.image.url, class: "storefront-pics" %></p>
-        <% end %>
-        <h3><%= link_to product.name, product %></h3>
-        <p><%= number_to_currency product.price %></p>
-        <p>
-          <a href="#">
-            <span class="glyphicon glyphicon-plus"></span> Quick Info
-          </a>
-        </p>
-      </div>
-    </div>
-  <% end %>
+	<% @products.each do |item| %>
+		<div class="col-md-4">
+			<div class="card">
+				<div class="card-img-top">
+					<% if item.image.url.nil? == false %>
+						<p><%= image_tag item.image.url, width: "100%" %></p>
+					<% end %>
+				</div>
+				<div class="card-body">
+					<h4><%= link_to item.name, item, class: "card-title" %></h4>
+					<p><%= number_to_currency item.price %></p>
+					<p>
+						<a href="#"><span class="fa fa-plus"></span> Quick Info</a>
+					</p>
+				</div>
+			</div>
+		</div>
+	<% end %>
 </div>
 ```
 
 	* The "+ quick info" link will bring up a modal with product highlights. 
 	* The Rating system is commented out until we set that up for the Users.
 
-Run the server and test it out. You may need to override height on the "well" class to get everything looking good.
+Run the server and test it out. You may need to override height on the "card" class to get everything looking good.
 
 
 ### Bootstrap Modal

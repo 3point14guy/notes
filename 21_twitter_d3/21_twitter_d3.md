@@ -33,18 +33,19 @@ First, change the button's resting state from "Unfollow"/"btn-danger" to "Follow
 
 ```html
 <!-- views/epicenter/show_user.html.erb -->
-<p>
-  <% if current_user.following.include?(@user.id) %>
+<!-- <p>
+  <% if current_user.following.include?(@user.id) %> -->
   	<!-- This line here: -->
     <%= link_to "Following", unfollow_path(id: @user.id), 
         class: "btn btn-primary", id: "unfollow-btn" %>
   <% else %>
-    <% if current_user.id != @user.id %>
+	  
+    <!-- <% if current_user.id != @user.id %>
       <%= link_to "Follow", now_following_path(id: @user.id), 
           class: "btn btn-primary" %>
     <% end %>
   <% end %>
-</p>
+</p> -->
 ```
 
 Then we can add some jQuery to change the button's wording and color when we hover over it. This can be placed in application.js or epicenter.js (changed from .coffee).
@@ -310,16 +311,16 @@ How to say how long ago a Tweet was posted. There's a Rails method for that: tim
 ```html
 <!-- views/epicenter/feed.html.erb -->
 <% @following_tweets.sort { |x,y| y <=> x }.each do |tweet| %>
-  #<div class="well">
-    #<p>
-      <%#= image_tag tweet.user.avatar.url, class: "user-pic-nav" %> 
+  <!-- <div class="well">
+    <p>
+      <%= image_tag tweet.user.avatar.url, class: "user-pic-nav" %> -->
 
       <%= link_to "@#{tweet.user.username}", show_user_path(id: tweet.user_id) %> 
       • <%= time_ago_in_words(tweet.created_at) %>
     </p>
-    #<p><%= tweet.message.html_safe %></p>
-  #</div>
-#<% end %>
+    <!-- <p><%= tweet.message.html_safe %></p>
+  </div>
+<% end %> -->
 ```
 
 For the bullet, you can either copy-n-paste one in, or use the ASCII code &#8226, or use the HTML character entity &code;

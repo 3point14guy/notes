@@ -260,7 +260,8 @@ In the Product form partial, we'll...
 </div>
 				   
 <%= button_to "Submit", action: :create, controller: :products, class: "btn btn-light" %>
-										      
+<!-- or -->
+<%= button_to "Submit", product, method: :post, class: "btn btn-light" %>										      
 <!-- <% end %> -->
 ```
 

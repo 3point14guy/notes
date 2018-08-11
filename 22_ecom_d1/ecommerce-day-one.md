@@ -115,7 +115,8 @@ We've let scaffolding do most of the work for us here, but it's time for us to t
 ```ruby
 # Gemfile
 
-gem 'bootstrap-sass'
+gem 'jquery-rails'
+gem 'bootstrap', '~>4.1.3'
 gem 'font-awesome-rails'
 
 gem 'devise'
@@ -123,7 +124,6 @@ gem 'paperclip'  # or gem 'carrierwave'
 gem 'cancancan'
 
 gem 'hirb'       # or 'pry-rails'; for rails c
-
 gem 'better_errors', group: :development
 ```
 
@@ -155,8 +155,7 @@ This authorization gem allows us to give certain abilities to particular Users.
 
 ```ruby
 gem 'hirb'  # or 'pry-rails'; for rails c
-```
-Reformats the look of rails console; "hirb" requires you to enter Hirb.enable each time you enter the console
+```Reformats the look of rails console; "hirb" requires you to enter Hirb.enable each time you enter the console
 
 
 ```ruby

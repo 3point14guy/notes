@@ -244,18 +244,24 @@ In the Product form partial, we'll...
 * Remove the div for taking a rating (we'll do that later)
 * Put in a field for taking an uploaded image
 * Tweak the field that takes the category_id so that it's a drop-down menu to select a category
-* Change the "fields" to "form-groups" (Bootstrap)
+* Change the "fields" to "form-groups" and add ```class: "form-control"```(Bootstrap)
+* The submit button is still ugly...need someone to take charge of that...
 
 ```html
 <!-- views/products/_form.html.erb -->
 <div class="form-group">
-  <%= f.select :category_id, @categories.collect { |c| [ c.name, c.id ]}, {include_blank: "Please select a category" } %>
+  <%= f.select :category_id, @categories.collect { |c| [ c.name, c.id ]}, {include_blank: "Please select a category" }, class: "form-control" %>
 </div>
 
-<div class="form-group">
-  <strong>Upload Product Image: </strong>
-  <%= f.file_field :image %>
+<strong>Upload Product Image: </strong>
+<div class="custom-file">
+  <%= form.label :image, class: "custom-file-label" %>
+  <%= f.file_field :image, class: "custom-file-input %>
 </div>
+				   
+<%= button_to "Submit", action: :create, controller: :products, class: "btn btn-light" %>
+										      
+<!-- <% end %> -->
 ```
 
 To power that drop-down menu of Categories, we'll need to add two lines of code to our Products controller

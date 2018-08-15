@@ -406,13 +406,13 @@ Let's build the form that will kick-off the path to purchasing. We'll add this f
 <!-- views/storefront/_product_loop.html.erb -->
 <div class="modal-footer">
   <!-- Delete those "Save Changes" and "Close" buttons that were here -->
-  <p>
-  <%= form_tag add_to_cart_path do %>
-    <%= hidden_field_tag :product_id, product.id %>
-    <%= number_field_tag :quantity, nil, placeholder: "How many?" %>
-    <%= submit_tag "Add to Cart", class: "btn btn-primary" %>
-  <% end %>
-  </p>
+	<p>
+		<%= form_with(url: add_to_cart_path) do |form| %>
+			<%=	form.hidden_field :product_id, value: item.id %>
+			<%= form.number_field :quantity, placeholder: "How many?" %>
+			<%= form.submit "Add to Cart", class: "btn btn-light" %>
+		<% end %>
+	</p>
 </div>
 ```
 
@@ -420,7 +420,7 @@ This will take us to the "Add_to_Cart" page, but not really... Let's see what we
 
 
 ### Line Items
-In the **cart_controller.rb**, within the **add_to_cart** action, we will us the data we passed from the show page to create a new LineItem.
+In the **cart_controller.rb**, within the **add_to_cart** action, we will use the data we passed from the show page to create a new LineItem.
 
 ```ruby
 # cart_controller.rb
@@ -439,19 +439,26 @@ The **view_order.html.erb** page will be the place to review the Line Items you'
 
 ```html
 <!-- views/cart/view_order.html.erb -->
-<h2>My Cart</h2>
+<h1> Your Cart</h1>
 
 <div>
-  <% @line_items.each do |line_item| %>
-    <li><%= line_item.product.name %></li>
-    <li><%= number_to_currency line_item.product.price %></li>
-    <li>Qty: <%= line_item.quantity %></li>
-    <li>Subtotal: <%= number_to_currency line_item.line_item_total %></li>
-  <% end %>
+	<% if @line_items != nil %>
+		<ul class="cart">
+		<% @line_items.each do |line_item| %>
+			<li><%= line_item.product.name %></li>
+			<li><%= number_to_currency line_item.product.price %></li>
+			<li>Qty: <%= line_item.quantity %></li>
+			<li>Subtotal: <%= number_to_currency line_item.line_item_total %></li>
+		<% end %>
+		</ul>
+	<% else %>
+		<p>Your cart is empty.  Please add lots of items to your cart!</p>
+		<p><%= link_to "Shop", root_path, class: "btn btn-light" %></p>
+	<% end %>
 </div>
 
 <div>
-  <%= link_to "Proceed to Checkout?", checkout_path, class: "btn btn-success" %>
+	<%= link_to "Proceed to Checkout", checkout_path, class: "btn btn-light" %>
 </div>
 ```
 

@@ -563,22 +563,31 @@ But first... let's clean up our navbar so we can logout and create new users, an
 
 ```html
 <!-- within layouts/application.html.erb -->
-<ul class="nav navbar-nav navbar-right">
-  <li><%= link_to "View Cart", view_order_path %></li> <!-- already here -->
-  <!-- add this code: -->
-  <% if user_signed_in? %>
-    <li class="dropdown">
-      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-      Hello, <%= current_user.email %> <span class="caret"></span></a>
-      <ul class="dropdown-menu">
-        <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
-        <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
-      </ul>
-    </li>
-  <% else %>
-    <li><%= link_to "Sign In", new_user_session_path %></li>
-  <% end %>
-</ul>
+	<ul class="navbar-nav ml-auto">
+          <% if user_signed_in? %>
+            <li class="nav-item dropdown"> 
+              <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                @<%= current_user.email %>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <%= link_to "Edit Profile", edit_user_registration_path, class: "dropdown-item" %>
+                <div class="dropdown-divider"></div> 
+                <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+              </div>
+            </li>
+          </ul>
+          <% else %>
+          <ul class="navbar-nav">
+            <li class="nav-item"><%= link_to "Sign In", new_user_session_path, class: "nav-link" %>
+            </li>
+          </ul>
+          <% end %>          
+          <ul class="navbar-nav">
+            <li class="cart"><%= link_to "", view_order_path, class: "fa fa-shopping-cart fa-2x" %>
+            </li>
+          </ul>
+        </div>
+    </nav>
 ```
 
 Running this in our terminal will create an ability model, with a few examples in it:
@@ -599,7 +608,7 @@ before_action :configure_permitted_parameters, if: :devise_controller?
 
 def configure_permitted_parameters
    devise_parameter_sanitizer.permit(:sign_up, keys: [:role])
-   devise_parameter_sanitizer.permit(:account_update, keys[:role])
+   devise_parameter_sanitizer.permit(:account_update, keys: [:role])
 end
 ```
 

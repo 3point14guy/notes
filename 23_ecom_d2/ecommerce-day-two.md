@@ -44,7 +44,7 @@ These are really more than just two links - there will be a link per Category, a
 First up, Links per Category:
 ```html
 <!-- views/layouts/application.html.erb -->
-<!--  <div class="collapse navbar-collapse" id="navbarSupportedContent"> -->
+      <div class="collapse navbar-collapse order-1" id="navbarSupportedContent">
         <ul class="navbar-nav">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -52,12 +52,15 @@ First up, Links per Category:
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <% @categories.each do |category| %>
-                  <%= link_to category.name, categorical_path(category_id: category.id), class: "dropdown-item" %>
+                <%= link_to category.name, categorical_path(category_id: category.id), class: "dropdown-item" %>
                 <div class="dropdown-divider"></div>              
               <% end %>
+              <%= link_to 'All', root_path, class: "dropdown-item" %>
             </div>
           </li>
         </ul>
+        <!-- brands will go here -->
+      </div>
 ```
 
 If we want an instance variable to be usable anywhere on your app, you need to define it in the... **ApplicationController**!
@@ -169,15 +172,20 @@ Now we can loop through @brands in the Navbar:
 ```html
 <!-- application.html.erb -->
 <!-- Brands -->
-<li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Brands<span class="caret"></span></a>
-  <ul class="dropdown-menu">
-    <% @brands.each do |brand| %>
-      <li><%= link_to brand, branding_path(brand: brand) %></li>
-    <% end %>
-      <li><%= link_to 'All', root_path %></li>
-  </ul>
-</li> 
+        <ul class="navbar-nav">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Shop by Brand
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <% @brands.each do |brand| %>
+                <%= link_to brand, branding_path(brand: brand), class: "dropdown-item" %>
+                <div class="dropdown-divider"></div>              
+              <% end %>
+              <%= link_to 'All', root_path, class: "dropdown-item" %>
+            </div>
+          </li>
+        </ul>
 <!-- End Brands -->
 ```
 
@@ -461,10 +469,11 @@ The next step is to explore what happens when we click the "Proceed to Checkout?
 We also need a way to get to this page! Let's add a link in our Navbar:
 ```html
 <!-- within layouts/application.html.erb -->
-
-<ul class="nav navbar-nav navbar-right">
-  <li><%= link_to "View Cart", view_order_path %></li>
-<!-- This will place the link on the right-hand side of the navbar. -->
+<!-- after our sign-in link -->
+  <ul class="navbar-nav">
+    <li class="cart"><%= link_to "", view_order_path, class: "fa fa-shopping-cart fa-2x" %></li>
+  </ul>
+<!-- Make sure the link is on the right-hand side of the navbar. -->
 ```
 
 

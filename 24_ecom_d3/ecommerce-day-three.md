@@ -191,6 +191,8 @@ For the views:
 <h2>Thanks, you paid <strong>$5.00</strong>!</h2>
 ```
 
+### Restart your Server
+
 And now it's time to test! Run your server and try it out.
 For testing purposes, Stripe suggests using the credit card # 4242 4242 4242 4242, with any expiration date, and any three-digit code for the CVC.
 Once you click the blue "Pay $5.00" button, it will turn green with a check-mark, and then the Create page will load.

@@ -44,7 +44,7 @@ These are really more than just two links - there will be a link per Category, a
 First up, Links per Category:
 ```html
 <!-- views/layouts/application.html.erb -->
-      <div class="collapse navbar-collapse order-1" id="navbarSupportedContent">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav">
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -101,47 +101,47 @@ For the **Items by Category** view, it's basically the same as the all_items pag
 <h1>All of our <%= @category.name %></h1>
 
 <div class="row">
-	<% @products.each do |item| %>
-		<div class="col-md-4">
-			<div class="card">
-				<div class="card-img-top">
-					<% if item.image.url.nil? == false %>
-						<p><%= image_tag item.image.url, width: "100%" %></p>
-					<% end %>
-				</div>
-				<div class="card-body">
-					<h4><%= link_to item.name, item, class: "card-title" %></h4>
-					<p><%= number_to_currency item.price %></p>
-					<p>
-						<a href="#" data-toggle="modal" data-target="#modal_<%= item.id %>"><span class="fa fa-plus"></span> Quick Info</a>
-					</p>
-				</div>
-			</div>
-		</div>
-		<div class="modal fade" id="modal_<%= item.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		  <div class="modal-dialog" role="document">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <h5 class="modal-title" id="exampleModalLabel"><%= link_to item.name, item %></h5>
-		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-		          <span aria-hidden="true">&times;</span>
-		        </button>
-		      </div>
-		      <div class="modal-body">
-			      <% if item.image.url.nil? == false %>
-							<p><%= image_tag item.image.url, width: "100%" %></p>
-						<% end %>
-						<p><%= number_to_currency item.price %></p>						
-						<p><%= item.description %></p>						
-						<p><%= item.brand %></p>						
-		      </div>
-		      <div class="modal-footer">
-		      	<p></p>
-		      </div>
-		    </div>
-		  </div>
-		</div>
+  <% @products.each do |item| %>
+    <div class="col-md-4">
+      <div class="card">
+	<div class="card-img-top">
+	  <% if item.image.url.nil? == false %>
+	    <p><%= image_tag item.image.url, width: "100%" %></p>
+	  <% end %>
+	</div>
+	<div class="card-body">
+	  <h4><%= link_to item.name, item, class: "card-title" %></h4>
+	  <p><%= number_to_currency item.price %></p>
+	  <p>
+	    <a href="#" data-toggle="modal" data-target="#modal_<%= item.id %>"><span class="fa fa-plus"></span> Quick Info</a>
+	  </p>
+	</div>
+      </div>
+    </div>
+  <div class="modal fade" id="modal_<%= item.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+	  <h5 class="modal-title" id="exampleModalLabel"><%= link_to item.name, item %></h5>
+	  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	    <span aria-hidden="true">&times;</span>
+	  </button>
+        </div>
+      <div class="modal-body">
+        <% if item.image.url.nil? == false %>
+	  <p><%= image_tag item.image.url, width: "100%" %></p>
 	<% end %>
+	<p><%= number_to_currency item.price %></p>						
+	<p><%= item.description %></p>						
+	<p><%= item.brand %></p>						
+      </div>
+      <div class="modal-footer">
+	<p></p>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
 </div>
 ```
 
@@ -206,47 +206,47 @@ Once again, the view is the same as the All Items page, but with a different hea
 <h1>Here are our <%= @brand %> products</h1>
 
 <div class="row">
-	<% @products.each do |item| %>
-		<div class="col-md-4">
-			<div class="card">
-				<div class="card-img-top">
-					<% if item.image.url.nil? == false %>
-						<p><%= image_tag item.image.url, width: "100%" %></p>
-					<% end %>
-				</div>
-				<div class="card-body">
-					<h4><%= link_to item.name, item, class: "card-title" %></h4>
-					<p><%= number_to_currency item.price %></p>
-					<p>
-						<a href="#" data-toggle="modal" data-target="#modal_<%= item.id %>"><span class="fa fa-plus"></span> Quick Info</a>
-					</p>
-				</div>
-			</div>
-		</div>
-		<div class="modal fade" id="modal_<%= item.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		  <div class="modal-dialog" role="document">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <h5 class="modal-title" id="exampleModalLabel"><%= link_to item.name, item %></h5>
-		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-		          <span aria-hidden="true">&times;</span>
-		        </button>
-		      </div>
-		      <div class="modal-body">
-			      <% if item.image.url.nil? == false %>
-							<p><%= image_tag item.image.url, width: "100%" %></p>
-						<% end %>
-						<p><%= number_to_currency item.price %></p>						
-						<p><%= item.description %></p>						
-						<p><%= item.brand %></p>						
-		      </div>
-		      <div class="modal-footer">
-		      	<p></p>
-		      </div>
-		    </div>
-		  </div>
-		</div>
+  <% @products.each do |item| %>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-img-top">
+          <% if item.image.url.nil? == false %>
+            <p><%= image_tag item.image.url, width: "100%" %></p>
+          <% end %>
+        </div>
+        <div class="card-body">
+          <h4><%= link_to item.name, item, class: "card-title" %></h4>
+          <p><%= number_to_currency item.price %></p>
+          <p>
+            <a href="#" data-toggle="modal" data-target="#modal_<%= item.id %>"><span class="fa fa-plus"></span> Quick Info</a>
+          </p>
+        </div>
+      </div>
+    </div>
+<div class="modal fade" id="modal_<%= item.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+	<h5 class="modal-title" id="exampleModalLabel"><%= link_to item.name, item %></h5>
+	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	  <span aria-hidden="true">&times;</span>
+	</button>
+      </div>
+      <div class="modal-body">
+        <% if item.image.url.nil? == false %>
+	  <p><%= image_tag item.image.url, width: "100%" %></p>
 	<% end %>
+	<p><%= number_to_currency item.price %></p>						
+	<p><%= item.description %></p>						
+	<p><%= item.brand %></p>						
+      </div>
+      <div class="modal-footer">
+	<p></p>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
 </div>
 ```
 
@@ -279,30 +279,30 @@ Let's create a partial in the Storefront views, called "Product Loop", and copy-
 				</div>
 			</div>
 		</div>
-		<div class="modal fade" id="modal_<%= item.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-		  <div class="modal-dialog" role="document">
-		    <div class="modal-content">
-		      <div class="modal-header">
-		        <h5 class="modal-title" id="exampleModalLabel"><%= link_to item.name, item %></h5>
-		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-		          <span aria-hidden="true">&times;</span>
-		        </button>
-		      </div>
-		      <div class="modal-body">
-			      <% if item.image.url.nil? == false %>
-							<p><%= image_tag item.image.url, width: "100%" %></p>
-						<% end %>
-						<p><%= number_to_currency item.price %></p>						
-						<p><%= item.description %></p>						
-						<p><%= item.brand %></p>						
-		      </div>
-		      <div class="modal-footer">
-		      	<p></p>
-		      </div>
-		    </div>
-		  </div>
+	<div class="modal fade" id="modal_<%= item.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel"><%= link_to item.name, item %></h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<% if item.image.url.nil? == false %>
+						<p><%= image_tag item.image.url, width: "100%" %></p>
+					<% end %>
+					<p><%= number_to_currency item.price %></p>						
+					<p><%= item.description %></p>						
+					<p><%= item.brand %></p>						
+				</div>
+				<div class="modal-footer">
+					<p></p>
+				</div>
+			</div>
 		</div>
-	<% end %>
+	</div>
+<% end %>
 </div>
 ```
 

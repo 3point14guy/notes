@@ -1,10 +1,10 @@
-# Weather Underground API
+# Open Weather Map API
 ## Gather Weather Data
 
-This will likely be the class' first foray into APIs (besides Stripe, which works differently). We will use Weather Underground's free API to gather weather data on cities across the globe.
+This will likely be the class' first foray into APIs (besides Stripe, which works differently). We will use Open Weather Map's free API to gather weather data on cities across the globe.
 
 Useful Resources:
-[Wunderground API](https://www.wunderground.com/weather/api)
+[Open Weather Map](https://home.openweathermap.org/)
 [Figaro Gem](https://github.com/laserlemon/figaro)
 [JSON Official Site](http://www.json.org/)
 [W3Schools JSON Intro](https://www.w3schools.com/js/js_json_intro.asp)
@@ -17,7 +17,7 @@ Useful Resources:
 * Client Side vs. Server Side
 * JSON
 * API Keys
-3. Wunderground: Sign Up & Keys
+3. Open Weather Map: Sign Up & Keys
 4. Weather App
 * Controller
 * Gems
@@ -70,10 +70,10 @@ More often than not, an API provider will require you to register with them and 
 There are tons of APIs out there. Some grant access for free, some for a fee.
 
 
-### Wunderground: Sign Up & Keys
+### Open Weather Map: Sign Up & Keys
 Let's get you an API key!
-Visit: [wunderground.com/weather/api](https://wunderground.com/weather/api)
-Choose the Stratus Plan under Pricing & Developer Payment ($0), then hit "Purchase Key"...
+Visit: [openweathermap.org/price](https://openweathermap.org/price)
+Choose the Free Plan and then select "Get API Key and Start"...
 You'll be taken to a page and asked to fill in several fields,
 then taken to a page where you'll find your API key in the spaces that have been blacked out (in image in slide deck).
 
@@ -97,7 +97,7 @@ $ rails g controller Welcome text index
 We're going to use a trio of gems for this app:
 ```ruby
 # Gemfile
-gem 'bootstrap-sass'
+gem 'bootstrap', '~>4.1.3'
 gem 'httparty'
 gem 'figaro'
 gem 'jquery-rails' *** (only required if running rails 5.1 or newer)
@@ -105,7 +105,7 @@ gem 'jquery-rails' *** (only required if running rails 5.1 or newer)
 
 **httparty** will help use parse through the data sent by the API
 **figaro** will create a safe place to store our API key
-And **bootstrap-sass**... well, you know what's that's for
+And **bootstrap**... well, you know what's that's for
 
 In addition to running "bundle install", you'll also need to run "figaro install", which will produce the file "application.yml" in your /config folder.
 Store your API key in here:
@@ -122,7 +122,7 @@ Store your API key in here:
 #   stripe_api_key: sk_live_EeHnL644i6zo4Iyq4v1KdV9H
 #   stripe_publishable_key: pk_live_9lcthxpSIHbGwmdO941O1XVU
 
-wunderground_api_key: yourkeyhere
+openweather_api_key: yourkeyhere
 ```
 
 Why are we using this gem and creating this new file just for one line of code?
@@ -130,11 +130,11 @@ We want to keep our API keys secret. **application.yml** appears in your .gitign
 
 
 ### API Documentation
-Before you make an API call, it's a good idea to see the data you'll be fetching, and how it's structured. So head over to the [Wunderground Docs](wunderground.com/weather/api/d/docs) and click on the "Show Response" link.
+Before you make an API call, it's a good idea to see the data you'll be fetching, and how it's structured. So head over to the [openweathermap.org/current](https://openweathermap.org/current) and Select 'JSON' under the 'Parameters of API respond' from the right menu.
 
 (visuals within slide deck)
 
-This is the data that would be sent if you made an API call for San Francisco, CA. Keep scrolling down to see all the data!
+This is the data that would be sent if you made an API call for Cairnes, Australia. Keep scrolling down to see all the data!
 
 
 ### Test Action/View
@@ -149,20 +149,18 @@ class WelcomeController < ApplicationController
 	end
  
   def test
-	  response = HTTParty.get("http://api.wunderground.com/api/#{ENV['wunderground_api_key']}/geolookup/conditions/q/AZ/Phoenix.json")
-	  
-	  @location = response['location']['city']
-	  @temp_f = response['current_observation']['temp_f']
-	  @temp_c = response['current_observation']['temp_c']
-	  @weather_icon = response['current_observation']['icon_url']
-	  @weather_words = response['current_observation']['weather'] 
-	  @forecast_link = response['current_observation']['forecast_url']
-	  @real_feel = response['current_observation']['feelslike_f']
+    response = HTTParty.get("http://api.openweathermap.org/data/2.5/weather?zip=28204&units=imperial&appid=#{ENV['openweather_api_key']}")
+    @location = response['name']
+    @temp = response['main']['temp']
+    @weather_icon = response['weather'][0]['icon']
+    @weather_words = response['weather'][0]['description']
+    @cloudiness = response['clouds']['all']
+    @windiness = response['wind']['speed']
   end
 end
 ```
 
-We pull a URL from the docs, then add our location, and you'll want to use the variable you set for your API key in application.yml. Note that in the above code, there is a line break that needs to be deleted (between "api/" and "#{ENV[...")
+We pull a URL from the docs, then add our location, and you'll want to use the variable you set for your API key in application.yml. 
 
 Note the two different ways we could save the data in this slide (@results Hash), and the previous (all separate instance variables).
 
@@ -174,18 +172,16 @@ class WelcomeController < ApplicationController
   end
  
   def test
-    response = HTTParty.get("http://api.wunderground.com/api/
-    #{ENV['wunderground_api_key']}/geolookup/conditions/q/TX/Dallas.json")
+    response = HTTParty.get("http://api.openweathermap.org/data/2.5/weather?zip=
+      75001&units=imperial&appid=#{ENV['openweather_api_key']}")
   
     @results = {}
-    @results[:location] = response['location']['city']
-    @results[:temp_f] = response['current_observation']['temp_f']
-    @results[:temp_c] = response['current_observation']['temp_c']
-    @results[:weather_icon] = response['current_observation']['icon_url']
-    @results[:weather_words] = response['current_observation']['weather'] 
-    @results[:forecast_link] = response['current_observation']['forecast_url']
-    @results[:real_feel] = response['current_observation']['feelslike_f']
-  end
+    @results[:location] = response['name']
+    @results[:temp] = response['main']['temp']
+    @results[:weather_icon] = response['weather'][0]['icon']
+    @results[:weather_words] = response['weather'][0]['description'] 
+    @results[:windiness] = response['wind']['speed']
+    @results[:cloudiness] = response['clouds']['all']
 end
 ```
 
@@ -193,31 +189,40 @@ So you'll need to bring that in, and then we can build test.html.erb (we'll base
 
 ```html
 <!-- views/welcome/test.html.erb -->
-<div class = "row">
-  <div class = "col-md-6 col-md-offset-3">
-    <div class = "well">
-      <h1>Welcome To <%= @location %>!</h1>
-      <div class = "row">
-        <div class = "col-md-7">
-          <p><em>What's the weather like?</em></p>
-          <p>
-              Temperature is: <%= @temp_f %>° / <%= @temp_c %>° C 
-          </p>
-          <p>
-              Feels like: <%= @real_feel %>° F
-          </p>
-        </div>    
-        <div class = "col-md-5">
+<div class="row">
+  <div class="col-md-6">
+    <div class="card">
+      <div class="card-header bg-success">
+        <h1 class="card-title">Forecast for
+          <%= @location %></h1>
+        </div>
+      <div class="row">
+        <div class="card-body">
+          <div class="col-md-7">
             <p>
-            <%= @weather_words%> <%= image_tag @weather_icon%> 
+              Temperature is:
+              <%= @temp %>°F
             </p>
             <p>
-            <%=link_to "Full Forecast", @forecast_link, target: "_blank" %>
+              Cloud Cover:
+              <%= @cloudiness %>%
             </p>
+            <p>
+              Wind:
+              <%= @windiness %>
+              mph
+            </p>
+          </div>
+          <div class="col-md-5">
+            <p>
+              <%= @weather_words%>
+              <img src="http://openweathermap.org/img/w/<%= @weather_icon%>.png">
+            </p>
+          </div>
         </div>
       </div>
     </div>
-  </div>    
+  </div>
 </div>
 ```
 
@@ -232,7 +237,6 @@ That's right, we haven't finished setting up Bootstrap
 ```css
 # assets/application.scss
 
-@import "bootstrap-sprockets";
 @import "bootstrap";
 ```
 
@@ -256,64 +260,66 @@ First the form to take user input...
 ```html
 <!-- views/welcome/index.html.erb -->
 <div class="row">
-  <div class="col-md-6 col-md-offset-1">
-  	<div class="well">
-	    <h1>Look Up Your Local Forecast</h1>
-	    <p>What's the weather like in your city?</p>
-	    <div>
-        <%= form_tag index_path do %>
-		    	<%= text_field_tag :city, nil, placeholder: "City", class: "form-control" %><br />
-		    	<%= select_tag :state, options_for_select(@states), prompt: "Please select" %><br />
-			    <%= submit_tag "Check Weather", class: "btn btn-primary" %>
-				<% end %>
-	    </div>
+	<div class="col-md-6 col-md-offset-1">
+		<div class="card">
+			<div class="card-header bg-warning">
+				<h5>Look up your local forecast: </h5>
+			</div>
+			<div class="card-body">
+				<div class="form-inline">
+					<%= form_tag index_path do %>
+					<%= text_field_tag :zipcode, nil, placeholder: "enter zipcode", class: "form-control-sm" %>
+					<%= submit_tag "Check Weather", class: "btn btn-warning btn-sm" %>
+					<% end %>
+				</div>
+			</div>
 		</div>
-  </div>
+	</div>
 </div>
 ```
 
 Then a place to display the results...
+```
 <!-- views/welcome/index.html.erb -->
-<!-- Our response from wunderground's API -->
+<!-- Our response from openweathermap's API -->
+<br>
 <div class="row">
-  <div class="col-md-6 col-md-offset-3">
-    <div class="well">
+	<div class="col-md-3"></div>
+	<div class="col-md-6">
 
 <!-- Bring in the instance variables from our controller to display on our index page. -->
 <!-- Check to make sure @location is not empty or nil and that the API did not return an error -->
+
 		<% if @location != nil && @location != "" && (@error == "" || @error == nil) %>
-	    <h1>Forecast for <%= @location %></h1>
-	
-	    <div class="row">
-	      <div class="col-md-7">
-		  		<p><em>What's the weather like?</em></p>
-	        <p>
-		    		Temperature is: <%= @temp_f %>° / <%= @temp_c %>° 
-		  		</p>
-		  		<p>
-		    		Feels like: <%= @real_feel_f %>°
-	    	  </p>
+		<div class="card">
+			<div class="card-header bg-warning">
+				<h5>Forecast for <%= @location %></h5>
+			</div>
+			<div class="card-body">
+				<div class="col-sm-7">
+					<p>The current temperature is <%= @temp %>&deg;F</p>
+					<p>Cloud cover: <%= @cloudiness%>%</p>
+					<p>Wind: <%= @windiness %> mph</p>
+				</div>
+				<div class="col-sm-5">
+				 	<p>
+	          <%= @weather_words%>
+	          <img src="http://openweathermap.org/img/w/<%= @weather_icon%>.png">
+	        </p>
 	      </div>
-	      <div class="col-md-5">
-		  		<p>
-		    		<%= @weather_words %> <%= image_tag @weather_icon %>
-		  		</p>
-		  		<p>
-		    		<%= link_to "Full Forecast", @forecast_link, target: "_blank" %>
-		  		</p>
-	      </div>
-	     </div>
-	    <% else %> 
-	    	<p>Error: Please enter a valid request. <%= @error %> </p> 
-			<% end %>
-	  </div>
+			</div>
+		</div>
+		<% elsif @status == "404" %>
+			<p>Error: <%= @error %>. Please try again.</p>
+		<% else %>
+		<% end %>
 	</div>
 </div>
 ```
 
 Because we're using a form, we'll need to adjust our routes.
 
-​```ruby
+```ruby
 # routes.rb
 Rails.application.routes.draw do
   # the index page gets three routes:
@@ -328,43 +334,31 @@ Rails.application.routes.draw do
   # hey, while we're here, wanna change the 'test' route?
   get 'test' => 'welcome#test'
 end
+```
 
 We need to build the action for the index view, using the params from the form in our API call:
 
-​```ruby
+```ruby
 # welcome_controller.rb
+
 def index
-  # Creates an array of states that our user can choose from on our index page
-  @states = %w(HI AK CA OR WA ID UT NV AZ NM CO WY MT ND SD NB KS OK TX LA AR MO IA MN WI IL IN MI OH KY TN MS AL GA FL SC NC VA WV DE MD PA NY NJ CT RI MA VT NH ME DC).sort!
-
-  # removes spaces from the 2-word city names and replaces the space with an underscore 
-  if params[:city] != nil
-  	# you may have to add this line:
-  	# params[:city] = params[:city].dup
-  	params[:city].gsub!(" ", "_")
-  end
-
-  #checks that the state and city params are not empty before calling the API
-  if params[:state] != "" && params[:city] != "" && params[:state] != nil && params[:city] != nil
-		 
-		results = HTTParty.get("http://api.wunderground.com/api/#{Figaro.env.wunderground_api_key}/geolookup/conditions/q/#{params[:state]}/#{params[:city]}.json")
-		  
-
-    # if no error is returned from the call, we fill our instants variables with the result of the call
-		if results['response']['error'] == nil || results['error'] == ""  	
-	    @location = results['location']['city']
-	    @temp_f = results['current_observation']['temp_f']
-	    @temp_c = results['current_observation']['temp_c']
-      @weather_icon = results['current_observation']['icon_url']
-	    @weather_words = results['current_observation']['weather']
-      @forecast_link = results['current_observation']['forecast_url']
-	    @real_feel_f = results['current_observation']['feelslike_f']
-	    @real_feel_c = results['current_observation']['feelslike_c']
-	 	else
-			# if there is an error, we report it to our user via the @error variable 	
-	    @error = results['response']['error']['description']
-    end 
-  end
+    # checks that the state and city params are not empty before calling the API
+    if params[:zipcode] != '' && !params[:zipcode].nil?
+      response = HTTParty.get("http://api.openweathermap.org/data/2.5/weather?zip=#{params[:zipcode]}&units=imperial&APPID=#{ENV['openweather_api_key']}")
+      @status = response['cod']
+      # if no error is returned from the call, we fill our instance variables with the result of the call
+      if @status != '404' && response['message'] != 'city not found'
+        @location = response['name']
+        @temp = response['main']['temp']
+        @weather_icon = response['weather'][0]['icon']
+        @weather_words = response['weather'][0]['description']
+        @cloudiness = response['clouds']['all']
+        @windiness = response['wind']['speed']
+      else
+        # if there is an error, we report it to our user via the @error variable
+        @error = response['message']
+      end
+    end
 end
 ```
 
@@ -410,10 +404,11 @@ end
 ```
 
 ```html
+
 <!-- views/welcome/index.html.erb -->
 <!-- add this code between the form area
-			and the results area
--->
+			and the results area -->
+
 <div class="row">
 	<div class="col-md-12">
 		<ul class="nav nav-pills">

@@ -484,10 +484,12 @@ Next, we'll use that url and self.link to build an anchor tag and replace arr[in
 def apply_link
 	arr = self.message.split
 	indx = arr.map { |x| x.include? "http://" }.index(true)
-	url = arr[indx]
-
-	arr[indx] = "<a href='#{self.link}' target='_blank'>#{url}</a>"
-
+	
+	if indx
+	  url = arr[indx]
+	  arr[indx] = "<a href='#{self.link}' target='_blank'>#{url}</a>"
+	end
+	
 	self.message = arr.join(" ")
 
 end

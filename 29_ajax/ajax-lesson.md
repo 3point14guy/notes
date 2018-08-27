@@ -128,6 +128,8 @@ Scaffold one resource: Task
 	* description:string
 	* deadline:datetime
 
+****Add jquery-rails gem****
+
 **Add some data.**
 (i.e., creating some Tasks the boring old Rails way)
 
@@ -218,7 +220,7 @@ Our ‘form’ is now being rendered in new.js.erb.  The remote: true option is 
 
 <!-- Notice we took away that "if" statement. -->
 
-<%= form_for @task, remote: true do |f| %>
+<%= form_with(model: @task, remote: true) do |f| %>
   <div class="field">
     <%= f.label :description %><br>
     <%= f.text_field :description %>
@@ -357,13 +359,17 @@ $('#tasks').html("<%= j (render @tasks) %>");
 You should now be able to add, update and delete tasks all without leaving the comfort of your index page!
 
 
-### App Beautification (Bootstrap)
+### App Beautification (Bootstrap) and Datetimepicker
 If we're getting fancy, that means it's time for Bootstrap!
+
+Let's add another gem that helps us display a better UI for choosing dates.
 
 ```ruby
 # Gemfile
-gem 'bootstrap-sass'
+gem 'bootstrap', '~>4.1.3'
 gem 'font-awesome-rails'
+gem 'momentjs-rails'
+gem 'bootstrap4-datetime-picker-rails' 
 ```
 
 ```sh
@@ -377,14 +383,15 @@ We have to change our application.css to application.scss Then add the @import l
 ```css
 /* application.scss */
 
-@import "bootstrap-sprockets";
 @import "bootstrap";
+@import "tempusdominus-bootstrap-4.css";
 @import "font-awesome";
+
 ```
 
 Don't forget to delete the contents of your scaffolds.css file!
 
-Now we have to require Bootstrap Javascripts in app/assets/javascripts/application.js
+Now we have to require Bootstrap and Datetimepicker Javascripts in app/assets/javascripts/application.js
 
 ```javascript
 // application.js
@@ -393,6 +400,8 @@ Now we have to require Bootstrap Javascripts in app/assets/javascripts/applicati
 //= require jquery_ujs
 //= require turbolinks
 //= require bootstrap-sprockets
+//= require moment
+//= require tempusdominus-bootstrap-4.js
 //= require_tree .
 ```
 
@@ -408,41 +417,6 @@ Now that we have Bootstrap alive and kickin' let's add some structure to our sit
 </body>
 ```
 
-
-### Datetimepicker
-Let's add another gem that helps us display a better UI for choosing dates.
-
-```ruby
-# Gemfile
-gem 'momentjs-rails', '>= 2.9.0'
-gem 'bootstrap3-datetimepicker-rails', '~> 4.0.0'
-```
-
-```sh
-$ bundle install
-```
-
- Then restart your server once again.
-
-Update the application CSS and JS as follows:
-
-```css
-/* application.scss */
-
-@import "bootstrap-sprockets";
-@import "bootstrap";
-@import "bootstrap-datetimepicker";
-@import "font-awesome";
-```
-
-```javascript
-// application.js
-
-...
-//= require moment
-//= require bootstrap-datetimepicker
-...
-```
 
 Let's add a partial that applies the datetimepicker method provided by the gem. We'll target an id called "datetimepicker1" (this partial will be created within the **tasks** views folder)
 
@@ -471,13 +445,26 @@ Now we'll add the datepicker id to our form so JavaScript knows where to work it
 ```html
 <!-- _form.html.erb -->
 
-<%= form_for @task, remote: true do |f|   %>
-  <%= f.text_area  :description, placeholder: "Describe your task!" %>
- <br/>
-  <%= f.text_field :deadline, id: "datetimepicker1", placeholder: "When's it due?" %>
-  <br/>
-  <%= f.button :submit %>
-<% end %>
+<!-- <%= form_with(model: @task, remote: true) do |form| %>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description, id: :task_description %>
+  </div> -->
+
+  <div class="form-group">
+    <div class="input-group date"  data-target-input="nearest">
+    <%= form.text_field :deadline, id: "datetimepicker1", class: "form-control datetimepicker-input", "data-target" => "#datetimepicker1" %>
+      <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+      </div>
+    </div>
+  </div>
+
+<!--   <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %> -->
 ```
 
 Test it out... Not working?
@@ -490,11 +477,12 @@ Let's grid-up all of index.html.erb:
 ```html
 <!-- index.html.erb -->
 <div class="row">
-  <div class="col-md-5">
+  <div class="col-md-2">
     <%= link_to 'New Task', new_task_path, remote: true %>
     <div id="task-form" style="display:none;"></div>
   </div>
-  <div class="col-md-6 col-md-offset-1">
+  <div class="col-md-1">
+  <div class="col-md-6">
     <h2>Tasks</h2>
     <ul>
       <div id="tasks">
@@ -551,15 +539,23 @@ Now we can focus back on Bootstrap'ing our various pages. We'll start with the f
 
 ```html
 <!-- _form.html.erb -->
-<%= form_for @task, remote: true do |f|   %>
+<!-- <%= form_with(model: @task, remote: true) do |form| %> -->
+  
   <div class="form-group">
-    <%= f.text_area  :description, placeholder: "Describe your task!", class: "form-control" %>
+    <%= form.text_field :description, placeholder: "Task description", class: "form-control" %>
   </div>
-  <div class="form-group">
-    <%= f.text_field :deadline, id: "datetimepicker1", placeholder: "When's it due?", class: "form-control" %>
-  </div>
-  <div class="form-group">
-    <%= f.button :Submit, class: "btn btn-primary" %>
+
+<!--   <div class="form-group">
+    <div class="input-group date"  data-target-input="nearest">
+    <%= form.text_field :deadline, id: "datetimepicker1", class: "form-control datetimepicker-input", "data-target" => "#datetimepicker1" %>
+      <div class="input-group-append" data-target="#datetimepicker1" data-toggle="datetimepicker">
+        <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+      </div>
+    </div>
+  </div> -->
+
+  <div class="actions form-group">
+    <%= form.submit class: "btn btn-light" %>
   </div>
 <% end %>
 ```
@@ -570,7 +566,7 @@ Now we can focus back on Bootstrap'ing our various pages. We'll start with the f
 <div class="row">
 	<div class="col-md-3">
 		<%= link_to new_task_path, remote: true do %>
-    	<button class="btn btn-default"><i class="fa fa-plus"></i> Add Task </button>
+    	<button class="btn btn-light"><i class="fa fa-plus"></i> Add Task </button>
 		<% end %>
 
 		<div id="task-form" style="display:none;"></div> 
@@ -650,12 +646,14 @@ And then transform the description into a destroy link (and take away the "destr
 ```html
 <!-- _task.html.erb -->
 <div class="col-md-12">
-  <div class="well">
-  <h3><%= link_to task.description, task,  remote: true, method: :delete, data: { confirm: 'Are you sure?' } %></h3>
-  <p><%= task.deadline.strftime('%B %d, %Y') %></p>
-  <p class="pull-right">
-  	 <%= link_to "Edit", edit_task_path(task), remote: true %> 
-	</p>
+  <div class="card">
+    <div card-body>
+      <h5 class="card-title"><%= link_to task.description, task, method: :delete, remote: true, data: { confirm: 'Are you sure?' } %></h5>
+      <p class="card-text"><%= task.deadline %></p>
+      <p class="float-right">
+	<%= link_to "Edit", edit_task_path(task), remote: true, class: "btn btn-sm btn-light" %>
+      </p>
+    </div>
+  </div>
 </div>
 ```
-</div>

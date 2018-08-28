@@ -90,6 +90,9 @@ class User < ActiveRecord::Base
 end
 ```
 
+Here we take the data from the auth object provided by omniauth and save it into our database.
+```create!``` will raise an exception if the create method fails and make sure that login will fail.
+
 ## Application Controller##
 
 We'll need to add some code to our **application_controller.rb**:
@@ -113,6 +116,11 @@ class ApplicationController < ActionController::Base
 end
 ```
 
+Defining current_user as a helper method makes current_user available to other parts of our app.
+
+Making current user private keeps it form being tampered with through creatively accessing our routes.
+
+||= if current_user is falsey, assign user in the current session to current user IF there is a user_id associated to the current session.
 
 ### Sessions Controller
 Next, we need to create a new Controller.

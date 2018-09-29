@@ -488,7 +488,7 @@ Test out the validations again!
 
 
 ### Using current_user
-We can use current_user to help us properly create a new tweet. *current_user.id* is the ID # we'll looking to populate our FK (tweet.user_id) with!
+We can use current_user to help us properly create a new tweet. *current_user.id* is the ID # we'll looking to populate our FK (Foreign Key) (tweet.user_id) with!
 
 ```html
   <div class="form-group">
